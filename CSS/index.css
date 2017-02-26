@@ -1,0 +1,20 @@
+/* Left */
+.leftHalf{
+    width: 48%;
+    float: left;
+}
+/* Right */
+.rightHalf{
+    width: 48%;
+    float: right;
+}
+/* Indention */
+.subOption{
+    margin-left: 20px;
+}
+/* Center */
+
+/* Textarea */
+textarea {
+    resize: none;
+}

@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        Notes:
+        - MyBB Code -> HTML: https://github.com/wGEric/phpBB-BBCode-Javascript-Parser
+        - MyBB to HTML: http://www.bbcode-to-html.com/index.php
+        - 
+    -->
+    <title>Thread Design Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Color Picker: https://itsjavi.com/bootstrap-colorpicker/ -->
+    <script src="JS/bootstrap-colorpicker.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap-colorpicker.min.css">
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Local -->
+    <link rel="stylesheet" href="CSS/index.css">
+    <script>
+        var primaryColor;
+        var secondaryColor;
+        // Primary Color Picker
+        $(function () {
+            primaryColor = getRandomColor();
+            setPrimaryColorPickers();
+        });
+        // Secondary Color Picker
+        $(function () {
+            secondaryColor = '#FFFFFF';
+            setSecondaryColorPickers();
+        });
+        $(document).ready(function () {
+            // General Content Listener
+            $('.generalShowContent').change(function () {
+                // Match Navigation with Thread Contents
+                switch ($(this).val()) {
+                    case '1': toggleNavVisibility($(this),"generalShowHeader");
+                        break;
+                    case '2': toggleNavVisibility($(this), "generalShowDescription");
+                        break;
+                    case '3': toggleNavVisibility($(this), "generalShowFeatures");
+                        break;
+                    case '4': toggleNavVisibility($(this), "generalShowPricing");
+                        break;
+                    case '5': toggleNavVisibility($(this), "generalShowContact");
+                        break;
+                    case '6': toggleNavVisibility($(this), "generalShowFAQ");
+                        break;
+                    case '7': toggleNavVisibility($(this), "generalShowVouches");
+                        break;
+                    case '8': toggleNavVisibility($(this), "generalShowTOS");
+                        break;
+                }
+            });
+            // General Random Primary Listener 
+            $('body').on("click", "#generalPrimaryRandom", function () {
+                primaryColor = getRandomColor();
+                setPrimaryColorPickers();
+            });
+            // General Random Secondary Listener 
+            $('body').on("click", "#generalSecondaryRandom", function () {
+                secondaryColor = getRandomColor();
+                setSecondaryColorPickers();
+            });
+            // Header Main Underline
+            $("#headerMainUnderlineColor").colorpicker('disable');
+            $("#headerMainUnderline").change(function () {
+                if ($(this).prop("checked")) {
+                    $("#headerMainUnderlineColor").colorpicker('enable');
+                } else {
+                    $("#headerMainUnderlineColor").colorpicker('disable');
+                }
+            });
+            // Header Sub Underline
+            $("#headerSubUnderline").prop('checked', true);
+            $("#headerSubUnderline").change(function () {
+                if ($(this).prop("checked")) {
+                    $("#headerSubUnderlineColor").colorpicker('enable');
+                } else {
+                    $("#headerSubUnderlineColor").colorpicker('disable');
+                }
+            });
+            // Header Changes
+            $(".headerElements").change(function () {
+                $("#headerOutput").val(updateHeaderOutput());
+            });
+            // Header Sub Enable
+            $("#headerEnableSubHeader").prop('checked', true);
+            $("#headerEnableSubHeader").change(function () {
+                if ($(this).prop("checked"))
+                    toggleHeaderSubInputs(false);
+                else
+                    toggleHeaderSubInputs(true);
+            });
+
+
+
+
+
+
+
+
+
+
+
+        });
+        // -------------------------- Functions --------------------------
+        // toggle Sub Header Inputs
+        function toggleHeaderSubInputs(state) {
+            // Sub Header Text
+            $("#threadSubText").prop("disabled", state);
+            // Sub Header Text Color/ Sub Header Text Underline Color
+            if (state) {
+                $("#headerSubColor").colorpicker('disable');
+                $("#headerSubUnderlineColor").colorpicker('disable');
+            } else {
+                $("#headerSubColor").colorpicker('enable');
+                $("#headerSubUnderlineColor").colorpicker('enable');
+            }
+            // Sub Header Underline
+            $("#headerSubUnderline").prop("disabled", state);
+            // Sub Header Size
+            if (state) {
+                $(".headerSubSizeLabel").addClass("disabled");
+                $(".headerSubSizeLabel").removeClass("active");
+            } else {
+                $(".headerSubSizeLabel").removeClass("disabled");
+                $("#headerSubSizeL").parent().addClass("active");
+            }
+        }
+        // Design 1 - Header
+        function updateHeaderOutput() {
+            var output = ""; 
+            // Grab font from general
+
+            // Alignment Start
+            output += "[align=";
+            if ($("#headerAlignLeft").prop("checked"))
+                output += "left";
+            else if ($("#headerAlignCenter").prop("checked"))
+                output += "center";
+            else if ($("#headerAlignRight").prop("checked"))
+                output += "right";
+            output += "]";
+
+            // Main Size Start
+            output += "[size=";
+            if ($("#headerMainSizeXXS").prop("checked"))
+                output += "xx-small";
+            else if ($("#headerMainSizeXS").prop("checked"))
+                output += "x-small";
+            else if ($("#headerMainSizeS").prop("checked"))
+                output += "small";
+            else if ($("#headerMainSizeM").prop("checked"))
+                output += "medium";
+            else if ($("#headerMainSizeL").prop("checked"))
+                output += "large";
+            else if ($("#headerMainSizeXL").prop("checked"))
+                output += "x-large";
+            else if ($("#headerMainSizeXXL").prop("checked"))
+                output += "xx-large";
+            output += "]"
+
+            // Main Underline Start
+            if ($("#headerMainUnderline").prop("checked"))
+                output += "[color=" + $("#headerMainUnderlineColor").colorpicker('getValue') + "][u]";
+
+            // Main Color Start
+            output += "[color="+$("#headerMainColor").colorpicker('getValue')+"]";
+
+            // Main Text
+            output += $("#threadMainText").val();
+
+            // Main Color End
+            output += "[/color]";
+
+            // Main Underline End
+            if ($("#headerMainUnderline").prop("checked"))
+                output += "[/u][/color]";
+
+            // Main Size End
+            output += "[/size]";
+
+            // Line break?
+
+            // Sub
+            if ($("#headerEnableSubHeader").prop("checked")) {
+                // Sub Size Start
+                output += "[size=";
+                if ($("#headerSubSizeXXS").prop("checked"))
+                    output += "xx-small";
+                else if ($("#headerSubSizeXS").prop("checked"))
+                    output += "x-small";
+                else if ($("#headerSubSizeS").prop("checked"))
+                    output += "small";
+                else if ($("#headerSubSizeM").prop("checked"))
+                    output += "medium";
+                else if ($("#headerSubSizeL").prop("checked"))
+                    output += "large";
+                else if ($("#headerSubSizeXL").prop("checked"))
+                    output += "x-large";
+                else if ($("#headerSubSizeXXL").prop("checked"))
+                    output += "xx-large";
+                output += "]"
+
+                // Sub Underline Start
+                if ($("#headerSubUnderline").prop("checked"))
+                    output += "[color=" + $("#headerSubUnderlineColor").colorpicker('getValue') + "][u]";
+
+                // Sub Color Start
+                output += "[color=" + $("#headerSubColor").colorpicker('getValue') + "]";
+
+                // Sub Text
+                output += $("#threadSubText").val();
+
+                // Sub Color End
+                output += "[/color]";
+
+                // Sub Underline End
+                if ($("#headerSubUnderline").prop("checked"))
+                    output += "[/u][/color]";
+
+                // Sub Size End
+                output += "[/size]";
+            }
+
+            // Alignment End
+            output += "[/align]";
+
+            return output;
+        }
+        // Change Primary Color Pickers
+        function setPrimaryColorPickers() {
+            // Header Main
+            $('.primaryColor').colorpicker('setValue', primaryColor);
+        }
+        // Change Secondary Color Pickers
+        function setSecondaryColorPickers() {
+            // Header Sub
+            $('.secondaryColor').colorpicker('setValue', secondaryColor);
+        }
+        // Toggle Visibility of Corresponding Nav Element
+        function toggleNavVisibility(selectedCheckbox,selectedCorrId) {
+            if ($(selectedCheckbox).prop("checked")) {
+                //console.log("show " + selectedCorrId);
+                $("#" + selectedCorrId).show();
+            } else {
+                //console.log("hide " + selectedCorrId);
+                $("#" + selectedCorrId).hide();
+            }
+        }
+        // Generate Random Color - Credit: http://stackoverflow.com/a/1484514
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Thread Design Generator</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#general">General</a></li>
+            <li><a data-toggle="tab" href="#menuHeader" id="generalShowHeader">Header</a></li>
+            <li><a data-toggle="tab" href="#menu2" id="generalShowDescription">Description</a></li>
+            <li><a data-toggle="tab" href="#menu3" id="generalShowFeatures">Features</a></li>
+            <li><a data-toggle="tab" href="#menu4" id="generalShowPricing">Pricing</a></li>
+            <li><a data-toggle="tab" href="#menu5" id="generalShowContact">Contact</a></li>
+            <li><a data-toggle="tab" href="#menu6" id="generalShowFAQ">FAQ</a></li>
+            <li><a data-toggle="tab" href="#menu7" id="generalShowVouches">Vouches</a></li>
+            <li><a data-toggle="tab" href="#menu8" id="generalShowTOS">TOS</a></li>
+            <li><a data-toggle="tab" href="#menu9">Extras</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- General -->
+            <div id="general" class="tab-pane fade in active">
+                <h3>General</h3>
+                <p></p>
+                <div class="form-group" id="threadNameDiv">
+                    <label for="threadSubj">Thread Subject:</label>
+                    <input type="text" class="form-control" id="threadSubj" placeholder="Product Name (ex. 'Premium Widgets')">
+                </div>
+                <!-- Left - Content -->
+                <div id="generalSections" class="leftHalf">
+                    <h4>Thread Contents</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="generalShowContent" checked>Header</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="2" class="generalShowContent" checked>Description</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="3" class="generalShowContent" checked>Features</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="4" class="generalShowContent" checked>Pricing</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="5" class="generalShowContent" checked>Contact</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="6" class="generalShowContent" checked>FAQ</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="7" class="generalShowContent" checked>Vouches</label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="8" class="generalShowContent" checked>TOS</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Right - Settings -->
+                <div id="generalSettings" class="rightHalf">
+                    <h4>Design Settings</h4>
+                    <div class="panel panel-default" id="generalDesignSettings">
+                        <div class="panel-body">
+                            <!-- Primary Color Picker -->
+                            <label for="generalCPPrimary">Primary Color:</label>
+                            <div id="generalCPPrimary" class="input-group colorpicker-component primaryColor">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <button type="button" class="btn btn-primary" id="generalPrimaryRandom">Generate Random</button>
+                        <br />
+                            <br />
+                            <label for="generalCPSecondary">Secondary Color:</label>
+                            <!-- Secondary Color Picker -->
+                            <div id="generalCPSecondary" class="input-group colorpicker-component secondaryColor">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <button type="button" class="btn btn-primary" id="generalSecondaryRandom">Generate Random</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header -->
+            <div id="menuHeader" class="tab-pane fade">
+                <h3>Header</h3>
+                <!-- Main Header -->
+                <div class="rightHalf">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default" id="headerPreview">
+                        <div class="panel-body">
+                            Test
+                        </div>
+                    </div>
+                </div>
+                <div class="leftHalf">
+                    <h4>Main Header</h4>
+                    <!-- Main Header -->
+                    <div class="panel panel-default" id="headerMain">
+                        <div class="panel-body">
+                            <!-- Main Header Text -->
+                            <input type="text" class="form-control headerElements" id="threadMainText" placeholder="ex 'Adam's Design Service'">
+                            <br />
+                            <!-- Main Header Color Picker -->
+                            <div id="headerMainColor" class="input-group colorpicker-component subOption primaryColor headerElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <br />
+                            <!-- Main Header Underline -->
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="1" class="headerMainUnderline headerElements" id="headerMainUnderline">Underline Main Header</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Main Header Underline Color -->
+                            Underline Color
+                            <div id="headerMainUnderlineColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <br />
+                            <!-- Header Align -->
+                            <div class="text-center">
+                                Header Alignment
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerAlign">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerAlign" id="headerAlignLeft"> Left
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="headerElements" name="headerAlign" id="headerAlignCenter" checked> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerAlign" id="headerAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <br />
+                            <!-- Header Main Size -->
+                            <div class="text-center">
+                                Size
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerMainSize">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="headerElements" name="headerMainSize" id="headerMainSizeXXL" checked> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sub Header -->
+                    <h4>Sub Header</h4>
+                    <div class="panel panel-default" id="headerSub">
+                        <div class="panel-body">
+                            <!-- Sub Header Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="headerElements" id="headerEnableSubHeader">Enable</label>
+                                <hr />
+                            </div>
+                            <!-- Sub Header Text -->
+                            <input type="text" class="form-control headerElements" id="threadSubText" placeholder="ex 'Lifetime Access'">
+                            <br />
+                            <!-- Main Header Color Picker -->
+                            <div id="headerSubColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <br />
+                            <!-- Main Header Underline -->
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="1" class="headerElements" id="headerSubUnderline">Underline Sub Header</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Main Header Underline Color -->
+                            Underline Color
+                            <div id="headerSubUnderlineColor" class="input-group colorpicker-component subOption primaryColor headerElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Header Sub Size -->
+                            <div class="text-center">
+                                Size
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerSubSize">
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel active">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeL" checked> L
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary headerSubSizeLabel">
+                                        <input type="radio" class="headerElements" name="headerSubSize" id="headerSubSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header Image -->
+
+
+
+                </div> <!-- End Left Align -->
+                <div class="rightHalf">
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="headerOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <textarea class="form-control" id="headerOutput"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Header -->
+            <div id="menu2" class="tab-pane fade">
+                <h3>Description</h3>
+                <p></p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Features</h3>
+                <p></p>
+            </div>
+            <div id="menu4" class="tab-pane fade">
+                <h3>Pricing</h3>
+                <p></p>
+            </div>
+            <div id="menu5" class="tab-pane fade">
+                <h3>Contact</h3>
+                <p></p>
+            </div>
+            <div id="menu6" class="tab-pane fade">
+                <h3>FAQ</h3>
+                <p></p>
+            </div>
+            <div id="menu7" class="tab-pane fade">
+                <h3>Vouches</h3>
+                <p></p>
+            </div>
+            <div id="menu8" class="tab-pane fade">
+                <h3>TOS</h3>
+                <p></p>
+            </div>
+            <div id="menu9" class="tab-pane fade">
+                <h3>Extras</h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
