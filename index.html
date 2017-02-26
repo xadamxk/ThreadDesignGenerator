@@ -5,7 +5,10 @@
         Notes:
         - MyBB Code -> HTML: https://github.com/wGEric/phpBB-BBCode-Javascript-Parser
         - MyBB to HTML: http://www.bbcode-to-html.com/index.php
-        - 
+        - Good Primary Colors:
+            - Rose Red: #dd3f59
+            - Steal Blue: #4682B4
+            - Mint Green: #6de89f
     -->
     <title>Thread Design Generator</title>
     <meta charset="utf-8">
@@ -61,10 +64,24 @@
                 primaryColor = getRandomColor();
                 setPrimaryColorPickers();
             });
+            // General Primary Listener
+            $("#generalCPPrimary").on("input", function () {
+                if (isHexaColor($("#generalCPPrimary").colorpicker('getValue').replace("#",""))){
+                    primaryColor = $("#generalCPPrimary").colorpicker('getValue');
+                    setPrimaryColorPickers();
+                }
+            });
             // General Random Secondary Listener 
             $('body').on("click", "#generalSecondaryRandom", function () {
                 secondaryColor = getRandomColor();
                 setSecondaryColorPickers();
+            });
+            // General Secondary Listener
+            $("#generalCPSecondary").on("input", function () {
+                if (isHexaColor($("#generalCPSecondary").colorpicker('getValue').replace("#", ""))) {
+                    primaryColor = $("#generalCPSecondary").colorpicker('getValue');
+                    setSecondaryColorPickers();
+                }
             });
             // Header Main Underline
             $("#headerMainUnderlineColor").colorpicker('disable');
@@ -109,6 +126,11 @@
 
         });
         // -------------------------- Functions --------------------------
+        // Check if hex string is valid
+        function isHexaColor(sNum) {
+            return (typeof sNum === "string") && sNum.length === 6
+                   && !isNaN(parseInt(sNum, 16));
+        }
         // toggle Sub Header Inputs
         function toggleHeaderSubInputs(state) {
             // Sub Header Text
@@ -136,6 +158,7 @@
         function updateHeaderOutput() {
             var output = ""; 
             // Grab font from general
+
 
             // Alignment Start
             output += "[align=";
@@ -185,10 +208,10 @@
             // Main Size End
             output += "[/size]";
 
-            // Line break?
-
-            // Sub
+            // Sub Header
             if ($("#headerEnableSubHeader").prop("checked")) {
+                // Line break
+                output += "\n";
                 // Sub Size Start
                 output += "[size=";
                 if ($("#headerSubSizeXXS").prop("checked"))
