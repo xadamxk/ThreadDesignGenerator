@@ -1,4 +1,4 @@
-// Design 1 - Header
+// Layout 1 - Header
 function updateHeaderOutput() {
     var output = "";
     // Grab font from general
@@ -99,4 +99,8 @@ function updateHeaderOutput() {
     output += "[/align]";
 
     return output;
+}
+
+// Layout 1 - Description
+function updateDescriptionOutput() {
 }
