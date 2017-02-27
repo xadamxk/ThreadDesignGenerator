@@ -5,6 +5,7 @@
         Notes:
         - MyBB Code -> HTML: https://github.com/wGEric/phpBB-BBCode-Javascript-Parser
         - MyBB to HTML: http://www.bbcode-to-html.com/index.php
+        - MyBB BEST Parser: https://www.npmjs.com/package/xbbcode-parser
         - Good Primary Colors:
             - Rose Red: #dd3f59
             - Steal Blue: #4682B4
@@ -23,6 +24,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Local -->
     <link rel="stylesheet" href="CSS/index.css">
+    <script src="JS/CustomFunctions.js"></script>
+    <script src="JS/Layout_1.js"></script>
+    <script src="JS/EventHandlers.js"></script>
     <script>
         var primaryColor;
         var secondaryColor;
@@ -37,254 +41,11 @@
             setSecondaryColorPickers();
         });
         $(document).ready(function () {
-            // General Content Listener
-            $('.generalShowContent').change(function () {
-                // Match Navigation with Thread Contents
-                switch ($(this).val()) {
-                    case '1': toggleNavVisibility($(this),"generalShowHeader");
-                        break;
-                    case '2': toggleNavVisibility($(this), "generalShowDescription");
-                        break;
-                    case '3': toggleNavVisibility($(this), "generalShowFeatures");
-                        break;
-                    case '4': toggleNavVisibility($(this), "generalShowPricing");
-                        break;
-                    case '5': toggleNavVisibility($(this), "generalShowContact");
-                        break;
-                    case '6': toggleNavVisibility($(this), "generalShowFAQ");
-                        break;
-                    case '7': toggleNavVisibility($(this), "generalShowVouches");
-                        break;
-                    case '8': toggleNavVisibility($(this), "generalShowTOS");
-                        break;
-                }
-            });
-            // General Random Primary Listener 
-            $('body').on("click", "#generalPrimaryRandom", function () {
-                primaryColor = getRandomColor();
-                setPrimaryColorPickers();
-            });
-            // General Primary Listener
-            $("#generalCPPrimary").on("input", function () {
-                if (isHexaColor($("#generalCPPrimary").colorpicker('getValue').replace("#",""))){
-                    primaryColor = $("#generalCPPrimary").colorpicker('getValue');
-                    setPrimaryColorPickers();
-                }
-            });
-            // General Random Secondary Listener 
-            $('body').on("click", "#generalSecondaryRandom", function () {
-                secondaryColor = getRandomColor();
-                setSecondaryColorPickers();
-            });
-            // General Secondary Listener
-            $("#generalCPSecondary").on("input", function () {
-                if (isHexaColor($("#generalCPSecondary").colorpicker('getValue').replace("#", ""))) {
-                    primaryColor = $("#generalCPSecondary").colorpicker('getValue');
-                    setSecondaryColorPickers();
-                }
-            });
-            // Header Main Underline
-            $("#headerMainUnderlineColor").colorpicker('disable');
-            $("#headerMainUnderline").change(function () {
-                if ($(this).prop("checked")) {
-                    $("#headerMainUnderlineColor").colorpicker('enable');
-                } else {
-                    $("#headerMainUnderlineColor").colorpicker('disable');
-                }
-            });
-            // Header Sub Underline
-            $("#headerSubUnderline").prop('checked', true);
-            $("#headerSubUnderline").change(function () {
-                if ($(this).prop("checked")) {
-                    $("#headerSubUnderlineColor").colorpicker('enable');
-                } else {
-                    $("#headerSubUnderlineColor").colorpicker('disable');
-                }
-            });
             // Header Changes
             $(".headerElements").change(function () {
                 $("#headerOutput").val(updateHeaderOutput());
             });
-            // Header Sub Enable
-            $("#headerEnableSubHeader").prop('checked', true);
-            $("#headerEnableSubHeader").change(function () {
-                if ($(this).prop("checked"))
-                    toggleHeaderSubInputs(false);
-                else
-                    toggleHeaderSubInputs(true);
-            });
-
-
-
-
-
-
-
-
-
-
-
         });
-        // -------------------------- Functions --------------------------
-        // Check if hex string is valid
-        function isHexaColor(sNum) {
-            return (typeof sNum === "string") && sNum.length === 6
-                   && !isNaN(parseInt(sNum, 16));
-        }
-        // toggle Sub Header Inputs
-        function toggleHeaderSubInputs(state) {
-            // Sub Header Text
-            $("#threadSubText").prop("disabled", state);
-            // Sub Header Text Color/ Sub Header Text Underline Color
-            if (state) {
-                $("#headerSubColor").colorpicker('disable');
-                $("#headerSubUnderlineColor").colorpicker('disable');
-            } else {
-                $("#headerSubColor").colorpicker('enable');
-                $("#headerSubUnderlineColor").colorpicker('enable');
-            }
-            // Sub Header Underline
-            $("#headerSubUnderline").prop("disabled", state);
-            // Sub Header Size
-            if (state) {
-                $(".headerSubSizeLabel").addClass("disabled");
-                $(".headerSubSizeLabel").removeClass("active");
-            } else {
-                $(".headerSubSizeLabel").removeClass("disabled");
-                $("#headerSubSizeL").parent().addClass("active");
-            }
-        }
-        // Design 1 - Header
-        function updateHeaderOutput() {
-            var output = ""; 
-            // Grab font from general
-
-
-            // Alignment Start
-            output += "[align=";
-            if ($("#headerAlignLeft").prop("checked"))
-                output += "left";
-            else if ($("#headerAlignCenter").prop("checked"))
-                output += "center";
-            else if ($("#headerAlignRight").prop("checked"))
-                output += "right";
-            output += "]";
-
-            // Main Size Start
-            output += "[size=";
-            if ($("#headerMainSizeXXS").prop("checked"))
-                output += "xx-small";
-            else if ($("#headerMainSizeXS").prop("checked"))
-                output += "x-small";
-            else if ($("#headerMainSizeS").prop("checked"))
-                output += "small";
-            else if ($("#headerMainSizeM").prop("checked"))
-                output += "medium";
-            else if ($("#headerMainSizeL").prop("checked"))
-                output += "large";
-            else if ($("#headerMainSizeXL").prop("checked"))
-                output += "x-large";
-            else if ($("#headerMainSizeXXL").prop("checked"))
-                output += "xx-large";
-            output += "]"
-
-            // Main Underline Start
-            if ($("#headerMainUnderline").prop("checked"))
-                output += "[color=" + $("#headerMainUnderlineColor").colorpicker('getValue') + "][u]";
-
-            // Main Color Start
-            output += "[color="+$("#headerMainColor").colorpicker('getValue')+"]";
-
-            // Main Text
-            output += $("#threadMainText").val();
-
-            // Main Color End
-            output += "[/color]";
-
-            // Main Underline End
-            if ($("#headerMainUnderline").prop("checked"))
-                output += "[/u][/color]";
-
-            // Main Size End
-            output += "[/size]";
-
-            // Sub Header
-            if ($("#headerEnableSubHeader").prop("checked")) {
-                // Line break
-                output += "\n";
-                // Sub Size Start
-                output += "[size=";
-                if ($("#headerSubSizeXXS").prop("checked"))
-                    output += "xx-small";
-                else if ($("#headerSubSizeXS").prop("checked"))
-                    output += "x-small";
-                else if ($("#headerSubSizeS").prop("checked"))
-                    output += "small";
-                else if ($("#headerSubSizeM").prop("checked"))
-                    output += "medium";
-                else if ($("#headerSubSizeL").prop("checked"))
-                    output += "large";
-                else if ($("#headerSubSizeXL").prop("checked"))
-                    output += "x-large";
-                else if ($("#headerSubSizeXXL").prop("checked"))
-                    output += "xx-large";
-                output += "]"
-
-                // Sub Underline Start
-                if ($("#headerSubUnderline").prop("checked"))
-                    output += "[color=" + $("#headerSubUnderlineColor").colorpicker('getValue') + "][u]";
-
-                // Sub Color Start
-                output += "[color=" + $("#headerSubColor").colorpicker('getValue') + "]";
-
-                // Sub Text
-                output += $("#threadSubText").val();
-
-                // Sub Color End
-                output += "[/color]";
-
-                // Sub Underline End
-                if ($("#headerSubUnderline").prop("checked"))
-                    output += "[/u][/color]";
-
-                // Sub Size End
-                output += "[/size]";
-            }
-
-            // Alignment End
-            output += "[/align]";
-
-            return output;
-        }
-        // Change Primary Color Pickers
-        function setPrimaryColorPickers() {
-            // Header Main
-            $('.primaryColor').colorpicker('setValue', primaryColor);
-        }
-        // Change Secondary Color Pickers
-        function setSecondaryColorPickers() {
-            // Header Sub
-            $('.secondaryColor').colorpicker('setValue', secondaryColor);
-        }
-        // Toggle Visibility of Corresponding Nav Element
-        function toggleNavVisibility(selectedCheckbox,selectedCorrId) {
-            if ($(selectedCheckbox).prop("checked")) {
-                //console.log("show " + selectedCorrId);
-                $("#" + selectedCorrId).show();
-            } else {
-                //console.log("hide " + selectedCorrId);
-                $("#" + selectedCorrId).hide();
-            }
-        }
-        // Generate Random Color - Credit: http://stackoverflow.com/a/1484514
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
     </script>
 </head>
 <body>
@@ -549,8 +310,8 @@
                     <h4>Output</h4>
                     <div class="panel panel-default" id="headerOutputDiv">
                         <div class="panel-body">
-                            <div class="form-group">
-                                <textarea class="form-control" id="headerOutput"></textarea>
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="headerOutput"></textarea><button type="button" class="btn btn-primary" id="headerUpdateOutput">Update</button>
                             </div>
                         </div>
                     </div>

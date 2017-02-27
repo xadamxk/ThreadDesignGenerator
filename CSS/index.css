@@ -18,3 +18,9 @@
 textarea {
     resize: none;
 }
+
+/* Output Button */
+#headerUpdateOutput{
+    margin: 30px;
+    margin-bottom: 0px;
+}
