@@ -1,3 +1,13 @@
+// Parse output (mycode) to preview (html)
+function updatePreview(output, outContainer) {
+    // Instanciate xbb
+    var preview = XBBCODE.process({
+        text: output,
+        removeMisalignedTags: false,
+        addInLineBreaks: true
+    });
+    $(outContainer).html(preview.html);
+}
 // Check if hex string is valid
 function isHexaColor(sNum) {
     return (typeof sNum === "string") && sNum.length === 6
@@ -55,3 +65,14 @@ function setSecondaryColorPickers() {
     // Header Sub
     $('.secondaryColor').colorpicker('setValue', secondaryColor);
 }
+// Change Desired Site Color Pickers
+function setDesiredSiteBackgroundColorPickers() {
+    // All Output Backgrounds
+    $('#generalCPDesiredSite').colorpicker('setValue', desiredSiteColor);
+    $('.preview').css("background-color", desiredSiteColor);
+}
+// Replace All (Credit: http://stackoverflow.com/a/17606289)
+String.prototype.replaceAll = function (search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};

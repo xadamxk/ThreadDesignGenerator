@@ -27,23 +27,31 @@
     <script src="JS/CustomFunctions.js"></script>
     <script src="JS/Layout_1.js"></script>
     <script src="JS/EventHandlers.js"></script>
+        <!-- BBCode Parser -->
+    <script src="JS/xbbcode.js"></script>
+    <link rel="stylesheet" href="CSS/xbbcode.css">
     <script>
         var primaryColor;
         var secondaryColor;
-        // Primary Color Picker
+        var desiredSiteColor;
+        
         $(function () {
+            // Primary Color Picker
             primaryColor = getRandomColor();
             setPrimaryColorPickers();
-        });
-        // Secondary Color Picker
-        $(function () {
+            // Secondary Color Picker
             secondaryColor = '#FFFFFF';
             setSecondaryColorPickers();
+            // Desired Site Color Picker
+            desiredSiteColor = '#333333';
+            setDesiredSiteBackgroundColorPickers();
         });
         $(document).ready(function () {
             // Header Changes
             $(".headerElements").change(function () {
-                $("#headerOutput").val(updateHeaderOutput());
+                var headerOutput = updateHeaderOutput();
+                $("#headerOutput").val(headerOutput);
+                updatePreview(headerOutput, "#headerPreview");
             });
         });
     </script>
@@ -133,16 +141,24 @@
                             </div>
                             <br />
                             <button type="button" class="btn btn-primary" id="generalPrimaryRandom">Generate Random</button>
-                        <br />
                             <br />
-                            <label for="generalCPSecondary">Secondary Color:</label>
+                            <br />
                             <!-- Secondary Color Picker -->
+                            <label for="generalCPSecondary">Secondary Color:</label>
                             <div id="generalCPSecondary" class="input-group colorpicker-component secondaryColor">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
                             <br />
                             <button type="button" class="btn btn-primary" id="generalSecondaryRandom">Generate Random</button>
+                            <br />
+                            <br />
+                            <!-- Desired Site Color Picker -->
+                            <label for="generalCPDesiredSite">Desired Site Background Color:</label>
+                            <div id="generalCPDesiredSite" class="input-group colorpicker-component">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -153,9 +169,8 @@
                 <!-- Main Header -->
                 <div class="rightHalf">
                     <h4>Preview</h4>
-                    <div class="panel panel-default" id="headerPreview">
-                        <div class="panel-body">
-                            Test
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="headerPreview">
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    // ---------------------------------------------------- General Tab ----------------------------------------------------
     // General Content Listener
     $('.generalShowContent').change(function () {
         // Match Navigation with Thread Contents
@@ -45,6 +46,14 @@ $(document).ready(function () {
             setSecondaryColorPickers();
         }
     });
+    // General Desired Site Listener
+    $("#generalCPDesiredSite").on("input", function () {
+        if (isHexaColor($("#generalCPDesiredSite").colorpicker('getValue').replace("#", ""))) {
+            desiredSiteColor = $("#generalCPDesiredSite").colorpicker('getValue');
+            setDesiredSiteBackgroundColorPickers();
+        }
+    });
+    // ---------------------------------------------------- Header Tab ----------------------------------------------------
     // Header Main Underline
     $("#headerMainUnderlineColor").colorpicker('disable');
     $("#headerMainUnderline").change(function () {
