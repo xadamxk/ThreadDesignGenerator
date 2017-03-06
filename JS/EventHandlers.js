@@ -80,5 +80,31 @@ $(document).ready(function () {
         else
             toggleHeaderSubInputs(true);
     });
-
+    // Header Update Output
+    $('body').on("click", "#headerUpdateOutput", function () {
+        updateOutput();
+    });
+    // ---------------------------------------------------- Contact Tab ----------------------------------------------------
+    // Contact PM Enable
+    $("#contactEnablePM").prop('checked', true);
+    $("#contactEnablePM").change(function () {
+        if ($(this).prop("checked"))
+            toggleContactPMInputs(false);
+        else
+            toggleContactPMInputs(true);
+    });
+    // Contact IM Enable
+    toggleContactIMInputs(true);
+    $("#contactEnableIM").change(function () {
+        if ($(this).prop("checked"))
+            toggleContactIMInputs(false);
+        else
+            toggleContactIMInputs(true);
+    });
+    // Contact Update Output
+    $('body').on("click", "#contactUpdateOutput", function () {
+        var contactOutput = updateContactOutput();
+        $("#contactOutput").val(contactOutput);
+        updatePreview(contactOutput, "#contactPreview");
+    });
 });

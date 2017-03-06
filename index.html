@@ -10,6 +10,8 @@
             - Rose Red: #dd3f59
             - Steal Blue: #4682B4
             - Mint Green: #6de89f
+        TODO:
+        - integrated skype?
     -->
     <title>Thread Design Generator</title>
     <meta charset="utf-8">
@@ -47,11 +49,15 @@
             setDesiredSiteBackgroundColorPickers();
         });
         $(document).ready(function () {
-            // Header Changes
+             // Header Changes
             $(".headerElements").change(function () {
-                var headerOutput = updateHeaderOutput();
-                $("#headerOutput").val(headerOutput);
-                updatePreview(headerOutput, "#headerPreview");
+                updateOutput();
+            });
+             // Contact Changes
+            $(".contactElements").change(function () {
+                var contactOutput = updateContactOutput();
+                $("#contactOutput").val(contactOutput);
+                updatePreview(contactOutput, "#contactPreview");
             });
         });
     </script>
@@ -65,8 +71,8 @@
             <li><a data-toggle="tab" href="#menuHeader" id="generalShowHeader">Header</a></li>
             <li><a data-toggle="tab" href="#menu2" id="generalShowDescription">Description</a></li>
             <li><a data-toggle="tab" href="#menu3" id="generalShowFeatures">Features</a></li>
-            <li><a data-toggle="tab" href="#menu4" id="generalShowPricing">Pricing</a></li>
-            <li><a data-toggle="tab" href="#menu5" id="generalShowContact">Contact</a></li>
+            <li><a data-toggle="tab" href="#menu4" id="generalShowProducts">Products</a></li>
+            <li><a data-toggle="tab" href="#menuContact" id="generalShowContact">Contact</a></li>
             <li><a data-toggle="tab" href="#menu6" id="generalShowFAQ">FAQ</a></li>
             <li><a data-toggle="tab" href="#menu7" id="generalShowVouches">Vouches</a></li>
             <li><a data-toggle="tab" href="#menu8" id="generalShowTOS">TOS</a></li>
@@ -103,7 +109,7 @@
                         </li>
                         <li class="list-group-item">
                             <div class="checkbox">
-                                <label><input type="checkbox" value="4" class="generalShowContent" checked>Pricing</label>
+                                <label><input type="checkbox" value="4" class="generalShowContent" checked>Products</label>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -180,6 +186,7 @@
                     <div class="panel panel-default" id="headerMain">
                         <div class="panel-body">
                             <!-- Main Header Text -->
+                            <label for="threadMainText">Main Header Label:</label>
                             <input type="text" class="form-control headerElements" id="threadMainText" placeholder="ex 'Adam's Design Service'">
                             <br />
                             <!-- Main Header Color Picker -->
@@ -189,25 +196,9 @@
                             </div>
                             <br />
                             <br />
-                            <!-- Main Header Underline -->
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="1" class="headerMainUnderline headerElements" id="headerMainUnderline">Underline Main Header</label>
-                                    </div>
-                                </li>
-                            </ul>
-                            <!-- Main Header Underline Color -->
-                            Underline Color
-                            <div id="headerMainUnderlineColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
-                                <input type="text" value="#FFFFFF" class="form-control" />
-                                <span class="input-group-addon"><i></i></span>
-                            </div>
-                            <br />
-                            <br />
                             <!-- Header Align -->
                             <div class="text-center">
-                                Header Alignment
+                                <label for="headerAlign">Header Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerAlign">
                                     <label class="btn btn-primary">
@@ -224,7 +215,7 @@
                             <br />
                             <!-- Header Main Size -->
                             <div class="text-center">
-                                Size
+                                <label for="headerMainSize">Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerMainSize">
                                     <label class="btn btn-primary">
@@ -250,6 +241,23 @@
                                     </label>
                                 </div>
                             </div>
+                            <hr />
+                            <br />
+                            <!-- Main Header Underline -->
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="1" class="headerMainUnderline headerElements" id="headerMainUnderline">Underline Main Header</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Main Header Underline Color -->
+                            <label for="headerMainUnderlineColor">Underline Color:</label>
+                            <div id="headerMainUnderlineColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
                         </div>
                     </div>
                     <!-- Sub Header -->
@@ -262,6 +270,7 @@
                                 <hr />
                             </div>
                             <!-- Sub Header Text -->
+                            <label for="threadSubText">Sub Header Label:</label>
                             <input type="text" class="form-control headerElements" id="threadSubText" placeholder="ex 'Lifetime Access'">
                             <br />
                             <!-- Main Header Color Picker -->
@@ -270,6 +279,7 @@
                                 <span class="input-group-addon"><i></i></span>
                             </div>
                             <br />
+                            <hr />
                             <br />
                             <!-- Main Header Underline -->
                             <ul class="list-group">
@@ -280,7 +290,7 @@
                                 </li>
                             </ul>
                             <!-- Main Header Underline Color -->
-                            Underline Color
+                            <label for="headerSubUnderlineColor">Underline Color:</label>
                             <div id="headerSubUnderlineColor" class="input-group colorpicker-component subOption primaryColor headerElements">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
@@ -326,7 +336,7 @@
                     <div class="panel panel-default" id="headerOutputDiv">
                         <div class="panel-body">
                             <div class="form-group text-center">
-                                <textarea class="form-control" rows="10" id="headerOutput"></textarea><button type="button" class="btn btn-primary" id="headerUpdateOutput">Update</button>
+                                <textarea class="form-control" rows="10" id="headerOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="headerUpdateOutput">Update</button>
                             </div>
                         </div>
                     </div>
@@ -341,12 +351,186 @@
                 <p></p>
             </div>
             <div id="menu4" class="tab-pane fade">
-                <h3>Pricing</h3>
+                <h3>Products</h3>
                 <p></p>
             </div>
-            <div id="menu5" class="tab-pane fade">
+            <!-- Contact -->
+            <div id="menuContact" class="tab-pane fade">
                 <h3>Contact</h3>
                 <p></p>
+                <!-- Preview - Contact -->
+                <div class="rightHalf">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="contactPreview">
+                        </div>
+                    </div>
+                </div>
+                <!-- Left - Content -->
+                <div id="contactSections" class="leftHalf">
+                    <h4>Design</h4>
+                    <div class="panel panel-default" id="contactDesign">
+                        <div class="panel-body">
+                            <!-- Contact Label -->
+                            <label for="contactHeaderLabel">Contact Label:</label>
+                            <input type="text" class="form-control contactElements" id="contactHeaderLabel" placeholder="ex 'Contact Information'" value="Contact Information">
+                            <br />
+                            <!-- Contact Align -->
+                            <div class="text-center">
+                                <label for="contactAlign">Contact Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactAlign">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignLeft"> Left
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignCenter" checked> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
+                            <!-- Label Color -->
+                            <label for="generalCPPrimary">Contact Label Color:</label>
+                            <div id="contactCPLabel" class="input-group colorpicker-component subOption primaryColor contactElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Contact Label Size -->
+                            <div class="text-center">
+                                <label for="contactLabelSize">Contact Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactLabelSize">
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize active">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary contactLabelSize">
+                                        <input type="radio" class="contactElements" name="contactLabelSize" id="contactLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
+                            <!-- Info Color -->
+                            <label for="generalCPPrimary">Contact Info Color:</label>
+                            <div id="contactCPInfo" class="input-group colorpicker-component subOption secondaryColor contactElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Contact Info Size -->
+                            <div class="text-center">
+                                <label for="contactInfoSize">Contact Info Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactInfoSize">
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize active">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeL" checked> L
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="contactElements" name="contactInfoSize" id="contactInfoSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Private Message</h4>
+                    <div class="panel panel-default" id="contactPM">
+                        <div class="panel-body">
+                            <!-- PM Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="contactElements" id="contactEnablePM">Private Message</label>
+                            </div>
+                            <hr />
+                            <!-- PM Hyperlink Text -->
+                            <label for="contactPMHyperlinkText">PM Hyperlink Text:</label>
+                            <input type="text" class="form-control contactElements" id="contactPMHyperlinkText" placeholder="ex 'Click Here to PM Me'" value="Click here to PM me!">
+                            <br />
+                            <!-- PM Title Text -->
+                            <label for="contactPMTitle">PM Title:</label>
+                            <input type="text" class="form-control contactElements" id="contactPMTitle" placeholder="">
+                            <br />
+                            <!-- PM Body Text -->
+                            <label for="contactPMBody">PM Body:</label>
+                            <div class="form-group">
+                                <textarea class="form-control contactElements" rows="5" id="contactPMBody"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Instant Message</h4>
+                    <div class="panel panel-default" id="contactIM">
+                        <div class="panel-body">
+                            <!-- IM Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="contactElements" id="contactEnableIM">Instant Message (3rd Party)</label>
+                            </div>
+                            <hr />
+                            <!-- IM Service -->
+                            <div class="text-center">
+                                <label for="contactIMService">IM Service:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactIMService">
+                                    <label class="btn btn-primary contactIMServiceOptions active">
+                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceSkype" checked>Skype
+                                    </label>
+                                    <label class="btn btn-primary contactIMServiceOptions">
+                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceDiscord">Discord
+                                    </label>
+                                    <label class="btn btn-primary contactIMServiceOptions">
+                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceXMPP">XMPP
+                                    </label>
+                                </div>
+                            </div>
+                            <br />
+                            <!-- IM Handle -->
+                            <label for="contactIMHandle">IM Handle:</label>
+                            <input type="text" class="form-control contactElements" id="contactIMHandle" placeholder="xadamxk,xadamxk#1234,1306528@hackforums.im">
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <!-- Right - Output -->
+                <div class="rightHalf">
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="contactOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="contactOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="contactUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="menu6" class="tab-pane fade">
                 <h3>FAQ</h3>

@@ -19,7 +19,12 @@ textarea {
 }
 
 /* Output Button */
-#headerUpdateOutput{
+.updateButton{
     margin: 30px;
     margin-bottom: 0px;
+}
+
+/* H4 */
+h4{
+    font-weight: bold;
 }

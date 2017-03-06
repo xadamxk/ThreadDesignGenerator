@@ -9,6 +9,11 @@ function updatePreview(output, outContainer) {
     $(outContainer).html(preview.html);
 }
 // Check if hex string is valid
+function updateOutput() {
+    var headerOutput = updateHeaderOutput();
+    $("#headerOutput").val(headerOutput);
+    updatePreview(headerOutput, "#headerPreview");
+}
 function isHexaColor(sNum) {
     return (typeof sNum === "string") && sNum.length === 6
            && !isNaN(parseInt(sNum, 16));
@@ -35,6 +40,28 @@ function toggleHeaderSubInputs(state) {
         $(".headerSubSizeLabel").removeClass("disabled");
         $("#headerSubSizeL").parent().addClass("active");
     }
+}
+// toggle contact PM inputs
+function toggleContactPMInputs(state) {
+    // PM Hyperlink Text
+    $("#contactPMHyperlinkText").prop("disabled", state);
+    // PM Title Text
+    $("#contactPMTitle").prop("disabled", state);
+    // PM Body Text
+    $("#contactPMBody").prop("disabled", state);
+}
+// toggle contact IM inputs
+function toggleContactIMInputs(state) {
+    // IM Service
+    if (state) {
+        $(".contactIMServiceOptions").addClass("disabled");
+        $(".contactIMServiceOptions").removeClass("active");
+    } else {
+        $(".contactIMServiceOptions").removeClass("disabled");
+        $("#contactIMServiceSkype").parent().addClass("active");
+    }
+    // IM Handle Text
+    $("#contactIMHandle").prop("disabled", state);
 }
 // Toggle Visibility of Corresponding Nav Element
 function toggleNavVisibility(selectedCheckbox, selectedCorrId) {
