@@ -65,6 +65,8 @@ function toggleContactIMInputs(state) {
         $(".contactIMServiceOptions").removeClass("disabled");
         $("#contactIMServiceSkype").parent().addClass("active");
     }
+    // IM Skype MyCode
+    $("#contactEnableSkypeMyCode").prop("disabled", state);
     // IM Handle Text
     $("#contactIMHandle").prop("disabled", state);
 }

@@ -3,8 +3,6 @@
 <head>
     <!--
         Notes:
-        - MyBB Code -> HTML: https://github.com/wGEric/phpBB-BBCode-Javascript-Parser
-        - MyBB to HTML: http://www.bbcode-to-html.com/index.php
         - MyBB BEST Parser: https://www.npmjs.com/package/xbbcode-parser
         - Good Primary Colors:
             - Rose Red: #dd3f59
@@ -12,7 +10,6 @@
             - Mint Green: #6de89f
         TODO:
         - update xbb parser to support [spoiler]
-        - integrated skype?
         - background color event trigger to change preview color?
     -->
     <title>Thread Design Generator</title>
@@ -503,16 +500,25 @@
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactIMService">
                                     <label class="btn btn-primary contactIMServiceOptions active">
-                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceSkype" checked>Skype
+                                        <input type="radio" class="contactElements contactIMServices" name="contactIMService" id="contactIMServiceSkype" checked>Skype
                                     </label>
                                     <label class="btn btn-primary contactIMServiceOptions">
-                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceDiscord">Discord
+                                        <input type="radio" class="contactElements contactIMServices" name="contactIMService" id="contactIMServiceDiscord">Discord
                                     </label>
                                     <label class="btn btn-primary contactIMServiceOptions">
-                                        <input type="radio" class="contactElements" name="contactIMService" id="contactIMServiceXMPP">XMPP
+                                        <input type="radio" class="contactElements contactIMServices" name="contactIMService" id="contactIMServiceXMPP">XMPP
                                     </label>
                                 </div>
                             </div>
+                            <br />
+                            <!-- Skype MyCode Enable -->
+                            <ul class="list-group" id="contactEnableSkypeDiv">
+                                <li class="list-group-item">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="1" class="contactElements" id="contactEnableSkypeMyCode">Enable Skype MyCode</label>
+                                    </div>
+                                </li>
+                            </ul>
                             <br />
                             <!-- IM Handle -->
                             <label for="contactIMHandle">IM Handle:</label>

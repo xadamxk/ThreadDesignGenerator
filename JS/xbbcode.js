@@ -29,8 +29,10 @@ THE SOFTWARE.
     to add in your own tags.
     ----------------------------------------------------------------------------
     Modification Notes:
-    - (2/26/2017) Modified 'size' to work with xx-small through xx-large
-    - (2/26/2017) Created 'align' tag
+    - (02/26/17) Modified 'size' to work with xx-small through xx-large
+    - (02/26/17) Created 'align' tag
+    - (03/05/17) Created 'pmme' tag
+    - (03/06/17) Created 'skype' tag
 */
 
 var XBBCODE = (function() {
@@ -39,7 +41,7 @@ var XBBCODE = (function() {
     // -----------------------------------------------------------------------------
     // Set up private variables
     // -----------------------------------------------------------------------------
-
+    var skypeIconURL = "";
     var me = {},
         urlPattern = /^(?:https?|file|c):(?:\/{1,3}|\\{1})[-a-zA-Z0-9:;,@#%&()~_?\+=\/\\\.]*$/,
         colorNamePattern = /^(?:aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen)$/,
@@ -397,6 +399,17 @@ var XBBCODE = (function() {
                 return '<span class="xbbcode-size-' + mySize + '">';
             },
             closeTag: function(params,content) {
+                return '</span>';
+            }
+        },
+        "skype": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                return '<span class="xbbcode-skype">' +
+                    '<img src="' + skypeIconURL + '" alt="Skype Icon">';
+            },
+            closeTag: function (params, content) {
                 return '</span>';
             }
         },

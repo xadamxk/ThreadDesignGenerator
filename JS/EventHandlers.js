@@ -105,4 +105,12 @@ $(document).ready(function () {
     $('body').on("click", "#contactUpdateOutput", function () {
         updateOutput("#contactPreview", "#contactOutput");
     });
+    // Contact Enable Skype MyCode
+    $(".contactIMServices").change(function () {
+        if ($("#contactIMServiceSkype").prop("checked")) {
+            $("#contactEnableSkypeDiv").toggle(true);
+        } else {
+            $("#contactEnableSkypeDiv").toggle(false);
+        }
+    });
 });

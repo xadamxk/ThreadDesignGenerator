@@ -188,17 +188,25 @@ function updateContactOutput() {
         output += "[color=" + $("#contactCPInfo").colorpicker('getValue') + "]";
 
         // IM Service
-        output += "[b]";
-        if ($("#contactIMServiceSkype").prop("checked"))
-            output += "Skype";
-        else if ($("#contactIMServiceDiscord").prop("checked"))
-            output += "Discord";
-        else if ($("#contactIMServiceXMPP").prop("checked"))
-            output += "XMPP";
-        output += ": [/b]";
+        if (!$("#contactEnableSkypeMyCode").prop("checked")) {
+            output += "[b]";
+            if ($("#contactIMServiceSkype").prop("checked")) {
+                output += "Skype";
+            }
+            else if ($("#contactIMServiceDiscord").prop("checked"))
+                output += "Discord";
+            else if ($("#contactIMServiceXMPP").prop("checked"))
+                output += "XMPP";
+            output += ": [/b]";
 
-        // IM Handle
-        output += $("#contactIMHandle").val() + "\n";
+            // IM Handle - no Skype MyCode
+            output += $("#contactIMHandle").val() + "\n";
+        } else{
+            // IM Handle - Skype MyCode
+            if ($("#contactEnableSkypeMyCode").prop("checked")) {
+                output += "[skype]" + $("#contactIMHandle").val() + "[/skype]\n";
+            }
+        }
 
         // Text Color End
         output += "[/color]";

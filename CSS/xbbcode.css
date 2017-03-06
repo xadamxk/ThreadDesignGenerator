@@ -108,6 +108,28 @@
 .xbbcode-size-39 {font-size:39px;}
 .xbbcode-size-40 {font-size:40px;}
 
+.xbbcode-skype {
+    color: white;
+    font-size: 14pt;
+    background-color: #072948;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px #000;
+    text-align: left;
+    border: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #0F5799 inset !important;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px #000;
+    text-decoration: none;
+    font-family: arial;
+}
+
+.xbbcode-skype img{
+    position: relative;
+    bottom: 3px;
+    margin-right: 3px;
+}
+
 .xbbcode-u {
     text-decoration: underline;
 }
