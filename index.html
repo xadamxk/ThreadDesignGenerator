@@ -49,15 +49,14 @@
             setDesiredSiteBackgroundColorPickers();
         });
         $(document).ready(function () {
+            /* Note: Be sure to edit updateOutput() in CustomFunctions.js with edits below */
              // Header Changes
             $(".headerElements").change(function () {
-                updateOutput();
+                updateOutput("#headerPreview", "#headerOutput");
             });
              // Contact Changes
             $(".contactElements").change(function () {
-                var contactOutput = updateContactOutput();
-                $("#contactOutput").val(contactOutput);
-                updatePreview(contactOutput, "#contactPreview");
+                updateOutput("#contactPreview", "#contactOutput");
             });
         });
     </script>

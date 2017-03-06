@@ -1,3 +1,13 @@
+function updateOutput(previewElement, outputElement) {
+    var output;
+    if (previewElement == "#headerPreview") {
+        output = updateHeaderOutput();
+    } else if (previewElement == "#contactPreview") {
+        output = updateContactOutput();
+    }
+    $(outputElement).val(output);
+    updatePreview(output, previewElement);
+}
 // Parse output (mycode) to preview (html)
 function updatePreview(output, outContainer) {
     // Instanciate xbb
@@ -9,11 +19,6 @@ function updatePreview(output, outContainer) {
     $(outContainer).html(preview.html);
 }
 // Check if hex string is valid
-function updateOutput() {
-    var headerOutput = updateHeaderOutput();
-    $("#headerOutput").val(headerOutput);
-    updatePreview(headerOutput, "#headerPreview");
-}
 function isHexaColor(sNum) {
     return (typeof sNum === "string") && sNum.length === 6
            && !isNaN(parseInt(sNum, 16));

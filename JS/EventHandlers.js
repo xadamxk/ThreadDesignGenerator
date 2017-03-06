@@ -82,7 +82,7 @@ $(document).ready(function () {
     });
     // Header Update Output
     $('body').on("click", "#headerUpdateOutput", function () {
-        updateOutput();
+        updateOutput("#headerPreview", "#headerOutput");
     });
     // ---------------------------------------------------- Contact Tab ----------------------------------------------------
     // Contact PM Enable
@@ -103,8 +103,6 @@ $(document).ready(function () {
     });
     // Contact Update Output
     $('body').on("click", "#contactUpdateOutput", function () {
-        var contactOutput = updateContactOutput();
-        $("#contactOutput").val(contactOutput);
-        updatePreview(contactOutput, "#contactPreview");
+        updateOutput("#contactPreview", "#contactOutput");
     });
 });
