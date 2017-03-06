@@ -334,6 +334,16 @@ var XBBCODE = (function() {
             },
             noParse: true
         },
+        "pmme": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                return '<a class="xbbcode-removeAnchorAttrs">';
+            },
+            closeTag: function (params, content) {
+                return '</a>';
+            }
+        },
         "quote": {
             openTag: function(params,content) {
                 return '<blockquote class="xbbcode-blockquote">';

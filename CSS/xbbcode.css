@@ -50,6 +50,17 @@
 	text-align: left;
 }
 
+.xbbcode-removeAnchorAttrs {
+   text-decoration: none; 
+   background-color: none;
+   color: white;
+}
+
+.xbbcode-removeAnchorAttrs:hover {
+    color: #499FED;
+	text-decoration: none;
+}
+
 .xbbcode-right {
 	display: block;
 	text-align: right;

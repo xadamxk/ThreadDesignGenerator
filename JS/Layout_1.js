@@ -170,8 +170,8 @@ function updateContactOutput() {
         // Text Color Start
         output += "[color=" + $("#contactCPInfo").colorpicker('getValue') + "]";
 
-        output += "[pmme=" + pmTitle.replaceAll(" ", "+").replaceAll("'", "") + "&message=" + pmBody.replaceAll(" ", "+").replaceAll("'", "") + "]";
-        output += pmHyperlinkText + "[/pmme]\n";
+        output += "[pmme=" + pmTitle.replaceAll(" ", "+").replaceAll("'", "") + "&message=" + pmBody.replaceAll(" ", "+").replaceAll("'", "") + "][b]";
+        output += pmHyperlinkText + "[/b][/pmme]\n";
 
         // Text Color End
         output += "[/color]";
