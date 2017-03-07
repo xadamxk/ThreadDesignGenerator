@@ -121,7 +121,7 @@ function updateContactOutput() {
         output += "right";
     output += "]";
 
-    // Size Start
+    // Label Size Start
     output += "[size=";
     if ($("#contactLabelSizeXXS").prop("checked"))
         output += "xx-small";
@@ -148,8 +148,26 @@ function updateContactOutput() {
     // Label Color End
     output += "[/color]";
 
-    // Size End
+    // Label Size End
     output += "[/size]\n";
+
+    // Info Size Start
+    output += "[size=";
+    if ($("#contactInfoSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#contactInfoSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#contactInfoSizeS").prop("checked"))
+        output += "small";
+    else if ($("#contactInfoSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#contactInfoSizeL").prop("checked"))
+        output += "large";
+    else if ($("#contactInfoSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#contactInfoSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
 
     /*
     // List Start (if left aligned)
@@ -188,7 +206,10 @@ function updateContactOutput() {
         output += "[color=" + $("#contactCPInfo").colorpicker('getValue') + "]";
 
         // IM Service
-        if (!$("#contactEnableSkypeMyCode").prop("checked")) {
+        if ($("#contactEnableSkypeMyCode").prop("checked") && $("#contactIMServiceSkype").prop("checked")) {
+            // IM Handle - Skype MyCode
+            output += "[skype]" + $("#contactIMHandle").val() + "[/skype]\n";
+        } else{
             output += "[b]";
             if ($("#contactIMServiceSkype").prop("checked")) {
                 output += "Skype";
@@ -201,11 +222,6 @@ function updateContactOutput() {
 
             // IM Handle - no Skype MyCode
             output += $("#contactIMHandle").val() + "\n";
-        } else{
-            // IM Handle - Skype MyCode
-            if ($("#contactEnableSkypeMyCode").prop("checked")) {
-                output += "[skype]" + $("#contactIMHandle").val() + "[/skype]\n";
-            }
         }
 
         // Text Color End
@@ -217,6 +233,10 @@ function updateContactOutput() {
     if ($("#contactAlignLeft").prop("checked"))
         output += "[/list]";
         */
+
+    // Info Size End
+    output += "[/size]";
+
     // Align End
     output += "[/align]";
     return output;
