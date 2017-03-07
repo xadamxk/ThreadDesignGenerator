@@ -67,14 +67,14 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#general">General</a></li>
             <li><a data-toggle="tab" href="#menuHeader" id="generalShowHeader">Header</a></li>
-            <li><a data-toggle="tab" href="#menu2" id="generalShowDescription">Description</a></li>
-            <li><a data-toggle="tab" href="#menu3" id="generalShowFeatures">Features</a></li>
-            <li><a data-toggle="tab" href="#menu4" id="generalShowProducts">Products</a></li>
+            <li><a data-toggle="tab" href="#menuDescription" id="generalShowDescription">Description</a></li>
+            <li><a data-toggle="tab" href="#menuFeatures" id="generalShowFeatures">Features</a></li>
+            <li><a data-toggle="tab" href="#menuProducts" id="generalShowProducts">Products</a></li>
             <li><a data-toggle="tab" href="#menuContact" id="generalShowContact">Contact</a></li>
-            <li><a data-toggle="tab" href="#menu6" id="generalShowFAQ">FAQ</a></li>
-            <li><a data-toggle="tab" href="#menu7" id="generalShowVouches">Vouches</a></li>
-            <li><a data-toggle="tab" href="#menu8" id="generalShowTOS">TOS</a></li>
-            <li><a data-toggle="tab" href="#menu9">Extras</a></li>
+            <li><a data-toggle="tab" href="#menuFAQ" id="generalShowFAQ">FAQ</a></li>
+            <li><a data-toggle="tab" href="#menuVouches" id="generalShowVouches">Vouches</a></li>
+            <li><a data-toggle="tab" href="#menuTOS" id="generalShowTOS">TOS</a></li>
+            <li><a data-toggle="tab" href="#menuExtras">Extras</a></li>
         </ul>
 
         <div class="tab-content">
@@ -339,19 +339,174 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- End Header -->
-            <div id="menu2" class="tab-pane fade">
+            </div>
+            <!-- End Header -->
+            <!-- Description -->
+            <div id="menuDescription" class="tab-pane fade">
                 <h3>Description</h3>
                 <p></p>
             </div>
-            <div id="menu3" class="tab-pane fade">
+            <!-- End Description -->
+            <!-- Features -->
+            <div id="menuFeatures" class="tab-pane fade">
                 <h3>Features</h3>
                 <p></p>
+                <!-- Preview - Features -->
+                <div class="rightHalf">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="featuresPreview">
+                        </div>
+                    </div>
+                </div>
+                <!-- Sections - Features -->
+                <div id="featuresSections" class="leftHalf">
+                    <!-- Design - Features -->
+                    <h4>Design</h4>
+                    <div class="panel panel-default" id="featuresDesign">
+                        <div class="panel-body">
+                            <!-- Features Label -->
+                            <label for="contactHeaderLabel">Features Label:</label>
+                            <input type="text" class="form-control featuresElements" id="featuresHeaderLabel" placeholder="ex 'Features'" value="Features">
+                            <br />
+                            <!-- Features Align -->
+                            <div class="text-center">
+                                <label for="contactAlign">Features Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresAlign">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignLeft"> Left
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignCenter" checked> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Label Color -->
+                            <label for="featuresCPLabel">Features Label Color:</label>
+                            <div id="featuresCPLabel" class="input-group colorpicker-component subOption primaryColor featuresElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Contact Label Size -->
+                            <div class="text-center">
+                                <label for="featuresLabelSize">Features Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresLabelSize">
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize active">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary featuresLabelSize">
+                                        <input type="radio" class="featuresElements" name="featuresLabelSize" id="featuresLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
+                            <!-- Info Color -->
+                            <label for="generalCPPrimary">Features Info Color:</label>
+                            <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Features Info Size -->
+                            <div class="text-center">
+                                <label for="featuresInfoSize">Features Info Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresInfoSize">
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize active">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeL" checked> L
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right - Output -->
+                <div class="rightHalf">
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="featuresOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="featuresOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="featuresUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="menu4" class="tab-pane fade">
+            <!-- End Features -->
+            <!-- Products -->
+            <div id="menuProducts" class="tab-pane fade">
                 <h3>Products</h3>
                 <p></p>
+                <!-- Preview - Products -->
+                <div class="rightHalf">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="productsPreview">
+                        </div>
+                    </div>
+                </div>
+                <!-- Sections - Products -->
+                <div id="productsSections" class="leftHalf">
+                    <!-- Design - Products -->
+                    <h4>Design</h4>
+                    <div class="panel panel-default" id="productsDesign">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Right - Output -->
+                <div class="rightHalf">
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="productsOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="productsOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="productsUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- End Products -->
             <!-- Contact -->
             <div id="menuContact" class="tab-pane fade">
                 <h3>Contact</h3>
@@ -389,7 +544,6 @@
                                     </label>
                                 </div>
                             </div>
-                            <hr />
                             <!-- Label Color -->
                             <label for="generalCPPrimary">Contact Label Color:</label>
                             <div id="contactCPLabel" class="input-group colorpicker-component subOption primaryColor contactElements">
@@ -539,22 +693,31 @@
                     </div>
                 </div>
             </div>
-            <div id="menu6" class="tab-pane fade">
+            <!-- End Contact -->
+            <!-- FAQ -->
+            <div id="menuFAQ" class="tab-pane fade">
                 <h3>FAQ</h3>
                 <p></p>
             </div>
-            <div id="menu7" class="tab-pane fade">
+            <!-- End FAQ -->
+            <!-- Vouches -->
+            <div id="menuVouches" class="tab-pane fade">
                 <h3>Vouches</h3>
                 <p></p>
             </div>
-            <div id="menu8" class="tab-pane fade">
+            <!-- End Vouches -->
+            <!-- TOS -->
+            <div id="menuTOS" class="tab-pane fade">
                 <h3>TOS</h3>
                 <p></p>
             </div>
+            <!-- End TOS -->
+            <!-- Extras -->
             <div id="menu9" class="tab-pane fade">
                 <h3>Extras</h3>
                 <p></p>
             </div>
+            <!-- End Extras -->
         </div>
     </div>
 </body>
