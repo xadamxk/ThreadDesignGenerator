@@ -23,12 +23,14 @@
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Sticky -->
+    <script src="JS/jquery.sticky.js"></script>
     <!-- Local -->
     <link rel="stylesheet" href="CSS/index.css">
     <script src="JS/CustomFunctions.js"></script>
     <script src="JS/Layout_1.js"></script>
     <script src="JS/EventHandlers.js"></script>
-        <!-- BBCode Parser -->
+    <!-- BBCode Parser -->
     <script src="JS/xbbcode.js"></script>
     <link rel="stylesheet" href="CSS/xbbcode.css">
     <script>
@@ -48,6 +50,12 @@
             setDesiredSiteBackgroundColorPickers();
         });
         $(document).ready(function () {
+            // Sticky
+            $("#headerSticky").sticky();
+            $("#descriptionSticky").sticky();
+            $("#featuresSticky").sticky();
+            $("#productsSticky").sticky();
+            $("#contactSticky").sticky();
             /* Note: Be sure to edit updateOutput() in CustomFunctions.js with edits below */
              // Header Changes
             $(".headerElements").change(function () {
@@ -56,6 +64,10 @@
              // Contact Changes
             $(".contactElements").change(function () {
                 updateOutput("#contactPreview", "#contactOutput");
+            });
+            // Features Changes
+            $(".featuresElements").change(function () {
+                updateOutput("#featuresPreview", "#featuresOutput");
             });
         });
     </script>
@@ -169,15 +181,23 @@
             </div>
             <!-- Header -->
             <div id="menuHeader" class="tab-pane fade">
-                <h3>Header</h3>
-                <!-- Main Header -->
-                <div class="rightHalf">
-                    <h4>Preview</h4>
-                    <div class="panel panel-default">
-                        <div class="panel-body preview" id="headerPreview">
+            <h3>Header</h3>
+            <!-- Main Header -->
+                    <div id="headerSticky">
+                        <h4>Preview</h4>
+                        <div class="panel panel-default">
+                            <div class="panel-body preview" id="headerPreview">
+                            </div>
+                        </div>
+                        <h4>Output</h4>
+                        <div class="panel panel-default" id="headerOutputDiv">
+                            <div class="panel-body">
+                                <div class="form-group text-center">
+                                    <textarea class="form-control" rows="10" id="headerOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="headerUpdateOutput">Update</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div class="leftHalf">
                     <h4>Main Header</h4>
                     <!-- Main Header -->
@@ -326,19 +346,7 @@
                     </div>
                     <!-- Header Image -->
 
-
-
                 </div> <!-- End Left Align -->
-                <div class="rightHalf">
-                    <h4>Output</h4>
-                    <div class="panel panel-default" id="headerOutputDiv">
-                        <div class="panel-body">
-                            <div class="form-group text-center">
-                                <textarea class="form-control" rows="10" id="headerOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="headerUpdateOutput">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- End Header -->
             <!-- Description -->
@@ -352,10 +360,18 @@
                 <h3>Features</h3>
                 <p></p>
                 <!-- Preview - Features -->
-                <div class="rightHalf">
+                <div id="featuresSticky">
                     <h4>Preview</h4>
                     <div class="panel panel-default">
                         <div class="panel-body preview" id="featuresPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="featuresOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="featuresOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="featuresUpdateOutput">Update</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -458,15 +474,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Right - Output -->
-                <div class="rightHalf">
-                    <h4>Output</h4>
-                    <div class="panel panel-default" id="featuresOutputDiv">
+                    <h4>Feature List</h4>
+                    <div class="panel panel-default" id="featuresList">
                         <div class="panel-body">
-                            <div class="form-group text-center">
-                                <textarea class="form-control" rows="10" id="featuresOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="featuresUpdateOutput">Update</button>
-                            </div>
+                            (HTML for repetitive list inputs)
                         </div>
                     </div>
                 </div>
@@ -477,10 +488,18 @@
                 <h3>Products</h3>
                 <p></p>
                 <!-- Preview - Products -->
-                <div class="rightHalf">
+                <div id="productsSticky">
                     <h4>Preview</h4>
                     <div class="panel panel-default">
                         <div class="panel-body preview" id="productsPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="productsOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="productsOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="productsUpdateOutput">Update</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -494,17 +513,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right - Output -->
-                <div class="rightHalf">
-                    <h4>Output</h4>
-                    <div class="panel panel-default" id="productsOutputDiv">
-                        <div class="panel-body">
-                            <div class="form-group text-center">
-                                <textarea class="form-control" rows="10" id="productsOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="productsUpdateOutput">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- End Products -->
             <!-- Contact -->
@@ -512,10 +520,18 @@
                 <h3>Contact</h3>
                 <p></p>
                 <!-- Preview - Contact -->
-                <div class="rightHalf">
+                <div id="contactSticky">
                     <h4>Preview</h4>
                     <div class="panel panel-default">
                         <div class="panel-body preview" id="contactPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="contactOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="contactOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="contactUpdateOutput">Update</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -678,17 +694,6 @@
                             <label for="contactIMHandle">IM Handle:</label>
                             <input type="text" class="form-control contactElements" id="contactIMHandle" placeholder="xadamxk,xadamxk#1234,1306528@hackforums.im">
                             <br />
-                        </div>
-                    </div>
-                </div>
-                <!-- Right - Output -->
-                <div class="rightHalf">
-                    <h4>Output</h4>
-                    <div class="panel panel-default" id="contactOutputDiv">
-                        <div class="panel-body">
-                            <div class="form-group text-center">
-                                <textarea class="form-control" rows="10" id="contactOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="contactUpdateOutput">Update</button>
-                            </div>
                         </div>
                     </div>
                 </div>

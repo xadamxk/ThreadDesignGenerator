@@ -28,3 +28,9 @@ textarea {
 h4{
     font-weight: bold;
 }
+
+/* Preview & Outputs */
+.sticky-wrapper{
+    width: 48%;
+    float: right;
+}

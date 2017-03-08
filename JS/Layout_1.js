@@ -105,6 +105,79 @@ function updateHeaderOutput() {
 function updateDescriptionOutput() {
 }
 
+// Layout 1 - Features
+function updateFeaturesOutput() {
+    var output = "";
+
+    // Font from general
+
+    // Alignment Start
+    output += "[align=";
+    if ($("#featuresAlignLeft").prop("checked"))
+        output += "left";
+    else if ($("#featuresAlignCenter").prop("checked"))
+        output += "center";
+    else if ($("#featuresAlignRight").prop("checked"))
+        output += "right";
+    output += "]";
+
+    // Label Size Start
+    output += "[size=";
+    if ($("#featuresLabelSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#featuresLabelSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#featuresLabelSizeS").prop("checked"))
+        output += "small";
+    else if ($("#featuresLabelSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#featuresLabelSizeL").prop("checked"))
+        output += "large";
+    else if ($("#featuresLabelSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#featuresLabelSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // Label Color Start
+    output += "[color=" + $("#featuresCPLabel").colorpicker('getValue') + "]";
+
+    // Contact Label
+    output += $("#featuresHeaderLabel").val();
+
+    // Label Color End
+    output += "[/color]";
+
+    // Label Size End
+    output += "[/size]\n";
+
+    // Info Size Start
+    output += "[size=";
+    if ($("#featuresInfoSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#featuresInfoSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#featuresInfoSizeS").prop("checked"))
+        output += "small";
+    else if ($("#featuresInfoSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#featuresInfoSizeL").prop("checked"))
+        output += "large";
+    else if ($("#featuresInfoSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#featuresInfoSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // text shit from features goes below
+
+
+
+
+
+    return output;
+}
+
 // Layout 1 - Contact
 function updateContactOutput() {
     var output = "";

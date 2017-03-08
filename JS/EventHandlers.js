@@ -84,6 +84,11 @@ $(document).ready(function () {
     $('body').on("click", "#headerUpdateOutput", function () {
         updateOutput("#headerPreview", "#headerOutput");
     });
+    // ---------------------------------------------------- Features Tab ----------------------------------------------------
+    // Features Update Output
+    $('body').on("click", "#featuresUpdateOutput", function () {
+        updateOutput("#featuresPreview", "#featuresOutput");
+    });
     // ---------------------------------------------------- Contact Tab ----------------------------------------------------
     // Contact PM Enable
     $("#contactEnablePM").prop('checked', true);

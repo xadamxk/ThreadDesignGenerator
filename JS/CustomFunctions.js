@@ -4,6 +4,8 @@ function updateOutput(previewElement, outputElement) {
         output = updateHeaderOutput();
     } else if (previewElement == "#contactPreview") {
         output = updateContactOutput();
+    } else if (previewElement == "#featuresPreview") {
+        output = updateFeaturesOutput();
     }
     $(outputElement).val(output);
     updatePreview(output, previewElement);
