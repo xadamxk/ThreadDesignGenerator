@@ -149,7 +149,7 @@ function updateFeaturesOutput() {
     output += "[/color]";
 
     // Label Size End
-    output += "[/size]\n";
+    output += "[/size]";
 
     // Info Size Start
     output += "[size=";
@@ -169,13 +169,39 @@ function updateFeaturesOutput() {
         output += "xx-large";
     output += "]"
 
-    // text shit from features goes below
+    // List Start
+    output += "[list]";
 
+    // Features List
+    $(".repeatedFeature").each(function (index) {
+        // Bullet Color Start
+        output += "[color=" + $("#featuresCPBullet").colorpicker('getValue') + "]";
+        // Bullet Style
+        output += $("#featuresBulletDropdown").find(":selected").text();
+        // Bullet Color End
+        output += "[/color] ";
+        // Info Color Start
+        output += "[color=" + $("#featuresCPInfo").colorpicker('getValue') + "]";
+        // Feature
+        output += $(this).val() + "\n";
+        // Info Color End
+        output += "[/color]";
+    });
 
+    // List End
+    output += "[/list]";
 
+    // Info Size End
+    output += "[/size]";
 
+    // Align End
+    output += "[/align]";
 
     return output;
+}
+
+// Layout 1 - Products
+function updateProductsOutput() {
 }
 
 // Layout 1 - Contact
