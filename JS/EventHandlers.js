@@ -110,6 +110,7 @@ $(document).ready(function () {
         // have $(this).show() called on it.
         show: function () {
             $(this).slideDown();
+            updateOutput("#featuresPreview", "#featuresOutput");
         },
         // (Optional)
         // "hide" is called when a user clicks on a data-repeater-delete
@@ -121,6 +122,11 @@ $(document).ready(function () {
         hide: function (deleteElement) {
             if (confirm('Are you sure you want to delete this element?')) {
                 $(this).slideUp(deleteElement);
+                // Hacky way of updating preview after animation
+                setTimeout(function () {
+                    // Do something after 1 second 
+                    updateOutput("#featuresPreview", "#featuresOutput");
+                }, 500);
             }
         },
         // (Optional)
