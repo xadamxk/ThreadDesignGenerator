@@ -3,11 +3,11 @@
 <head>
     <!--
         Notes:
-        - MyBB BEST Parser: https://www.npmjs.com/package/xbbcode-parser
         - Good Primary Colors:
             - Rose Red: #dd3f59
             - Steal Blue: #4682B4
             - Mint Green: #6de89f
+            - Green Cyan: #6cfed9
         TODO:
         - update xbb parser to support [spoiler]
         - background color event trigger to change preview color?
@@ -23,8 +23,13 @@
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Sticky -->
+    <!-- JQuery Sticky -->
     <script src="JS/jquery.sticky.js"></script>
+    <!-- Bootstrap Dropdown -->
+    <script src="JS/bootstrap-select.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap-select.css">
+    <!-- JQuery Repeater -->
+    <script src="JS/jquery.repeater.js"></script>
     <!-- Local -->
     <link rel="stylesheet" href="CSS/index.css">
     <script src="JS/CustomFunctions.js"></script>
@@ -477,7 +482,62 @@
                     <h4>Feature List</h4>
                     <div class="panel panel-default" id="featuresList">
                         <div class="panel-body">
-                            (HTML for repetitive list inputs)
+                            <!-- Features - Bullets Dropdown -->
+                            <label for="featuresBulletDropdown">Bullet Style:</label>
+                            <br />
+                            <!-- Source: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_comp_dropdown-header&stacked=h -->
+                            <select class="selectpicker show-tick"  id="featuresBulletDropdown">
+                                <optgroup label="Standard">
+                                    <option class="bullets">•</option>
+                                    <option class="bullets">○</option>
+                                    <option class="bullets">▪</option>
+                                    <option class="bullets">‣</option>
+                                </optgroup>
+                                <optgroup label="Special">
+                                    <option class="bullets">★</option>
+                                    <option class="bullets">✓</option>
+                                    <option class="bullets">❤</option>
+                                    <option class="bullets">☢</option>
+                                    <option class="bullets">߷</option>
+                                    <option class="bullets">⌦</option>
+                                    <option class="bullets">⚛</option>
+                                </optgroup>
+                            </select>
+                            <br />
+                            <br />
+                            <!-- Bullet Color -->
+                            <label for="featuresCPBullet">Bullet Color:</label>
+                            <div id="featuresCPBullet" class="input-group colorpicker-component subOption primaryColor featuresElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Features List -->
+                            <label for="featuresRepeatingList">Feature List:</label>
+                            <div class="repeater" id="featuresRepeatingList">
+                                <div data-repeater-list="group-a">
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="text-input" class="form-control featuresElements" value="Feature #1" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="text-input" class="form-control featuresElements" value="Feature #2" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="text-input" class="form-control featuresElements" value="Feature #3" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <input data-repeater-create type="button" class="btn btn-success fullLength" value="Add" />
+                            </div>
+                            <!-- Features List End -->
                         </div>
                     </div>
                 </div>
