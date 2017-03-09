@@ -11,6 +11,7 @@
         TODO:
         - update xbb parser to support [spoiler]
         - background color event trigger to change preview color?
+        - Continue with vouch copy counter - counter doesn't work. Clean up?
     -->
     <title>Thread Design Generator</title>
     <meta charset="utf-8">
@@ -61,6 +62,7 @@
             $("#featuresSticky").sticky();
             $("#productsSticky").sticky();
             $("#contactSticky").sticky();
+            $("#vouchesSticky").sticky();
             /* Note: Be sure to edit updateOutput() in CustomFunctions.js with edits below */
              // Header Changes
             $(".headerElements").change(function () {
@@ -73,6 +75,10 @@
             // Features Changes
             $(".featuresElements").change(function () {
                 updateOutput("#featuresPreview", "#featuresOutput");
+            });
+            // Vouches Changes
+            $(".vouchesElements").change(function () {
+                updateOutput("#vouchesPreview", "#vouchesOutput");
             });
         });
     </script>
@@ -563,13 +569,74 @@
                         </div>
                     </div>
                 </div>
-                <!-- Sections - Products -->
-                <div id="productsSections" class="leftHalf">
+                <!-- Sections - Features -->
+                <div id="featuresSections" class="leftHalf">
                     <!-- Design - Products -->
                     <h4>Design</h4>
                     <div class="panel panel-default" id="productsDesign">
                         <div class="panel-body">
-
+                            <!-- Products Label -->
+                            <label for="productsHeaderLabel">Products Label:</label>
+                            <input type="text" class="form-control productsElements" id="productsHeaderLabel" placeholder="ex 'My Product'" value="My Product">
+                            <br />
+                            <!-- Product Align -->
+                            <div class="text-center">
+                                <label for="productsAlign">Products Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsAlign">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignLeft"> Left
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignCenter" checked> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Label Color -->
+                            <label for="productsCPLabel">Products Label Color:</label>
+                            <div id="productsCPLabel" class="input-group colorpicker-component subOption primaryColor productsElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Products Label Size -->
+                            <div class="text-center">
+                                <label for="productsLabelSize">Products Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsLabelSize">
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize active">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary productsLabelSize">
+                                        <input type="radio" class="productsElements" name="productsLabelSize" id="productsLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Something</h4>
+                    <div class="panel panel-default" id="productsSomething??????">
+                        <div class="panel-body">
+                            <!--  -->
+                            
                         </div>
                     </div>
                 </div>
@@ -769,6 +836,113 @@
             <div id="menuVouches" class="tab-pane fade">
                 <h3>Vouches</h3>
                 <p></p>
+                <!-- Right - Preview/Output -->
+                <div id="vouchesSticky">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="vouchesPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="vouchesOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="vouchesOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="vouchesUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left - Content -->
+                <div id="contactSections" class="leftHalf">
+
+                    <div class="panel panel-default" id="vouchesDesign">
+                        <div class="panel-body">
+                            <!-- Products Label -->
+                            <label for="vouchesHeaderLabel">Vouches Label:</label>
+                            <input type="text" class="form-control vouchesElements" id="vouchesHeaderLabel" placeholder="ex 'Vouches'" value="Vouches">
+                            <br />
+                            <!-- Product Align -->
+                            <div class="text-center">
+                                <label for="vouchesAlign">Vouches Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesAlign">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignLeft"> Left
+                                    </label>
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignCenter" checked> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Label Color -->
+                            <label for="vouchesCPLabel">Vouches Label Color:</label>
+                            <div id="vouchesCPLabel" class="input-group colorpicker-component subOption primaryColor vouchesElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Vouches Label Size -->
+                            <div class="text-center">
+                                <label for="vouchesLabelSize">Vouches Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesLabelSize">
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize active">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Vouch Copy</h4>
+                    <div class="panel panel-default" id="vouchesVouchCopy">
+                        <div class="panel-body">
+                            <!-- Vouch Copy Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="vouchesElements" id="vouchesEnableVouchCopy">Vouch Copies</label>
+                            </div>
+                            <hr />
+                            <!-- Vouch Copy Count -->
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="vouchCount" id="vouchesCopyCountAdd">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </span>
+                                <input type="number" name="vouchCount" class="form-control input-number" value="3" min="1" max="100" id="vouchesCopyCount">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="vouchCount" id="vouchesCopyCountMinus">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- Vouch Copy Label Color -->
+                            <!-- Vouch Copy Count Color -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
             <!-- End Vouches -->
             <!-- TOS -->

@@ -340,3 +340,8 @@ function updateContactOutput() {
     output += "[/align]";
     return output;
 }
+
+// Layout 1 - Vouches
+function updateVouchesOutput() {
+    //
+}

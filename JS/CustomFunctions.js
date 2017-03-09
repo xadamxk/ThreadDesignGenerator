@@ -6,6 +6,8 @@ function updateOutput(previewElement, outputElement) {
         output = updateContactOutput();
     } else if (previewElement == "#featuresPreview") {
         output = updateFeaturesOutput();
+    } else if (previewElement == "#vouchesPreview") {
+        output = updateVouchesOutput();
     }
     $(outputElement).val(output);
     updatePreview(output, previewElement);
@@ -47,6 +49,15 @@ function toggleHeaderSubInputs(state) {
         $(".headerSubSizeLabel").removeClass("disabled");
         $("#headerSubSizeL").parent().addClass("active");
     }
+}
+// toggle Products Vouch Copy Inputs
+function toggleVouchesVouchCopies(state) {
+    // Vouch Copy Minus
+    $("#vouchesCopyCountAdd").prop("disabled", state);
+    // Vouch Copy Count
+    $("#vouchesCopyCount").prop("disabled", "true");
+    // Vouch Copy Add
+    $("#vouchesCopyCountMinus").prop("disabled", state);
 }
 // toggle contact PM inputs
 function toggleContactPMInputs(state) {
