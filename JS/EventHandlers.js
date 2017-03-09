@@ -257,6 +257,4 @@ $(document).ready(function () {
     $('body').on("click", "#vouchesUpdateOutput", function () {
         updateOutput("#vouchesPreview", "#vouchesOutput");
     });
-    // Disable Vouch count value box
-    $("#vouchesCopyCount").prop();
 });

@@ -52,12 +52,30 @@ function toggleHeaderSubInputs(state) {
 }
 // toggle Products Vouch Copy Inputs
 function toggleVouchesVouchCopies(state) {
+    // Vouch Copy Label
+    $("#vouchesCopyLabel").prop("disabled", state);
+    // Vouch Copy Label Size
+    if (state) {
+        $(".vouchesCopyLabelSize").addClass("disabled");
+        $(".vouchesCopyLabelSize").removeClass("active");
+    } else {
+        $(".vouchesCopyLabelSize").removeClass("disabled");
+        $("#vouchesCopyLabelSizeL").parent().addClass("active");
+    }
     // Vouch Copy Minus
     $("#vouchesCopyCountAdd").prop("disabled", state);
     // Vouch Copy Count
     $("#vouchesCopyCount").prop("disabled", "true");
     // Vouch Copy Add
     $("#vouchesCopyCountMinus").prop("disabled", state);
+    // Vouch Copy Number Color/Vouch Copy Label Color
+    if (state) {
+        $("#vouchesCPCopyNumber").colorpicker('disable');
+        $("#vouchesCPCopyLabel").colorpicker('disable');
+    } else {
+        $("#vouchesCPCopyNumber").colorpicker('enable');
+        $("#vouchesCPCopyLabel").colorpicker('enable');
+    }
 }
 // toggle contact PM inputs
 function toggleContactPMInputs(state) {

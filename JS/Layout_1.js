@@ -343,5 +343,94 @@ function updateContactOutput() {
 
 // Layout 1 - Vouches
 function updateVouchesOutput() {
-    //
+    var output = "";
+
+    // Font from general
+
+    // Alignment Start
+    output += "[align=";
+    if ($("#vouchesAlignLeft").prop("checked"))
+        output += "left";
+    else if ($("#vouchesAlignCenter").prop("checked"))
+        output += "center";
+    else if ($("#vouchesAlignRight").prop("checked"))
+        output += "right";
+    output += "]";
+
+    // Label Size Start
+    output += "[size=";
+    if ($("#vouchesLabelSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#vouchesLabelSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#vouchesLabelSizeS").prop("checked"))
+        output += "small";
+    else if ($("#vouchesLabelSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#vouchesLabelSizeL").prop("checked"))
+        output += "large";
+    else if ($("#vouchesLabelSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#vouchesLabelSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // Label Color Start
+    output += "[color=" + $("#vouchesCPLabel").colorpicker('getValue') + "]";
+
+    // Contact Label
+    output += $("#vouchesHeaderLabel").val();
+
+    // Label Color End
+    output += "[/color]";
+
+    // Label Size End
+    output += "[/size]\n";
+
+    // Vouch Copies Enabled
+    if ($("#vouchesEnableVouchCopy").prop("checked")) {
+        // Vouch Copy Label Size Start
+        output += "[size=";
+        if ($("#vouchesCopyLabelSizeXXS").prop("checked"))
+            output += "xx-small";
+        else if ($("#vouchesCopyLabelSizeXS").prop("checked"))
+            output += "x-small";
+        else if ($("#vouchesCopyLabelSizeS").prop("checked"))
+            output += "small";
+        else if ($("#vouchesCopyLabelSizeM").prop("checked"))
+            output += "medium";
+        else if ($("#vouchesCopyLabelSizeL").prop("checked"))
+            output += "large";
+        else if ($("#vouchesCopyLabelSizeXL").prop("checked"))
+            output += "x-large";
+        else if ($("#vouchesCopyLabelSizeXXL").prop("checked"))
+            output += "xx-large";
+        output += "]"
+
+        // Vouch Copy Label Color Start
+        output += "[color=" + $("#vouchesCPCopyLabel").colorpicker('getValue') + "]";
+
+        // Vouch Copy Label
+        output += "" + $("#vouchesCopyLabel").val() + " ";
+
+        // Vouch Copy Label Color End
+        output += "[/color]";
+
+        // Number of Vouch Copies Color Start
+        output += "[color=" + $("#vouchesCPCopyNumber").colorpicker('getValue') + "]";
+
+        // Number of Vouch Copies
+        output += "[b]" + $("#vouchesCopyCount").val() + "[/b]";
+
+        // Number of Vouch Copies Color Start
+        output += "[/color]";
+
+        // Vouch Copy Label Size Start
+        output += "[/size]";
+    }
+
+    // Alignment End
+    output += "[/align]";
+
+    return output;
 }

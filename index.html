@@ -447,42 +447,6 @@
                                     </label>
                                 </div>
                             </div>
-                            <hr />
-                            <!-- Info Color -->
-                            <label for="generalCPPrimary">Features Info Color:</label>
-                            <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements">
-                                <input type="text" value="#FFFFFF" class="form-control" />
-                                <span class="input-group-addon"><i></i></span>
-                            </div>
-                            <br />
-                            <!-- Features Info Size -->
-                            <div class="text-center">
-                                <label for="featuresInfoSize">Features Info Size:</label>
-                                <br />
-                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresInfoSize">
-                                    <label class="btn btn-primary featuresInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXS"> XXS
-                                    </label>
-                                    <label class="btn btn-primary featuresInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXS"> XS
-                                    </label>
-                                    <label class="btn btn-primary featuresInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeS"> S
-                                    </label>
-                                    <label class="btn btn-primary featuresInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeM"> M
-                                    </label>
-                                    <label class="btn btn-primary featuresInfoSize active">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeL" checked> L
-                                    </label>
-                                    <label class="btn btn-primary featuresInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXL"> XL
-                                    </label>
-                                    <label class="btn btn-primary contactInfoSize">
-                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXL"> XXL
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <h4>Feature List</h4>
@@ -516,6 +480,42 @@
                             <div id="featuresCPBullet" class="input-group colorpicker-component subOption primaryColor featuresElements">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <hr />
+                            <!-- Info Color -->
+                            <label for="generalCPPrimary">Features Text Color:</label>
+                            <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Features Info Size -->
+                            <div class="text-center">
+                                <label for="featuresInfoSize">Features Text Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresInfoSize">
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize active">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeL" checked> L
+                                    </label>
+                                    <label class="btn btn-primary featuresInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary contactInfoSize">
+                                        <input type="radio" class="featuresElements" name="featuresInfoSize" id="featuresInfoSizeXXL"> XXL
+                                    </label>
+                                </div>
                             </div>
                             <hr />
                             <!-- Features List -->
@@ -853,11 +853,11 @@
                     </div>
                 </div>
                 <!-- Left - Content -->
-                <div id="contactSections" class="leftHalf">
+                <div id="vouchesSections" class="leftHalf">
 
                     <div class="panel panel-default" id="vouchesDesign">
                         <div class="panel-body">
-                            <!-- Products Label -->
+                            <!-- Vouches Label -->
                             <label for="vouchesHeaderLabel">Vouches Label:</label>
                             <input type="text" class="form-control vouchesElements" id="vouchesHeaderLabel" placeholder="ex 'Vouches'" value="Vouches">
                             <br />
@@ -904,11 +904,11 @@
                                     <label class="btn btn-primary vouchesLabelSize">
                                         <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeL"> L
                                     </label>
-                                    <label class="btn btn-primary vouchesLabelSize active">
-                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXL" checked> XL
-                                    </label>
                                     <label class="btn btn-primary vouchesLabelSize">
-                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXL"> XXL
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize active">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXL" checked> XXL
                                     </label>
                                 </div>
                             </div>
@@ -922,27 +922,74 @@
                                 <label><input type="checkbox" value="1" class="vouchesElements" id="vouchesEnableVouchCopy">Vouch Copies</label>
                             </div>
                             <hr />
+                            <!-- Vouch Copy Label -->
+                            <label for="vouchesCopyLabel">Vouch Copy Label:</label>
+                            <input type="text" class="form-control vouchesElements" id="vouchesCopyLabel" placeholder="ex 'Vouch Copies Remaining:'" value="Vouch Copies Remaining:">
+                            <br />
+                            <!-- Vouch Copy Label Color -->
+                            <label for="vouchesCPCopyLabel">Vouch Copy Label Color:</label>
+                            <div id="vouchesCPCopyLabel" class="input-group colorpicker-component subOption secondaryColor vouchesElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Vouch Copy Label Size -->
+                            <div class="text-center">
+                                <label for="vouchesCopyLabelSize">Vouch Copy Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesCopyLabelSize">
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize active">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeL" checked> L
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary vouchesCopyLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesCopyLabelSize" id="vouchesCopyLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
                             <!-- Vouch Copy Count -->
-                            <div class="input-group">
+                            <label for="vouchesCopyNumber">Number of Vouch Copies:</label>
+                            <div class="input-group" id="vouchesCopyNumber">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="vouchCount" id="vouchesCopyCountAdd">
+                                    <button type="button" class="btn btn-danger btn-number vouchesElements" data-type="minus" data-field="vouchCount" id="vouchesCopyCountAdd">
                                         <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </span>
-                                <input type="number" name="vouchCount" class="form-control input-number" value="3" min="1" max="100" id="vouchesCopyCount">
+                                <input type="number" name="vouchCount" class="form-control input-number vouchesElements" value="3" min="1" max="100" id="vouchesCopyCount">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="vouchCount" id="vouchesCopyCountMinus">
+                                    <button type="button" class="btn btn-success btn-number vouchesElements" data-type="plus" data-field="vouchCount" id="vouchesCopyCountMinus">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </span>
                             </div>
-                            <!-- Vouch Copy Label Color -->
+                            <br />
                             <!-- Vouch Copy Count Color -->
+                            <label for="vouchesCPCopyNumber">Vouch Copy Number Color:</label>
+                            <div id="vouchesCPCopyNumber" class="input-group colorpicker-component subOption primaryColor vouchesElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- ? -->
 
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- End Vouches -->
             <!-- TOS -->
