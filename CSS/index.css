@@ -50,3 +50,12 @@ h4{
 .fullLength{
     width: 100%;
 }
+
+/* Required Fields */
+.required {
+  border-color: red !important;
+}
+
+.required[type=checkbox]{
+    outline: 1px solid #F00;
+}

@@ -216,7 +216,7 @@
                         <div class="panel-body">
                             <!-- Main Header Text -->
                             <label for="threadMainText">Main Header Label:</label>
-                            <input type="text" class="form-control headerElements" id="threadMainText" placeholder="ex 'Adam's Design Service'">
+                            <input type="text" class="form-control headerElements required" id="threadMainText" placeholder="ex 'Adam's Design Service'">
                             <br />
                             <!-- Main Header Color Picker -->
                             <div id="headerMainColor" class="input-group colorpicker-component subOption primaryColor headerElements">
@@ -300,7 +300,7 @@
                             </div>
                             <!-- Sub Header Text -->
                             <label for="threadSubText">Sub Header Label:</label>
-                            <input type="text" class="form-control headerElements" id="threadSubText" placeholder="ex 'Lifetime Access'">
+                            <input type="text" class="form-control headerElements required" id="threadSubText" placeholder="ex 'Lifetime Access'">
                             <br />
                             <!-- Main Header Color Picker -->
                             <div id="headerSubColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
@@ -394,7 +394,7 @@
                         <div class="panel-body">
                             <!-- Features Label -->
                             <label for="contactHeaderLabel">Features Label:</label>
-                            <input type="text" class="form-control featuresElements" id="featuresHeaderLabel" placeholder="ex 'Features'" value="Features">
+                            <input type="text" class="form-control featuresElements required" id="featuresHeaderLabel" placeholder="ex 'Features'" value="Features">
                             <br />
                             <!-- Features Align -->
                             <div class="text-center">
@@ -456,7 +456,7 @@
                             <label for="featuresBulletDropdown">Bullet Style:</label>
                             <br />
                             <!-- Source: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_comp_dropdown-header&stacked=h -->
-                            <select class="selectpicker show-tick featuresElements"  id="featuresBulletDropdown">
+                            <select class="selectpicker show-tick featuresElements required"  id="featuresBulletDropdown">
                                 <optgroup label="Standard">
                                     <option class="bullets">•</option>
                                     <option class="bullets">○</option>
@@ -523,19 +523,19 @@
                             <div class="repeater" id="featuresRepeatingList">
                                 <div data-repeater-list="group-a">
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature" value="Feature #1" />
+                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #1" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
                                     </div>
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature" value="Feature #2" />
+                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #2" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
                                     </div>
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature" value="Feature #3" />
+                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #3" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
@@ -669,7 +669,7 @@
                         <div class="panel-body">
                             <!-- Contact Label -->
                             <label for="contactHeaderLabel">Contact Label:</label>
-                            <input type="text" class="form-control contactElements" id="contactHeaderLabel" placeholder="ex 'Contact Information'" value="Contact Information">
+                            <input type="text" class="form-control contactElements required" id="contactHeaderLabel" placeholder="ex 'Contact Information'" value="Contact Information">
                             <br />
                             <!-- Contact Align -->
                             <div class="text-center">
@@ -765,7 +765,7 @@
                         <div class="panel-body">
                             <!-- PM Enable -->
                             <div class="checkbox">
-                                <label><input type="checkbox" value="1" class="contactElements" id="contactEnablePM">Private Message</label>
+                                <label><input type="checkbox" value="1" class="contactElements required" id="contactEnablePM">Private Message</label>
                             </div>
                             <hr />
                             <!-- PM Hyperlink Text -->
@@ -788,7 +788,7 @@
                         <div class="panel-body">
                             <!-- IM Enable -->
                             <div class="checkbox">
-                                <label><input type="checkbox" value="1" class="contactElements" id="contactEnableIM">Instant Message (3rd Party)</label>
+                                <label><input type="checkbox" value="1" class="contactElements required" id="contactEnableIM">Instant Message (3rd Party)</label>
                             </div>
                             <hr />
                             <!-- IM Service -->
@@ -859,7 +859,7 @@
                         <div class="panel-body">
                             <!-- Vouches Label -->
                             <label for="vouchesHeaderLabel">Vouches Label:</label>
-                            <input type="text" class="form-control vouchesElements" id="vouchesHeaderLabel" placeholder="ex 'Vouches'" value="Vouches">
+                            <input type="text" class="form-control vouchesElements required" id="vouchesHeaderLabel" placeholder="ex 'Vouches'" value="Vouches">
                             <br />
                             <!-- Product Align -->
                             <div class="text-center">
@@ -919,7 +919,7 @@
                         <div class="panel-body">
                             <!-- Vouch Copy Enable -->
                             <div class="checkbox">
-                                <label><input type="checkbox" value="1" class="vouchesElements" id="vouchesEnableVouchCopy">Vouch Copies</label>
+                                <label><input type="checkbox" value="1" class="vouchesElements required" id="vouchesEnableVouchCopy">Vouch Copies</label>
                             </div>
                             <hr />
                             <!-- Vouch Copy Label -->
