@@ -54,8 +54,6 @@ h4{
 /* Required Fields */
 .required {
   border-color: red !important;
-}
-
-.required[type=checkbox]{
+} .required[type=checkbox]{
     outline: 1px solid #F00;
 }
