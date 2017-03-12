@@ -57,3 +57,8 @@ h4{
 } .required[type=checkbox]{
     outline: 1px solid #F00;
 }
+
+  /* FAQ - Double line delete */
+  .btnDbl{
+      height: 68px;
+  }

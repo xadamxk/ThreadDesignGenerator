@@ -342,6 +342,112 @@ function updateContactOutput() {
     return output;
 }
 
+// Layout 1 - FAQ
+function updateFAQOutput() {
+    var output = "";
+
+    // Font from general
+
+    // Alignment Start
+    output += "[align=";
+    if ($("#faqAlignLeft").prop("checked"))
+        output += "left";
+    else if ($("#faqAlignCenter").prop("checked"))
+        output += "center";
+    else if ($("#faqAlignRight").prop("checked"))
+        output += "right";
+    output += "]";
+
+    // Label Size Start
+    output += "[size=";
+    if ($("#faqLabelSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#faqLabelSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#faqLabelSizeS").prop("checked"))
+        output += "small";
+    else if ($("#faqLabelSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#faqLabelSizeL").prop("checked"))
+        output += "large";
+    else if ($("#faqLabelSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#faqLabelSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // Label Color Start
+    output += "[color=" + $("#faqCPLabel").colorpicker('getValue') + "]";
+
+    // Contact Label
+    output += $("#faqHeaderLabel").val();
+
+    // Label Color End
+    output += "[/color]";
+
+    // Label Size End
+    output += "[/size]\n";
+
+    // Text Size Start
+    output += "[size=";
+    if ($("#faqTextSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#faqTextSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#faqTextSizeS").prop("checked"))
+        output += "small";
+    else if ($("#faqTextSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#faqTextSizeL").prop("checked"))
+        output += "large";
+    else if ($("#faqTextSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#faqTextSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // FAQ Q/A
+    $(".repeatedFAQ").each(function (index) {
+        // ------------ Question
+        // Question Label Color Start
+        output += "[color=" + $("#faqCPQuestionLabel").colorpicker('getValue') + "]";
+        // Question Label
+        output += "[b]Q: [/b]";
+        // Question Label Color End
+        output += "[/color]";
+
+        // Question Color Start
+        output += "[color=" + $("#faqCPTextLabel").colorpicker('getValue') + "]";
+        // Question
+        output += $(".repeatedFAQQ:eq(" + index + ")").val();
+        // Question Color End
+        output += "[/color][list]";
+
+        // ------------ Anwser
+        // Anwser Label Color Start
+        output += "[color=" + $("#faqCPAnwserLabel").colorpicker('getValue') + "]";
+        // Anwser Label
+        output += "[b]A: [/b]";
+        // Anwser Label Color End
+        output += "[/color]";
+
+        // Anwser Color Start
+        output += "[color=" + $("#faqCPTextLabel").colorpicker('getValue') + "]";
+        // Anwser
+        output += $(".repeatedFAQA:eq(" + index + ")").val();
+        // Anwser Color End
+        output += "[/color][/list]";
+    });
+
+    // Text Size End
+    output += "[/size]";
+
+    // Align End
+    output += "[/align]";
+
+    return output;
+}
+
 // Layout 1 - Vouches
 function updateVouchesOutput() {
     var output = "";
@@ -427,8 +533,17 @@ function updateVouchesOutput() {
         output += "[/color]";
 
         // Vouch Copy Label Size Start
-        output += "[/size]";
+        output += "[/size]\n";
     }
+
+    // Vouch Quotes Color Start
+    output += "[color=" + $("#generalCPSecondary").colorpicker('getValue') + "]";
+
+    // Vouch Quotes
+    output += "VOUCHED QUOTES GO HERE\n";
+
+    // Vouch Quotes Color End
+    output += "[/color]";
 
     // Alignment End
     output += "[/align]";

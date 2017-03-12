@@ -5,13 +5,16 @@
         Notes:
         - Good Primary Colors:
             - Rose Red: #dd3f59
-            - Steal Blue: #4682B4
             - Mint Green: #6de89f
             - Green Cyan: #6cfed9
+            - Steal Blue: #4682B4
         TODO:
+        - Basic/Adv toggle
+        - Alignment Styles
+        - background color event trigger to change preview color
+        - primary color event trigger to change preview color
+        - secondary color event trigger to change preview color
         - update xbb parser to support [spoiler]
-        - background color event trigger to change preview color?
-        - Continue with vouch copy counter - counter doesn't work. Clean up?
     -->
     <title>Thread Design Generator</title>
     <meta charset="utf-8">
@@ -44,6 +47,8 @@
         var primaryColor;
         var secondaryColor;
         var desiredSiteColor;
+        var faqQuestionColor;
+        var faqAnwserColor;
         
         $(function () {
             // Primary Color Picker
@@ -55,6 +60,11 @@
             // Desired Site Color Picker
             desiredSiteColor = '#333333';
             setDesiredSiteBackgroundColorPickers();
+            // FAQ - QA
+            faqQuestionColor = '#32CD32';
+            setFAQQuestionColor();
+            faqAnwserColor = '#FF0000';
+            setFAQAnwserColor();
         });
         $(document).ready(function () {
             // Sticky
@@ -63,19 +73,24 @@
             $("#featuresSticky").sticky();
             $("#productsSticky").sticky();
             $("#contactSticky").sticky();
+            $("#faqSticky").sticky();
             $("#vouchesSticky").sticky();
             /* Note: Be sure to edit updateOutput() in CustomFunctions.js with edits below */
              // Header Changes
             $(".headerElements").change(function () {
                 updateOutput("#headerPreview", "#headerOutput");
             });
+            // Features Changes
+            $(".featuresElements").change(function () {
+                updateOutput("#featuresPreview", "#featuresOutput");
+            });
              // Contact Changes
             $(".contactElements").change(function () {
                 updateOutput("#contactPreview", "#contactOutput");
             });
-            // Features Changes
-            $(".featuresElements").change(function () {
-                updateOutput("#featuresPreview", "#featuresOutput");
+            // FAQ Changes
+            $(".faqElements").change(function () {
+                updateOutput("#faqPreview", "#faqOutput");
             });
             // Vouches Changes
             $(".vouchesElements").change(function () {
@@ -223,7 +238,7 @@
                         <div class="panel-body">
                             <!-- Main Header Text -->
                             <label for="threadMainText">Main Header Label:</label>
-                            <input type="text" class="form-control headerElements required" id="threadMainText" placeholder="ex 'Adam's Design Service'">
+                            <input type="text" class="form-control headerElements required" id="threadMainText" placeholder="ex 'Adam's Design Service'" value="Adam's Design Service">
                             <br />
                             <!-- Main Header Color Picker -->
                             <div id="headerMainColor" class="input-group colorpicker-component subOption primaryColor headerElements">
@@ -307,7 +322,7 @@
                             </div>
                             <!-- Sub Header Text -->
                             <label for="threadSubText">Sub Header Label:</label>
-                            <input type="text" class="form-control headerElements required" id="threadSubText" placeholder="ex 'Lifetime Access'">
+                            <input type="text" class="form-control headerElements required" id="threadSubText" placeholder="ex 'Lifetime Access'" value="Lifetime Access">
                             <br />
                             <!-- Main Header Color Picker -->
                             <div id="headerSubColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
@@ -408,11 +423,11 @@
                                 <label for="contactAlign">Features Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresAlign">
-                                    <label class="btn btn-primary">
-                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignLeft"> Left
-                                    </label>
                                     <label class="btn btn-primary active">
-                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignCenter" checked> Center
+                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignCenter"> Center
                                     </label>
                                     <label class="btn btn-primary">
                                         <input type="radio" class="featuresElements" name="featuresAlign" id="featuresAlignRight"> Right
@@ -527,22 +542,22 @@
                             <hr />
                             <!-- Features List -->
                             <label for="featuresRepeatingList">Feature List:</label>
-                            <div class="repeater" id="featuresRepeatingList">
+                            <div class="featureRepeater" id="featuresRepeatingList">
                                 <div data-repeater-list="group-a">
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #1" />
+                                        <input type="text" name="newfeature" class="form-control featuresElements repeatedFeature required" value="Feature #1" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
                                     </div>
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #2" />
+                                        <input type="text" name="newfeature" class="form-control featuresElements repeatedFeature required" value="Feature #2" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
                                     </div>
                                     <div data-repeater-item class="input-group repeated-textbox">
-                                        <input type="text" name="text-input" class="form-control featuresElements repeatedFeature required" value="Feature #3" />
+                                        <input type="text" name="newfeature" class="form-control featuresElements repeatedFeature required" value="Feature #3" />
                                         <span class="input-group-btn">
                                             <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
                                         </span>
@@ -683,11 +698,11 @@
                                 <label for="contactAlign">Contact Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactAlign">
-                                    <label class="btn btn-primary">
-                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignLeft"> Left
-                                    </label>
                                     <label class="btn btn-primary active">
-                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignCenter" checked> Center
+                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="contactElements" name="contactAlign" id="contactAlignCenter"> Center
                                     </label>
                                     <label class="btn btn-primary">
                                         <input type="radio" class="contactElements" name="contactAlign" id="contactAlignRight"> Right
@@ -777,7 +792,7 @@
                             <hr />
                             <!-- PM Hyperlink Text -->
                             <label for="contactPMHyperlinkText">PM Hyperlink Text:</label>
-                            <input type="text" class="form-control contactElements" id="contactPMHyperlinkText" placeholder="ex 'Click Here to PM Me'" value="Click here to PM me!">
+                            <input type="text" class="form-control contactElements required" id="contactPMHyperlinkText" placeholder="ex 'Click Here to PM Me'" value="Click here to PM me!">
                             <br />
                             <!-- PM Title Text -->
                             <label for="contactPMTitle">PM Title:</label>
@@ -837,6 +852,155 @@
             <div id="menuFAQ" class="tab-pane fade">
                 <h3>FAQ</h3>
                 <p></p>
+                <!-- Right - Preview/Output -->
+                <div id="faqSticky">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="faqPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="faqOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="faqOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="faqUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left - Content -->
+                <div id="faqSections" class="leftHalf">
+                    <div class="panel panel-default" id="faqDesign">
+                        <div class="panel-body">
+                            <!-- FAQ Label -->
+                            <label for="faqHeaderLabel">FAQ Label:</label>
+                            <input type="text" class="form-control faqElements required" id="faqHeaderLabel" placeholder="ex 'FAQ'" value="FAQ">
+                            <br />
+                            <!-- FAQ Align -->
+                            <div class="text-center">
+                                <label for="faqAlign">FAQ Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqAlign">
+                                    <label class="btn btn-primary  active">
+                                        <input type="radio" class="faqElements" name="faqAlign" id="faqAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="faqElements" name="faqAlign" id="faqAlignCenter"> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="faqElements" name="faqAlign" id="faqAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Label Color -->
+                            <label for="faqCPLabel">FAQ Label Color:</label>
+                            <div id="faqCPLabel" class="input-group colorpicker-component subOption primaryColor faqElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- FAQ Label Size -->
+                            <div class="text-center">
+                                <label for="faqLabelSize">FAQ Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqLabelSize">
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize active">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXXL" checked> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Questions & Answers</h4>
+                    <!-- FAQ Question/Answers -->
+                    <div class="panel panel-default" id="faqQA">
+                        <div class="panel-body">
+                            <!-- Question Label Color -->
+                            <label for="faqCPQuestionLabel">Question Label Color:</label>
+                            <div id="faqCPQuestionLabel" class="input-group colorpicker-component subOption faqElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- Anwser Label Color -->
+                            <label for="faqCPAnwserLabel">Anwser Label Color:</label>
+                            <div id="faqCPAnwserLabel" class="input-group colorpicker-component subOption faqElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <hr />
+                            <!-- Text Label Color -->
+                            <label for="faqCPTextLabel">Text Label Color:</label>
+                            <div id="faqCPTextLabel" class="input-group colorpicker-component subOption secondaryColor faqElements">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br />
+                            <!-- FAQ  Label Text Size -->
+                            <div class="text-center">
+                                <label for="faqTextSize">Text Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqTextSize">
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize active">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeM" checked> M
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary faqTextSize">
+                                        <input type="radio" class="faqElements" name="faqTextSize" id="faqTextSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
+                            <!-- QA List -->
+                            <label for="faqRepeatingList">Q&A List:</label>
+                            <div class="faqRepeater" id="faqRepeatingList">
+                                <div data-repeater-list="FAQ">
+                                    <div data-repeater-item class="input-group repeated-textbox repeatedFAQ">
+                                        <input type="text" name="question" class="form-control faqElements  repeatedFAQQ required" value="Question" />
+                                        <input type="text" name="anwser" class="form-control faqElements repeatedFAQA required" value="Anwser" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger btnDbl" value="Remove" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <input data-repeater-create type="button" class="btn btn-success fullLength" value="Add" />
+                            </div>
+                            <!-- QA List End -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End FAQ -->
             <!-- Vouches -->
@@ -873,11 +1037,11 @@
                                 <label for="vouchesAlign">Vouches Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesAlign">
-                                    <label class="btn btn-primary">
-                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignLeft"> Left
-                                    </label>
                                     <label class="btn btn-primary active">
-                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignCenter" checked> Center
+                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignCenter"> Center
                                     </label>
                                     <label class="btn btn-primary">
                                         <input type="radio" class="vouchesElements" name="vouchesAlign" id="vouchesAlignRight"> Right

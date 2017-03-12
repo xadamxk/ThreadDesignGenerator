@@ -6,6 +6,8 @@ function updateOutput(previewElement, outputElement) {
         output = updateContactOutput();
     } else if (previewElement == "#featuresPreview") {
         output = updateFeaturesOutput();
+    } else if (previewElement == "#faqPreview") {
+        output = updateFAQOutput();
     } else if (previewElement == "#vouchesPreview") {
         output = updateVouchesOutput();
     }
@@ -135,6 +137,16 @@ function setDesiredSiteBackgroundColorPickers() {
     // All Output Backgrounds
     $('#generalCPDesiredSite').colorpicker('setValue', desiredSiteColor);
     $('.preview').css("background-color", desiredSiteColor);
+}
+// FAQ Question Label Color
+function setFAQQuestionColor() {
+    // Repeated Question Label
+    $('#faqCPQuestionLabel').colorpicker('setValue', faqQuestionColor);
+}
+// FAQ Anwser Label Color
+function setFAQAnwserColor() {
+    // Repeated Question Label
+    $('#faqCPAnwserLabel').colorpicker('setValue', faqAnwserColor);
 }
 // Replace All (Credit: http://stackoverflow.com/a/17606289)
 String.prototype.replaceAll = function (search, replacement) {
