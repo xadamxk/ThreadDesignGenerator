@@ -2,6 +2,8 @@ function updateOutput(previewElement, outputElement) {
     var output;
     if (previewElement == "#headerPreview") {
         output = updateHeaderOutput();
+    } else if (previewElement == "#descriptionPreview") {
+        output = updateDescriptionOutput();
     } else if (previewElement == "#contactPreview") {
         output = updateContactOutput();
     } else if (previewElement == "#featuresPreview") {
@@ -102,6 +104,29 @@ function toggleContactIMInputs(state) {
     $("#contactEnableSkypeMyCode").prop("disabled", state);
     // IM Handle Text
     $("#contactIMHandle").prop("disabled", state);
+}
+// toggle description paragraph inputs
+function toggleDescriptionParagraphInputs(state) {
+    // Paragraph Textarea
+    $("#descriptionText").prop("disabled", state);
+}
+// toggle description list inputs
+function toggleDescriptionListInputs(state) {
+    // List Bullet
+    $("#descriptionBulletDropdown").prop("disabled", state);
+    // Bullet Color
+    if (state) {
+        $("#descriptionCPBullet").colorpicker('disable');
+    } else {
+        $("#descriptionCPBullet").colorpicker('enable');
+    }
+    // Repeated Description
+    $(".repeatedDescription").prop("disabled", state);
+    // Repeated Description Delete
+    $(".repeatedDelete").prop("disabled", state);
+    // Description List Add
+    $("#descriptionListAdd").prop("disabled", state);
+
 }
 // Toggle Visibility of Corresponding Nav Element
 function toggleNavVisibility(selectedCheckbox, selectedCorrId) {

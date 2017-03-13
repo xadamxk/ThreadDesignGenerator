@@ -9,12 +9,16 @@
             - Green Cyan: #6cfed9
             - Steal Blue: #4682B4
         TODO:
-        - Basic/Adv toggle
+        - Description Tab
+        - Products Tab
+        - TOS Tab
+        - Extras Tab
         - Alignment Styles
         - background color event trigger to change preview color
         - primary color event trigger to change preview color
         - secondary color event trigger to change preview color
         - update xbb parser to support [spoiler]
+        - implement spoiler option for FAQ, Vouches, TOS, Features?
     -->
     <title>Thread Design Generator</title>
     <meta charset="utf-8">
@@ -79,9 +83,13 @@
             $("#faqSticky").sticky();
             $("#vouchesSticky").sticky();
             /* Note: Be sure to edit updateOutput() in CustomFunctions.js with edits below */
-             // Header Changes
+            // Header Changes
             $(".headerElements").change(function () {
                 updateOutput("#headerPreview", "#headerOutput");
+            });
+            // Description Changes
+            $(".descriptionElements").change(function () {
+                updateOutput("#descriptionPreview", "#descriptionOutput");
             });
             // Features Changes
             $(".featuresElements").change(function () {
@@ -115,7 +123,7 @@
             <img src="img/Logo/Black/3.png" alt="Logo">
             <br />
             <!-- User Mode Toggle -->
-            <input type="checkbox" data-toggle="toggle" data-on="Adv. Editor" data-off="Basic Editor" id="toggleUserMode">
+            <input type="checkbox" data-onstyle="primary" data-toggle="toggle" data-on="Adv. Editor" data-off="Basic Editor" id="toggleUserMode">
             <hr />
         </div>
         <ul class="nav nav-tabs">
@@ -394,6 +402,200 @@
             <div id="menuDescription" class="tab-pane fade">
                 <h3>Description</h3>
                 <p></p>
+                <!-- Preview - Description -->
+                <div id="descriptionSticky">
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="descriptionPreview">
+                        </div>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="panel panel-default" id="descriptionOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="descriptionOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="descriptionUpdateOutput">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sections - Description -->
+                <div id="descriptionSections" class="leftHalf">
+                    <!-- Design - Description -->
+                    <h4>Design</h4>
+                    <div class="panel panel-default" id="descriptionDesign">
+                        <div class="panel-body">
+                            <!-- Description Label -->
+                            <label for="descriptionHeaderLabel">Description Label:</label>
+                            <input type="text" class="form-control descriptionElements required" id="descriptionHeaderLabel" placeholder="ex 'Description','Intro','About'" value="Description">
+                            <br class="adv" />
+                            <!-- Description Align -->
+                            <div class="text-center adv">
+                                <label for="descriptionAlign">Description Alignment:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="descriptionAlign">
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" class="descriptionElements" name="descriptionAlign" id="descriptionAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="descriptionElements" name="descriptionAlign" id="descriptionAlignCenter"> Center
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="descriptionElements" name="descriptionAlign" id="descriptionAlignRight"> Right
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Label Color -->
+                            <label for="descriptionCPLabel" class="adv">Description Label Color:</label>
+                            <div id="descriptionCPLabel" class="input-group colorpicker-component subOption primaryColor descriptionElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br class="adv" />
+                            <!-- Description Label Size -->
+                            <div class="text-center adv">
+                                <label for="descriptionLabelSize">Description Label Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="descriptionLabelSize">
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeM"> M
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize active">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary descriptionLabelSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionLabelSize" id="descriptionLabelSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <hr class="adv" />
+                            <!-- Description Text Color -->
+                            <label for="descriptionCPPrimary" class="adv">Description Text Color:</label>
+                            <div id="descriptionCPInfo" class="input-group colorpicker-component subOption secondaryColor descriptionElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br class="adv" />
+                            <!-- Description Text Size -->
+                            <div class="text-center adv">
+                                <label for="descriptionTextSize">Description Text Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="descriptionTextSize">
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize active">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeM" checked> M
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary descriptionTextSize">
+                                        <input type="radio" class="descriptionElements" name="descriptionTextSize" id="descriptionTextSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Paragraph</h4>
+                    <div class="panel panel-default" id="descriptionTextDiv">
+                        <div class="panel-body">
+                            <!-- Paragraph Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="descriptionElements required" id="descriptionEnableParagraph">Paragraph</label>
+                            </div>
+                            <hr />
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="7" id="descriptionText"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>List</h4>
+                    <div class="panel panel-default" id="descriptionList">
+                        <div class="panel-body">
+                            <!-- List Enable -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" class="descriptionElements required" id="descriptionEnableList">List</label>
+                            </div>
+                            <hr />
+                            <!-- Description - Bullets Dropdown -->
+                            <label for="descriptionBulletDropdown">Bullet Style:</label>
+                            <br />
+                            <select class="selectpicker show-tick descriptionElements required descriptionBulletDropdown" id="descriptionBulletDropdown">
+                                <optgroup label="Standard">
+                                    <option class="bullets">•</option>
+                                    <option class="bullets">○</option>
+                                    <option class="bullets">▪</option>
+                                    <option class="bullets">‣</option>
+                                </optgroup>
+                                <optgroup label="Special">
+                                    <option class="bullets">★</option>
+                                    <option class="bullets">✓</option>
+                                    <option class="bullets">❤</option>
+                                    <option class="bullets">☢</option>
+                                    <option class="bullets">߷</option>
+                                    <option class="bullets">⌦</option>
+                                    <option class="bullets">⚛</option>
+                                </optgroup>
+                            </select>
+                            <br class="adv" />
+                            <br class="adv" />
+                            <!-- Bullet Color -->
+                            <label for="descriptionCPBullet" class="adv">Bullet Color:</label>
+                            <div id="descriptionCPBullet" class="input-group colorpicker-component subOption primaryColor descriptionElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <hr />
+                            <!-- Description List -->
+                            <label for="descriptionRepeatingList">Description List:</label>
+                            <div class="descriptionRepeater" id="descriptionRepeatingList">
+                                <div data-repeater-list="group-a">
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newdescription" class="form-control descriptionElements repeatedDescription required" value="About #1" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger repeatedDelete" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newdescription" class="form-control descriptionElements repeatedDescription required" value="About #2" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger repeatedDelete" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newdescription" class="form-control descriptionElements repeatedDescription required" value="About #3" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger repeatedDelete" value="Delete" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <input data-repeater-create type="button" class="btn btn-success fullLength" id="descriptionListAdd" value="Add" />
+                            </div>
+                            <!-- Description List End -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Description -->
             <!-- Features -->
@@ -449,7 +651,7 @@
                                 <span class="input-group-addon"><i></i></span>
                             </div>
                             <br class="adv" />
-                            <!-- Contact Label Size -->
+                            <!-- Features Label Size -->
                             <div class="text-center adv">
                                 <label for="featuresLabelSize">Features Label Size:</label>
                                 <br />
@@ -512,7 +714,7 @@
                                 <span class="input-group-addon"><i></i></span>
                             </div>
                             <hr class="adv" />
-                            <!-- Info Color -->
+                            <!-- Features Text Color -->
                             <label for="generalCPPrimary" class="adv" >Features Text Color:</label>
                             <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
@@ -626,7 +828,7 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="productsCPLabel" class="adv" >Products Label Color:</label>
+                            <label for="productsCPLabel" class="adv">Products Label Color:</label>
                             <div id="productsCPLabel" class="input-group colorpicker-component subOption primaryColor productsElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
@@ -666,7 +868,7 @@
                     <div class="panel panel-default" id="productsSomething??????">
                         <div class="panel-body">
                             <!--  -->
-                            
+
                         </div>
                     </div>
                 </div>
@@ -1099,10 +1301,10 @@
                             <div class="checkbox">
                                 <label><input type="checkbox" value="1" class="vouchesElements required" id="vouchesEnableVouchCopy">Vouch Copies</label>
                             </div>
-                            <hr />
+                            <hr class="adv" />
                             <!-- Vouch Copy Label -->
-                            <label for="vouchesCopyLabel">Vouch Copy Label:</label>
-                            <input type="text" class="form-control vouchesElements" id="vouchesCopyLabel" placeholder="ex 'Vouch Copies Remaining:'" value="Vouch Copies Remaining:">
+                            <label for="vouchesCopyLabel" class="adv" >Vouch Copy Label:</label>
+                            <input type="text" class="form-control vouchesElements adv" id="vouchesCopyLabel" placeholder="ex 'Vouch Copies Remaining:'" value="Vouch Copies Remaining:">
                             <br class="adv" />
                             <!-- Vouch Copy Label Color -->
                             <label for="vouchesCPCopyLabel" class="adv" >Vouch Copy Label Color:</label>

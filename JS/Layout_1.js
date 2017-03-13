@@ -103,6 +103,127 @@ function updateHeaderOutput() {
 
 // Layout 1 - Description
 function updateDescriptionOutput() {
+    var output = "";
+
+    // Font from general
+
+    // Alignment Start
+    output += "[align=";
+    if ($("#descriptionAlignLeft").prop("checked"))
+        output += "left";
+    else if ($("#descriptionAlignCenter").prop("checked"))
+        output += "center";
+    else if ($("#descriptionAlignRight").prop("checked"))
+        output += "right";
+    output += "]";
+
+    // Label Size Start
+    output += "[size=";
+    if ($("#descriptionLabelSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#descriptionLabelSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#descriptionLabelSizeS").prop("checked"))
+        output += "small";
+    else if ($("#descriptionLabelSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#descriptionLabelSizeL").prop("checked"))
+        output += "large";
+    else if ($("#descriptionLabelSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#descriptionLabelSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // Label Color Start
+    output += "[color=" + $("#descriptionCPLabel").colorpicker('getValue') + "]";
+
+    // Description Label
+    output += $("#descriptionHeaderLabel").val();
+
+    // Label Color End
+    output += "[/color]";
+
+    // Label Size End
+    output += "[/size]\n";
+
+    // Description Paragraph
+    if ($("#descriptionEnableParagraph").prop("checked")) {
+        // Text Size Start
+        output += "[size=";
+        if ($("#descriptionTextSizeXXS").prop("checked"))
+            output += "xx-small";
+        else if ($("#descriptionTextSizeXS").prop("checked"))
+            output += "x-small";
+        else if ($("#descriptionTextSizeS").prop("checked"))
+            output += "small";
+        else if ($("#descriptionTextSizeM").prop("checked"))
+            output += "medium";
+        else if ($("#descriptionTextSizeL").prop("checked"))
+            output += "large";
+        else if ($("#descriptionTextSizeXL").prop("checked"))
+            output += "x-large";
+        else if ($("#descriptionTextSizeXXL").prop("checked"))
+            output += "xx-large";
+        output += "]"
+
+        // Info Color Start
+        output += "[color=" + $("#descriptionCPInfo").colorpicker('getValue') + "]";
+        // Description Paragraph
+        output += $("#descriptionText").val();
+        // Info Color End
+        output += "[/color]";
+        // Text Size End
+        output += "[/size]";
+    }
+    // Description List
+    if ($("#descriptionEnableList").prop("checked")) {
+        // Text Size Start
+        output += "[size=";
+        if ($("#descriptionTextSizeXXS").prop("checked"))
+            output += "xx-small";
+        else if ($("#descriptionTextSizeXS").prop("checked"))
+            output += "x-small";
+        else if ($("#descriptionTextSizeS").prop("checked"))
+            output += "small";
+        else if ($("#descriptionTextSizeM").prop("checked"))
+            output += "medium";
+        else if ($("#descriptionTextSizeL").prop("checked"))
+            output += "large";
+        else if ($("#descriptionTextSizeXL").prop("checked"))
+            output += "x-large";
+        else if ($("#descriptionTextSizeXXL").prop("checked"))
+            output += "xx-large";
+        output += "]"
+        // List Start
+        output += "[list]";
+        // Features List
+        $(".repeatedDescription").each(function (index) {
+            // Bullet Color Start
+            output += "[color=" + $("#descriptionCPBullet").colorpicker('getValue') + "]";
+            // Bullet Style
+            output += $("#descriptionBulletDropdown").find(":selected").text();
+            // Bullet Color End
+            output += "[/color] ";
+            // Info Color Start
+            output += "[color=" + $("#descriptionCPInfo").colorpicker('getValue') + "]";
+            // Description Lists
+            output += $(this).val() + "\n";
+            // Info Color End
+            output += "[/color]";
+        });
+
+        // List End
+        output += "[/list]";
+
+        // Text Size End
+        output += "[/size]";
+    }
+
+    // Align End
+    output += "[/align]";
+
+    return output;
 }
 
 // Layout 1 - Features
