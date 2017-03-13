@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="CSS/bootstrap-select.css">
     <!-- JQuery Repeater -->
     <script src="JS/jquery.repeater.js"></script>
+    <!-- Bootstrap Toggle -->
+    <script src="JS/bootstrap-toggle.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap-toggle.css">
     <!-- Local -->
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -102,13 +105,19 @@
 <body>
 
     <div class="container">
-        <img src="img/Logo/Black/3.png" alt="Logo">
-        <!--
-        <img src="img/Logo/Blue/3.png" alt="Logo">
-        <img src="img/Logo/Red/3.png" alt="Logo">
-        <img src="img/Logo/White/3.png" alt="Logo">
-        <img src="img/Logo/Yellow/3.png" alt="Logo">
-            -->
+        <div id="siteHeader">
+            <!-- Site Logo
+            <img src="img/Logo/Blue/3.png" alt="Logo">
+            <img src="img/Logo/Red/3.png" alt="Logo">
+            <img src="img/Logo/White/3.png" alt="Logo">
+            <img src="img/Logo/Yellow/3.png" alt="Logo">
+             -->
+            <img src="img/Logo/Black/3.png" alt="Logo">
+            <br />
+            <!-- User Mode Toggle -->
+            <input type="checkbox" data-toggle="toggle" data-on="Adv. Editor" data-off="Basic Editor" id="toggleUserMode">
+            <hr />
+        </div>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#general">General</a></li>
             <li><a data-toggle="tab" href="#menuHeader" id="generalShowHeader">Header</a></li>
@@ -239,16 +248,16 @@
                             <!-- Main Header Text -->
                             <label for="threadMainText">Main Header Label:</label>
                             <input type="text" class="form-control headerElements required" id="threadMainText" placeholder="ex 'Adam's Design Service'" value="Adam's Design Service">
-                            <br />
+                            <br class="adv" />
                             <!-- Main Header Color Picker -->
-                            <div id="headerMainColor" class="input-group colorpicker-component subOption primaryColor headerElements">
+                            <div id="headerMainColor" class="input-group colorpicker-component subOption primaryColor headerElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
-                            <br />
+                            <br class="adv" />
+                            <br class="adv" />
                             <!-- Header Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="headerAlign">Header Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerAlign">
@@ -263,9 +272,9 @@
                                     </label>
                                 </div>
                             </div>
-                            <br />
+                            <br class="adv"/>
                             <!-- Header Main Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="headerMainSize">Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerMainSize">
@@ -292,10 +301,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <hr />
-                            <br />
+                            <hr class="adv" />
+                            <br class="adv" />
                             <!-- Main Header Underline -->
-                            <ul class="list-group">
+                            <ul class="list-group adv">
                                 <li class="list-group-item">
                                     <div class="checkbox">
                                         <label><input type="checkbox" value="1" class="headerMainUnderline headerElements" id="headerMainUnderline">Underline Main Header</label>
@@ -303,12 +312,12 @@
                                 </li>
                             </ul>
                             <!-- Main Header Underline Color -->
-                            <label for="headerMainUnderlineColor">Underline Color:</label>
-                            <div id="headerMainUnderlineColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
+                            <label for="headerMainUnderlineColor" class="adv" >Underline Color:</label>
+                            <div id="headerMainUnderlineColor" class="input-group colorpicker-component subOption secondaryColor headerElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv"/>
                         </div>
                     </div>
                     <!-- Sub Header -->
@@ -323,17 +332,17 @@
                             <!-- Sub Header Text -->
                             <label for="threadSubText">Sub Header Label:</label>
                             <input type="text" class="form-control headerElements required" id="threadSubText" placeholder="ex 'Lifetime Access'" value="Lifetime Access">
-                            <br />
+                            <br class="adv" />
                             <!-- Main Header Color Picker -->
-                            <div id="headerSubColor" class="input-group colorpicker-component subOption secondaryColor headerElements">
+                            <div id="headerSubColor" class="input-group colorpicker-component subOption secondaryColor headerElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
-                            <hr />
-                            <br />
+                            <br class="adv" />
+                            <hr class="adv" />
+                            <br class="adv" />
                             <!-- Main Header Underline -->
-                            <ul class="list-group">
+                            <ul class="list-group adv">
                                 <li class="list-group-item">
                                     <div class="checkbox">
                                         <label><input type="checkbox" value="1" class="headerElements" id="headerSubUnderline">Underline Sub Header</label>
@@ -341,14 +350,14 @@
                                 </li>
                             </ul>
                             <!-- Main Header Underline Color -->
-                            <label for="headerSubUnderlineColor">Underline Color:</label>
-                            <div id="headerSubUnderlineColor" class="input-group colorpicker-component subOption primaryColor headerElements">
+                            <label for="headerSubUnderlineColor" class="adv" >Underline Color:</label>
+                            <div id="headerSubUnderlineColor" class="input-group colorpicker-component subOption primaryColor headerElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Header Sub Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 Size
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="headerSubSize">
@@ -378,7 +387,6 @@
                         </div>
                     </div>
                     <!-- Header Image -->
-
                 </div> <!-- End Left Align -->
             </div>
             <!-- End Header -->
@@ -417,9 +425,9 @@
                             <!-- Features Label -->
                             <label for="contactHeaderLabel">Features Label:</label>
                             <input type="text" class="form-control featuresElements required" id="featuresHeaderLabel" placeholder="ex 'Features'" value="Features">
-                            <br />
+                            <br class="adv" />
                             <!-- Features Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="contactAlign">Features Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresAlign">
@@ -435,14 +443,14 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="featuresCPLabel">Features Label Color:</label>
-                            <div id="featuresCPLabel" class="input-group colorpicker-component subOption primaryColor featuresElements">
+                            <label for="featuresCPLabel" class="adv" >Features Label Color:</label>
+                            <div id="featuresCPLabel" class="input-group colorpicker-component subOption primaryColor featuresElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Contact Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="featuresLabelSize">Features Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresLabelSize">
@@ -495,24 +503,24 @@
                                     <option class="bullets">⚛</option>
                                 </optgroup>
                             </select>
-                            <br />
-                            <br />
+                            <br class="adv" />
+                            <br class="adv" />
                             <!-- Bullet Color -->
-                            <label for="featuresCPBullet">Bullet Color:</label>
-                            <div id="featuresCPBullet" class="input-group colorpicker-component subOption primaryColor featuresElements">
+                            <label for="featuresCPBullet" class="adv" >Bullet Color:</label>
+                            <div id="featuresCPBullet" class="input-group colorpicker-component subOption primaryColor featuresElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <hr />
+                            <hr class="adv" />
                             <!-- Info Color -->
-                            <label for="generalCPPrimary">Features Text Color:</label>
-                            <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements">
+                            <label for="generalCPPrimary" class="adv" >Features Text Color:</label>
+                            <div id="featuresCPInfo" class="input-group colorpicker-component subOption secondaryColor featuresElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Features Info Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="featuresInfoSize">Features Text Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="featuresInfoSize">
@@ -599,10 +607,10 @@
                         <div class="panel-body">
                             <!-- Products Label -->
                             <label for="productsHeaderLabel">Products Label:</label>
-                            <input type="text" class="form-control productsElements" id="productsHeaderLabel" placeholder="ex 'My Product'" value="My Product">
-                            <br />
+                            <input type="text" class="form-control productsElements required" id="productsHeaderLabel" placeholder="ex 'My Product'" value="My Product">
+                            <br class="adv" />
                             <!-- Product Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="productsAlign">Products Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsAlign">
@@ -618,14 +626,14 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="productsCPLabel">Products Label Color:</label>
-                            <div id="productsCPLabel" class="input-group colorpicker-component subOption primaryColor productsElements">
+                            <label for="productsCPLabel" class="adv" >Products Label Color:</label>
+                            <div id="productsCPLabel" class="input-group colorpicker-component subOption primaryColor productsElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Products Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="productsLabelSize">Products Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsLabelSize">
@@ -692,9 +700,9 @@
                             <!-- Contact Label -->
                             <label for="contactHeaderLabel">Contact Label:</label>
                             <input type="text" class="form-control contactElements required" id="contactHeaderLabel" placeholder="ex 'Contact Information'" value="Contact Information">
-                            <br />
+                            <br class="adv" />
                             <!-- Contact Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="contactAlign">Contact Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactAlign">
@@ -710,14 +718,14 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="generalCPPrimary">Contact Label Color:</label>
-                            <div id="contactCPLabel" class="input-group colorpicker-component subOption primaryColor contactElements">
+                            <label for="generalCPPrimary" class="adv" >Contact Label Color:</label>
+                            <div id="contactCPLabel" class="input-group colorpicker-component subOption primaryColor contactElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Contact Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="contactLabelSize">Contact Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactLabelSize">
@@ -744,16 +752,16 @@
                                     </label>
                                 </div>
                             </div>
-                            <hr />
+                            <hr class="adv" />
                             <!-- Info Color -->
-                            <label for="generalCPPrimary">Contact Info Color:</label>
-                            <div id="contactCPInfo" class="input-group colorpicker-component subOption secondaryColor contactElements">
+                            <label for="generalCPPrimary" class="adv" >Contact Info Color:</label>
+                            <div id="contactCPInfo" class="input-group colorpicker-component subOption secondaryColor contactElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Contact Info Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="contactInfoSize">Contact Info Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="contactInfoSize">
@@ -793,14 +801,14 @@
                             <!-- PM Hyperlink Text -->
                             <label for="contactPMHyperlinkText">PM Hyperlink Text:</label>
                             <input type="text" class="form-control contactElements required" id="contactPMHyperlinkText" placeholder="ex 'Click Here to PM Me'" value="Click here to PM me!">
-                            <br />
+                            <br class="adv" />
                             <!-- PM Title Text -->
-                            <label for="contactPMTitle">PM Title:</label>
-                            <input type="text" class="form-control contactElements" id="contactPMTitle" placeholder="">
-                            <br />
+                            <label for="contactPMTitle" class="adv" >PM Title:</label>
+                            <input type="text" class="form-control contactElements adv" id="contactPMTitle" placeholder="">
+                            <br class="adv" />
                             <!-- PM Body Text -->
-                            <label for="contactPMBody">PM Body:</label>
-                            <div class="form-group">
+                            <label for="contactPMBody" class="adv" >PM Body:</label>
+                            <div class="form-group adv">
                                 <textarea class="form-control contactElements" rows="5" id="contactPMBody"></textarea>
                             </div>
                         </div>
@@ -841,8 +849,7 @@
                             <br />
                             <!-- IM Handle -->
                             <label for="contactIMHandle">IM Handle:</label>
-                            <input type="text" class="form-control contactElements" id="contactIMHandle" placeholder="xadamxk,xadamxk#1234,1306528@hackforums.im">
-                            <br />
+                            <input type="text" class="form-control contactElements required" id="contactIMHandle" placeholder="xadamxk,xadamxk#1234,1306528@hackforums.im">
                         </div>
                     </div>
                 </div>
@@ -877,7 +884,7 @@
                             <input type="text" class="form-control faqElements required" id="faqHeaderLabel" placeholder="ex 'FAQ'" value="FAQ">
                             <br />
                             <!-- FAQ Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="faqAlign">FAQ Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqAlign">
@@ -893,14 +900,14 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="faqCPLabel">FAQ Label Color:</label>
-                            <div id="faqCPLabel" class="input-group colorpicker-component subOption primaryColor faqElements">
+                            <label for="faqCPLabel" class="adv" >FAQ Label Color:</label>
+                            <div id="faqCPLabel" class="input-group colorpicker-component subOption primaryColor faqElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- FAQ Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="faqLabelSize">FAQ Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqLabelSize">
@@ -934,28 +941,28 @@
                     <div class="panel panel-default" id="faqQA">
                         <div class="panel-body">
                             <!-- Question Label Color -->
-                            <label for="faqCPQuestionLabel">Question Label Color:</label>
-                            <div id="faqCPQuestionLabel" class="input-group colorpicker-component subOption faqElements">
+                            <label for="faqCPQuestionLabel" class="adv" >Question Label Color:</label>
+                            <div id="faqCPQuestionLabel" class="input-group colorpicker-component subOption faqElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Anwser Label Color -->
-                            <label for="faqCPAnwserLabel">Anwser Label Color:</label>
-                            <div id="faqCPAnwserLabel" class="input-group colorpicker-component subOption faqElements">
+                            <label for="faqCPAnwserLabel" class="adv" >Anwser Label Color:</label>
+                            <div id="faqCPAnwserLabel" class="input-group colorpicker-component subOption faqElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <hr />
+                            <hr class="adv" />
                             <!-- Text Label Color -->
-                            <label for="faqCPTextLabel">Text Label Color:</label>
-                            <div id="faqCPTextLabel" class="input-group colorpicker-component subOption secondaryColor faqElements">
+                            <label for="faqCPTextLabel" class="adv" >Text Label Color:</label>
+                            <div id="faqCPTextLabel" class="input-group colorpicker-component subOption secondaryColor faqElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- FAQ  Label Text Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="faqTextSize">Text Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="faqTextSize">
@@ -982,7 +989,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <hr />
+                            <hr class="adv" />
                             <!-- QA List -->
                             <label for="faqRepeatingList">Q&A List:</label>
                             <div class="faqRepeater" id="faqRepeatingList">
@@ -1033,7 +1040,7 @@
                             <input type="text" class="form-control vouchesElements required" id="vouchesHeaderLabel" placeholder="ex 'Vouches'" value="Vouches">
                             <br />
                             <!-- Product Align -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="vouchesAlign">Vouches Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesAlign">
@@ -1049,14 +1056,14 @@
                                 </div>
                             </div>
                             <!-- Label Color -->
-                            <label for="vouchesCPLabel">Vouches Label Color:</label>
-                            <div id="vouchesCPLabel" class="input-group colorpicker-component subOption primaryColor vouchesElements">
+                            <label for="vouchesCPLabel" class="adv" >Vouches Label Color:</label>
+                            <div id="vouchesCPLabel" class="input-group colorpicker-component subOption primaryColor vouchesElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Vouches Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="vouchesLabelSize">Vouches Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesLabelSize">
@@ -1096,16 +1103,16 @@
                             <!-- Vouch Copy Label -->
                             <label for="vouchesCopyLabel">Vouch Copy Label:</label>
                             <input type="text" class="form-control vouchesElements" id="vouchesCopyLabel" placeholder="ex 'Vouch Copies Remaining:'" value="Vouch Copies Remaining:">
-                            <br />
+                            <br class="adv" />
                             <!-- Vouch Copy Label Color -->
-                            <label for="vouchesCPCopyLabel">Vouch Copy Label Color:</label>
-                            <div id="vouchesCPCopyLabel" class="input-group colorpicker-component subOption secondaryColor vouchesElements">
+                            <label for="vouchesCPCopyLabel" class="adv" >Vouch Copy Label Color:</label>
+                            <div id="vouchesCPCopyLabel" class="input-group colorpicker-component subOption secondaryColor vouchesElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Vouch Copy Label Size -->
-                            <div class="text-center">
+                            <div class="text-center adv">
                                 <label for="vouchesCopyLabelSize">Vouch Copy Label Size:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="vouchesCopyLabelSize">
@@ -1148,16 +1155,13 @@
                                     </button>
                                 </span>
                             </div>
-                            <br />
+                            <br class="adv" />
                             <!-- Vouch Copy Count Color -->
-                            <label for="vouchesCPCopyNumber">Vouch Copy Number Color:</label>
-                            <div id="vouchesCPCopyNumber" class="input-group colorpicker-component subOption primaryColor vouchesElements">
+                            <label for="vouchesCPCopyNumber" class="adv" >Vouch Copy Number Color:</label>
+                            <div id="vouchesCPCopyNumber" class="input-group colorpicker-component subOption primaryColor vouchesElements adv">
                                 <input type="text" value="#FFFFFF" class="form-control" />
                                 <span class="input-group-addon"><i></i></span>
                             </div>
-                            <br />
-                            <!-- ? -->
-
                         </div>
                     </div>
                 </div>

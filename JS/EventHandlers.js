@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    // Toggle User Mode
+    $(".adv").hide();
+    $('#toggleUserMode').change(function () {
+        if ($('#toggleUserMode').prop('checked')) {
+            // ON = Advanced Mode
+            $(".adv").show();
+        } else {
+            // OFF = Basic Mode
+            $(".adv").hide();
+        }
+    });
     // ---------------------------------------------------- General Tab ----------------------------------------------------
     // General Content Listener
     $('.generalShowContent').change(function () {
