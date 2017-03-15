@@ -98,7 +98,7 @@ function updateHeaderOutput() {
     // Alignment End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -225,7 +225,7 @@ function updateDescriptionOutput() {
     // Align End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -322,7 +322,7 @@ function updateFeaturesOutput() {
     // Align End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -483,7 +483,7 @@ function updateProductsOutput() {
     // Align End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -624,7 +624,7 @@ function updateContactOutput() {
     // Align End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -732,7 +732,7 @@ function updateFAQOutput() {
     // Align End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
@@ -837,7 +837,7 @@ function updateVouchesOutput() {
     // Alignment End
     output += "[/align]";
 
-    output += "/n/n";
+    output += "\n\n";
 
     return output;
 }
