@@ -323,6 +323,161 @@ function updateFeaturesOutput() {
 
 // Layout 1 - Products
 function updateProductsOutput() {
+    var output = "";
+
+    // Font from general
+
+    // Alignment Start
+    output += "[align=";
+    if ($("#productsAlignLeft").prop("checked"))
+        output += "left";
+    else if ($("#productsAlignCenter").prop("checked"))
+        output += "center";
+    else if ($("#productsAlignRight").prop("checked"))
+        output += "right";
+    output += "]";
+
+    // Label Size Start
+    output += "[size=";
+    if ($("#productsLabelSizeXXS").prop("checked"))
+        output += "xx-small";
+    else if ($("#productsLabelSizeXS").prop("checked"))
+        output += "x-small";
+    else if ($("#productsLabelSizeS").prop("checked"))
+        output += "small";
+    else if ($("#productsLabelSizeM").prop("checked"))
+        output += "medium";
+    else if ($("#productsLabelSizeL").prop("checked"))
+        output += "large";
+    else if ($("#productsLabelSizeXL").prop("checked"))
+        output += "x-large";
+    else if ($("#productsLabelSizeXXL").prop("checked"))
+        output += "xx-large";
+    output += "]"
+
+    // Label Color Start
+    output += "[color=" + $("#productsCPLabel").colorpicker('getValue') + "]";
+
+    // Contact Label
+    output += $("#productsHeaderLabel").val();
+
+    // Label Color End
+    output += "[/color]";
+
+    // Label Size End
+    output += "[/size]";
+
+    // List Start
+    output += "[list]";
+
+    // Product List
+    $(".repeatedProducts").each(function (index) {
+        console.log("num repeated products: " + (index+1));
+        // Product Link Start
+        if ($(".repeatedProdLink:eq(" + index + ")").val().length > 0) {
+            output += "[url=" + $(".repeatedProdLink:eq(" + index + ")").val() + "]";
+        }
+
+        // Product Label Size Start
+        output += "[size=";
+        if ($("#productsLabelSizeXXS").prop("checked"))
+            output += "xx-small";
+        else if ($("#productsLabelSizeXS").prop("checked"))
+            output += "x-small";
+        else if ($("#productsLabelSizeS").prop("checked"))
+            output += "small";
+        else if ($("#productsLabelSizeM").prop("checked"))
+            output += "medium";
+        else if ($("#productsLabelSizeL").prop("checked"))
+            output += "large";
+        else if ($("#productsLabelSizeXL").prop("checked"))
+            output += "x-large";
+        else if ($("#productsLabelSizeXXL").prop("checked"))
+            output += "xx-large";
+        output += "]"
+
+        // Product Name Color Start 
+        output += "[color=" + $("#productsCPInfo").colorpicker('getValue') + "]";
+
+        // Product Name
+        output += $(".repeatedProdName:eq(" + index + ")").val();
+
+        // Product Name Color End
+        output += "[/color]";
+
+        // Product Label Size End
+        output += "[/size]";
+
+        // List Start (2)
+        output += "[list]";
+
+        // Alt Text Color (Start)
+        output += "[color=" + $("#productsCPInfoAlt").colorpicker('getValue') + "]";
+
+        // Price Label
+        output += "Price: ";
+
+        // Alt Text Color End
+        output += "[/color]";
+
+        // Price Color (Start)
+        output += "[color=" + $("#productsCPPrice").colorpicker('getValue') + "]";
+
+        // Price
+        output += $(".repeatedProdPrice:eq(" + index + ")").val() + " $";
+
+        // Price Color End
+        output += "[/color]\n";
+
+        // Alt Text Color (Start)
+        output += "[color=" + $("#productsCPInfoAlt").colorpicker('getValue') + "]";
+
+        // Features Label
+        output += "Features: ";
+
+        // Alt Text Color End
+        output += "[/color]";
+
+        // List Start (3)
+        output += "[list]";
+
+        // Text Color Start
+        output += "[color=" + $("#productsCPInfo").colorpicker('getValue') + "]";
+
+        // Loop of Product Features
+        $(".repeatedProducts:eq(" + index + ") .productsFeatureLabels").each(function (index2) {
+            // If Feature is enabled 
+            if ($(".repeatedProducts:eq(" + index + ") .productsFeatureLabels:eq(" + index2 + ")").prop("checked")) {
+                // Bullet Style
+                output += $("#productsBulletDropdown").find(":selected").text() + " ";
+                // Feature Text
+                output += $(this).parent().text() + "\n";
+            }
+        });
+
+        // Text Color End
+        output += "[/color]";
+
+        // List End (2)
+        output += "[/list]";
+
+        // List End (1)
+        output += "[/list]";
+
+        // Product Link End
+        if ($(".repeatedProdLink:eq(" + index + ")").val().length > 0) {
+            output += "[/url]";
+        }
+        
+    });
+
+    // List End (0)
+    output += "[/list]";
+
+    // Align End
+    output += "[/align]";
+
+    return output;
 }
 
 // Layout 1 - Contact

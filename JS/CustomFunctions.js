@@ -1,13 +1,22 @@
+function updateProductFeatures() {
+    $(".productsFeaturesList").children().remove();
+    $(".repeatedProductsFeatures").each(function (index) {
+        $(".productsFeaturesList").append('<div class="subOption" class="checkbox"><label><input type="checkbox" class="productsFeatureLabels" name="" value=""> ' +
+            $(this).val() + '</label>');
+    });
+}
 function updateOutput(previewElement, outputElement) {
     var output;
     if (previewElement == "#headerPreview") {
         output = updateHeaderOutput();
     } else if (previewElement == "#descriptionPreview") {
         output = updateDescriptionOutput();
-    } else if (previewElement == "#contactPreview") {
-        output = updateContactOutput();
     } else if (previewElement == "#featuresPreview") {
         output = updateFeaturesOutput();
+    } else if (previewElement == "#productsPreview") {
+        output = updateProductsOutput();
+    } else if (previewElement == "#contactPreview") {
+        output = updateContactOutput();
     } else if (previewElement == "#faqPreview") {
         output = updateFAQOutput();
     } else if (previewElement == "#vouchesPreview") {
@@ -172,6 +181,14 @@ function setFAQQuestionColor() {
 function setFAQAnwserColor() {
     // Repeated Question Label
     $('#faqCPAnwserLabel').colorpicker('setValue', faqAnwserColor);
+}
+// Products Alt Text Color
+function setProductsAltTextColor() {
+    $('#productsCPInfoAlt').colorpicker('setValue', productsAltTextColor);
+}
+// Products Price Color
+function setProductsPriceColor() {
+    $('#productsCPPrice').colorpicker('setValue', productsPriceColor);
 }
 // Replace All (Credit: http://stackoverflow.com/a/17606289)
 String.prototype.replaceAll = function (search, replacement) {

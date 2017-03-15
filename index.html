@@ -50,12 +50,17 @@
     <!-- BBCode Parser -->
     <script src="JS/xbbcode.js"></script>
     <link rel="stylesheet" href="CSS/xbbcode.css">
+    <!-- Intro JS 
+    <script src="JS/intro.js"></script>
+    <link rel="stylesheet" href="CSS/introjs.css"> -->
     <script>
         var primaryColor;
         var secondaryColor;
         var desiredSiteColor;
         var faqQuestionColor;
         var faqAnwserColor;
+        var productsAltTextColor;
+        var productsPriceColor;
         
         $(function () {
             // Primary Color Picker
@@ -72,6 +77,12 @@
             setFAQQuestionColor();
             faqAnwserColor = '#FF0000';
             setFAQAnwserColor();
+            // Products - Alt Color
+            productsAltTextColor = "#A9A9A9";
+            setProductsAltTextColor();
+            // Products - Price Color
+            productsPriceColor = "#98FB98";
+            setProductsPriceColor();
         });
         $(document).ready(function () {
             // Sticky
@@ -94,6 +105,10 @@
             // Features Changes
             $(".featuresElements").change(function () {
                 updateOutput("#featuresPreview", "#featuresOutput");
+            });
+            // Products Changes
+            $(".productsElements").change(function () {
+                updateOutput("#productsPreview", "#productsOutput");
             });
              // Contact Changes
             $(".contactElements").change(function () {
@@ -123,7 +138,9 @@
             <img src="img/Logo/Black/3.png" alt="Logo">
             <br />
             <!-- User Mode Toggle -->
-            <input type="checkbox" data-onstyle="primary" data-toggle="toggle" data-on="Adv. Editor" data-off="Basic Editor" id="toggleUserMode">
+            <div data-intro='Hello step one!'>
+                <input type="checkbox" data-onstyle="primary" data-toggle="toggle" data-on="Adv. Editor" data-off="Basic Editor" id="toggleUserMode">
+            </div>
             <hr />
         </div>
         <ul class="nav nav-tabs">
@@ -136,7 +153,7 @@
             <li><a data-toggle="tab" href="#menuFAQ" id="generalShowFAQ">FAQ</a></li>
             <li><a data-toggle="tab" href="#menuVouches" id="generalShowVouches">Vouches</a></li>
             <li><a data-toggle="tab" href="#menuTOS" id="generalShowTOS">TOS</a></li>
-            <li><a data-toggle="tab" href="#menuExtras">Extras</a></li>
+            <li><a data-toggle="tab" href="#menuOutput">Output</a></li>
         </ul>
 
         <div class="tab-content">
@@ -162,11 +179,13 @@
                                 <label><input type="checkbox" value="2" class="generalShowContent" checked>Description</label>
                             </div>
                         </li>
+                        <!--
                         <li class="list-group-item">
                             <div class="checkbox">
                                 <label><input type="checkbox" value="3" class="generalShowContent" checked>Features</label>
                             </div>
                         </li>
+                            -->
                         <li class="list-group-item">
                             <div class="checkbox">
                                 <label><input type="checkbox" value="4" class="generalShowContent" checked>Products</label>
@@ -196,7 +215,7 @@
                 </div>
                 <!-- Right - Settings -->
                 <div id="generalSettings" class="rightHalf">
-                    <h4>Design Settings</h4>
+                    <h4>Color Settings</h4>
                     <div class="panel panel-default" id="generalDesignSettings">
                         <div class="panel-body">
                             <!-- Primary Color Picker -->
@@ -598,7 +617,7 @@
                 </div>
             </div>
             <!-- End Description -->
-            <!-- Features -->
+            <!-- Features (Hidden for now) -->
             <div id="menuFeatures" class="tab-pane fade">
                 <h3>Features</h3>
                 <p></p>
@@ -816,11 +835,11 @@
                                 <label for="productsAlign">Products Alignment:</label>
                                 <br />
                                 <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsAlign">
-                                    <label class="btn btn-primary">
-                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignLeft"> Left
-                                    </label>
                                     <label class="btn btn-primary active">
-                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignCenter" checked> Center
+                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignLeft" checked> Left
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" class="productsElements" name="productsAlign" id="productsAlignCenter"> Center
                                     </label>
                                     <label class="btn btn-primary">
                                         <input type="radio" class="productsElements" name="productsAlign" id="productsAlignRight"> Right
@@ -864,11 +883,176 @@
                             </div>
                         </div>
                     </div>
-                    <h4>Something</h4>
-                    <div class="panel panel-default" id="productsSomething??????">
+                    <h4>Features</h4>
+                    <div class="panel panel-default" id="productsFeatures">
                         <div class="panel-body">
-                            <!--  -->
-
+                            <!-- Features List -->
+                            <label for="productsFeaturesListInput">Feature List:</label>
+                            <div class="productsFeaturesListInput" id="productsFeaturesListInput">
+                                <div data-repeater-list="group-a">
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newfeature" class="form-control productsElements repeatedProductsFeatures required" value="Feature #1" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newfeature" class="form-control productsElements repeatedProductsFeatures required" value="Feature #2" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                    <div data-repeater-item class="input-group repeated-textbox">
+                                        <input type="text" name="newfeature" class="form-control productsElements repeatedProductsFeatures required" value="Feature #3" />
+                                        <span class="input-group-btn">
+                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <input data-repeater-create type="button" class="btn btn-success fullLength" value="Add" />
+                            </div>
+                            <!-- Features List End -->
+                        </div>
+                    </div>
+                    <h4>Products</h4>
+                    <div class="panel panel-default" id="productsProducts">
+                        <div class="panel-body">
+                            <!-- Products Text Color -->
+                            <label for="productsCPInfo" class="adv">Text Color:</label>
+                            <div id="productsCPInfo" class="input-group colorpicker-component subOption secondaryColor productsElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <br class="adv" />
+                            <!-- Products Text Size -->
+                            <div class="text-center adv">
+                                <label for="productsTextSize">Text Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsTextSize">
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize active">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeM" checked> M
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsTextSize" id="productsTextSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Products Alt Text Color -->
+                            <label for="productsCPInfoAlt" class="adv">Alternate Text Color:</label>
+                            <div id="productsCPInfoAlt" class="input-group colorpicker-component subOption secondaryColor productsElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <hr class="adv" />
+                            <!-- Products Price Text Color -->
+                            <label for="productsCPPrice" class="adv">Price Text Color:</label>
+                            <div id="productsCPPrice" class="input-group colorpicker-component subOption secondaryColor productsElements adv">
+                                <input type="text" value="#FFFFFF" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            <hr class="adv" />
+                            <!-- Features - Bullets Dropdown -->
+                            <label for="productsBulletDropdown">Bullet Style:</label>
+                            <br />
+                            <!-- Source: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_comp_dropdown-header&stacked=h -->
+                            <select class="selectpicker show-tick productsElements required" id="productsBulletDropdown">
+                                <optgroup label="Standard">
+                                    <option class="bullets">•</option>
+                                    <option class="bullets">○</option>
+                                    <option class="bullets">▪</option>
+                                    <option class="bullets">‣</option>
+                                </optgroup>
+                                <optgroup label="Special">
+                                    <option class="bullets">★</option>
+                                    <option class="bullets">✓</option>
+                                    <option class="bullets">❤</option>
+                                    <option class="bullets">☢</option>
+                                    <option class="bullets">߷</option>
+                                    <option class="bullets">⌦</option>
+                                    <option class="bullets">⚛</option>
+                                </optgroup>
+                            </select>
+                            <hr />
+                            <!-- Products Alt Text Size 
+                            <div class="text-center adv">
+                                <label for="productsAltTextSize">Alternate Text Size:</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons" style="margin:5px 0 10px 0;" id="productsAltTextSize">
+                                    <label class="btn btn-primary productsTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeXXS"> XXS
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeXS"> XS
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeS"> S
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize active">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeM" checked> M
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeL"> L
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeXL"> XL
+                                    </label>
+                                    <label class="btn btn-primary productsAltTextSize">
+                                        <input type="radio" class="productsElements" name="productsAltTextSize" id="productsAltTextSizeXXL"> XXL
+                                    </label>
+                                </div>
+                            </div> -->
+                            <hr class="adv" />
+                            <!-- Products List -->
+                            <label for="productsProductsList">Products List:</label>
+                            <!-- Products List Start -->
+                            <div class="productsRepeater" id="productsProductsList">
+                                <div data-repeater-list="Products">
+                                    <div data-repeater-item class="input-group repeated-textbox repeatedProducts">
+                                        <input type="text" name="prodName" class="form-control productsElements  repeatedProdName required" placeholder="Product Name" value="Product #1" />
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control productsElements repeatedProdPrice required"
+                                                           name="prodPrice" value="1" placeholder="Price" />
+                                                    <span class="input-group-addon">$</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Link</span>
+                                                    <input type="text" name="prodLink" placeholder="Product Link" class="form-control productsElements repeatedProdLink required" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <label for="productsFeaturesList">Product Features:</label>
+                                        <!-- features start -->
+                                        <div class="productsFeaturesList"></div>
+                                        <!-- features end -->
+                                        <div class="center">
+                                            <input data-repeater-delete type="button" class="btn btn-danger productsRemoveProduct" value="Remove" />
+                                        </div>
+                                        <hr />
+                                    </div>
+                                </div>
+                                <input data-repeater-create type="button" class="btn btn-success fullLength" id="productAdd" value="Add" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1375,12 +1559,12 @@
                 <p></p>
             </div>
             <!-- End TOS -->
-            <!-- Extras -->
-            <div id="menu9" class="tab-pane fade">
-                <h3>Extras</h3>
+            <!-- Output -->
+            <div id="menuOutput" class="tab-pane fade">
+                <h3>Output</h3>
                 <p></p>
             </div>
-            <!-- End Extras -->
+            <!-- End Output -->
         </div>
     </div>
 </body>

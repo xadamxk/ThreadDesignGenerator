@@ -1,6 +1,8 @@
 $(document).ready(function () {
+    updateProductFeatures();
     // Toggle User Mode
     $(".adv").hide();
+    $("#generalShowFeatures").hide();
     $('#toggleUserMode').change(function () {
         if ($('#toggleUserMode').prop('checked')) {
             // ON = Advanced Mode
@@ -21,7 +23,7 @@ $(document).ready(function () {
                 break;
             case '3': toggleNavVisibility($(this), "generalShowFeatures");
                 break;
-            case '4': toggleNavVisibility($(this), "generalShowPricing");
+            case '4': toggleNavVisibility($(this), "generalShowProducts");
                 break;
             case '5': toggleNavVisibility($(this), "generalShowContact");
                 break;
@@ -191,65 +193,113 @@ $(document).ready(function () {
     });
     // ---------------------------------------------------- Features Tab ----------------------------------------------------
     // Features Text Change
-    $("#featuresHeaderLabel, #featuresCPLabel, #featuresCPBullet, #featuresCPInfo, .repeatedFeature").on("input", function () {
-        updateOutput("#featuresPreview", "#featuresOutput");
-    });
+    //$("#featuresHeaderLabel, #featuresCPLabel, #featuresCPBullet, #featuresCPInfo").on("input", function () {
+    //    updateOutput("#featuresPreview", "#featuresOutput");
+    //});
+    // .repeatedFeature
+    //$(".repeatedFeature").on("input", function () {
+    //    updateOutput("#featuresPreview", "#featuresOutput");
+    //});
     // Features Update Output
-    $('body').on("click", "#featuresUpdateOutput", function () {
-        updateOutput("#featuresPreview", "#featuresOutput");
-    });
+    //$('body').on("click", "#featuresUpdateOutput", function () {
+    //    updateOutput("#featuresPreview", "#featuresOutput");
+    //});
     // Features List
-    $('.featureRepeater').repeater({
-        // (Optional)
-        // start with an empty list of repeaters. Set your first (and only)
-        // "data-repeater-item" with style="display:none;" and pass the
-        // following configuration flag
+    //$('.featureRepeater').repeater({
+    //    initEmpty: false,
+    //    defaultValues: {
+    //        'newfeature': 'New Feature'
+    //    },
+    //    show: function () {
+    //        $(this).slideDown();
+    //        updateOutput("#featuresPreview", "#featuresOutput");
+    //        updateProductFeatures();
+    //    },
+    //    hide: function (deleteElement) {
+    //        if (confirm('Are you sure you want to delete this element?')) {
+    //            $(this).slideUp(deleteElement);
+    //            // Hacky way of updating preview after animation
+    //            setTimeout(function () {
+    //                // Do something after 1 second 
+    //                updateOutput("#featuresPreview", "#featuresOutput");
+    //                updateProductFeatures();
+    //            }, 500);
+    //        }
+    //    },
+    //    ready: function (setIndexes) {
+    //        //$dragAndDrop.on('drop', setIndexes);
+    //    },
+    //    isFirstItemUndeletable: false
+    //});
+    // ---------------------------------------------------- Products Tab ----------------------------------------------------
+    // Products Input
+    $("#productsHeaderLabel, #productsCPLabel, .repeatedProdName, .repeatedProdPrice, .repeatedProdLink").on("input", function () {
+        updateOutput("#productsPreview", "#productsOutput");
+    });
+    // Products Update Output Button
+    $('body').on("click", "#productsUpdateOutput, .productsFeatureLabels, .productsRemoveProduct", function () {
+        updateOutput("#productsPreview", "#productsOutput");
+        //updateProductFeatures();
+    });
+    // Products Update Features (Changed to features)
+    $(".repeatedProductsFeatures").on("input", function () {
+        updateOutput("#productsPreview", "#productsOutput");
+        updateProductFeatures();
+    });
+    // Products Update Features (Add new feature)
+    $('body').on("click", "#productAdd", function () {
+        updateProductFeatures();
+    });
+    $('.productsRepeater').repeater({
         initEmpty: false,
-        // (Optional)
-        // "defaultValues" sets the values of added items.  The keys of
-        // defaultValues refer to the value of the input's name attribute.
-        // If a default value is not specified for an input, then it will
-        // have its value cleared.
         defaultValues: {
-            'newfeature': 'New Feature'
+            'prodName': 'Product',
+            'prodPrice': '1'
         },
-        // (Optional)
-        // "show" is called just after an item is added.  The item is hidden
-        // at this point.  If a show callback is not given the item will
-        // have $(this).show() called on it.
         show: function () {
             $(this).slideDown();
-            updateOutput("#featuresPreview", "#featuresOutput");
+            updateOutput("#productsPreview", "#productsOutput");
         },
-        // (Optional)
-        // "hide" is called when a user clicks on a data-repeater-delete
-        // element.  The item is still visible.  "hide" is passed a function
-        // as its first argument which will properly remove the item.
-        // "hide" allows for a confirmation step, to send a delete request
-        // to the server, etc.  If a hide callback is not given the item
-        // will be deleted.
         hide: function (deleteElement) {
             if (confirm('Are you sure you want to delete this element?')) {
                 $(this).slideUp(deleteElement);
                 // Hacky way of updating preview after animation
                 setTimeout(function () {
                     // Do something after 1 second 
-                    updateOutput("#featuresPreview", "#featuresOutput");
+                    //updateOutput("#featuresPreview", "#featuresOutput");
                 }, 500);
             }
         },
-        // (Optional)
-        // You can use this if you need to manually re-index the list
-        // for example if you are using a drag and drop library to reorder
-        // list items.
         ready: function (setIndexes) {
-            //$dragAndDrop.on('drop', setIndexes);
         },
-        // (Optional)
-        // Removes the delete button from the first list item,
-        // defaults to false.
         isFirstItemUndeletable: false
-        });
+    });
+    // Features List
+    $('.productsFeaturesListInput').repeater({
+        initEmpty: false,
+        defaultValues: {
+            'newfeature': 'New Feature'
+        },
+        show: function () {
+            $(this).slideDown();
+            //updateOutput("#featuresPreview", "#featuresOutput");
+            updateProductFeatures();
+        },
+        hide: function (deleteElement) {
+            if (confirm('Are you sure you want to delete this element?')) {
+                $(this).slideUp(deleteElement);
+                // Hacky way of updating preview after animation
+                setTimeout(function () {
+                    // Do something after 1 second 
+                    //updateOutput("#featuresPreview", "#featuresOutput");
+                    updateProductFeatures();
+                }, 500);
+            }
+        },
+        ready: function (setIndexes) {
+        },
+        isFirstItemUndeletable: false
+    });
     // ---------------------------------------------------- Contact Tab ----------------------------------------------------
     // Contact Text Change
     $("#contactHeaderLabel, #contactCPLabel, #contactCPInfo, #contactPMHyperlinkText, #contactPMTitle, #contactPMBody, #contactIMHandle ").on("input", function () {

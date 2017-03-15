@@ -59,12 +59,15 @@ h4{
 /* Required Fields */
 .required {
   border-color: red !important;
-} .required[type=checkbox]{
+}.required[type=checkbox]{
     outline: 1px solid #F00;
 }
 
-  /* FAQ - Double line delete */
-  .btnDbl{
+ /* FAQ - Double line delete */
+ .btnDbl{
       height: 68px;
   }
 
+ .center{
+     text-align: center;
+ }
