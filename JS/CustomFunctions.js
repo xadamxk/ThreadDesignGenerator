@@ -21,6 +21,8 @@ function updateOutput(previewElement, outputElement) {
         output = updateFAQOutput();
     } else if (previewElement == "#vouchesPreview") {
         output = updateVouchesOutput();
+    } else if (previewElement == "#outputPreview") {
+        output = updateoutputOutput();
     }
     $(outputElement).val(output);
     updatePreview(output, previewElement);

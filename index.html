@@ -905,7 +905,7 @@
                                     <div data-repeater-item class="input-group repeated-textbox">
                                         <input type="text" name="newfeature" class="form-control productsElements repeatedProductsFeatures required" value="Feature #3" />
                                         <span class="input-group-btn">
-                                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                                            <input data-repeater-delete type="button" class="btn btn-danger productsRemoveFeature" value="Delete" />
                                         </span>
                                     </div>
                                 </div>
@@ -1312,11 +1312,11 @@
                                     <label class="btn btn-primary faqLabelSize">
                                         <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeL"> L
                                     </label>
-                                    <label class="btn btn-primary faqLabelSize">
-                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXL"> XL
-                                    </label>
                                     <label class="btn btn-primary faqLabelSize active">
-                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXXL" checked> XXL
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary faqLabelSize">
+                                        <input type="radio" class="faqElements" name="faqLabelSize" id="faqLabelSizeXXL"> XXL
                                     </label>
                                 </div>
                             </div>
@@ -1468,11 +1468,11 @@
                                     <label class="btn btn-primary vouchesLabelSize">
                                         <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeL"> L
                                     </label>
-                                    <label class="btn btn-primary vouchesLabelSize">
-                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXL"> XL
-                                    </label>
                                     <label class="btn btn-primary vouchesLabelSize active">
-                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXL" checked> XXL
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXL" checked> XL
+                                    </label>
+                                    <label class="btn btn-primary vouchesLabelSize">
+                                        <input type="radio" class="vouchesElements" name="vouchesLabelSize" id="vouchesLabelSizeXXL"> XXL
                                     </label>
                                 </div>
                             </div>
@@ -1557,12 +1557,28 @@
             <div id="menuTOS" class="tab-pane fade">
                 <h3>TOS</h3>
                 <p></p>
+                Work in Progress...
             </div>
             <!-- End TOS -->
             <!-- Output -->
             <div id="menuOutput" class="tab-pane fade">
                 <h3>Output</h3>
                 <p></p>
+                <div id="outputFullDiv">
+                    <h4>Copy the following:</h4>
+                    <div class="panel panel-default" id="outputOutputDiv">
+                        <div class="panel-body">
+                            <div class="form-group text-center">
+                                <textarea class="form-control" rows="10" id="outputOutput"></textarea><button type="button" class="btn btn-primary updateButton" id="outputUpdateOutput">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Preview</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body preview" id="outputPreview">
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Output -->
         </div>

@@ -237,18 +237,19 @@ $(document).ready(function () {
         updateOutput("#productsPreview", "#productsOutput");
     });
     // Products Update Output Button
-    $('body').on("click", "#productsUpdateOutput, .productsFeatureLabels, .productsRemoveProduct", function () {
+    $('body').on("click", "#productsUpdateOutput, .productsFeatureLabels, .productsRemoveProduct, .productsRemoveFeature", function () {
         updateOutput("#productsPreview", "#productsOutput");
         //updateProductFeatures();
     });
     // Products Update Features (Changed to features)
     $(".repeatedProductsFeatures").on("input", function () {
-        updateOutput("#productsPreview", "#productsOutput");
         updateProductFeatures();
+        updateOutput("#productsPreview", "#productsOutput");
     });
     // Products Update Features (Add new feature)
     $('body').on("click", "#productAdd", function () {
         updateProductFeatures();
+        updateOutput("#productsPreview", "#productsOutput");
     });
     $('.productsRepeater').repeater({
         initEmpty: false,
@@ -484,5 +485,12 @@ $(document).ready(function () {
     // Contact Update Output
     $('body').on("click", "#vouchesUpdateOutput", function () {
         updateOutput("#vouchesPreview", "#vouchesOutput");
+    });
+
+
+// ---------------------------------------------------- Output Tab ----------------------------------------------------
+    // Contact Update Output
+    $('body').on("click", "#outputUpdateOutput", function () {
+        updateOutput("#outputPreview", "#outputOutput");
     });
 });

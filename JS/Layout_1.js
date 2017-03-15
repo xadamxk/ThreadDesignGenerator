@@ -98,6 +98,8 @@ function updateHeaderOutput() {
     // Alignment End
     output += "[/align]";
 
+    output += "/n/n";
+
     return output;
 }
 
@@ -223,6 +225,8 @@ function updateDescriptionOutput() {
     // Align End
     output += "[/align]";
 
+    output += "/n/n";
+
     return output;
 }
 
@@ -317,6 +321,8 @@ function updateFeaturesOutput() {
 
     // Align End
     output += "[/align]";
+
+    output += "/n/n";
 
     return output;
 }
@@ -477,6 +483,8 @@ function updateProductsOutput() {
     // Align End
     output += "[/align]";
 
+    output += "/n/n";
+
     return output;
 }
 
@@ -615,6 +623,9 @@ function updateContactOutput() {
 
     // Align End
     output += "[/align]";
+
+    output += "/n/n";
+
     return output;
 }
 
@@ -721,6 +732,8 @@ function updateFAQOutput() {
     // Align End
     output += "[/align]";
 
+    output += "/n/n";
+
     return output;
 }
 
@@ -823,6 +836,47 @@ function updateVouchesOutput() {
 
     // Alignment End
     output += "[/align]";
+
+    output += "/n/n";
+
+    return output;
+}
+
+// Layout 1 - Output
+function updateoutputOutput() {
+    var output = "";
+    //var genHeader = false; // 1
+    //var genDescription = false; // 2
+    //var genFeatures = false; // 3
+    //var genProducts = false; // 4
+    //var genContact = false; // 5
+    //var genFAQ = false; // 6
+    //var genVouches = false; // 7
+    //var genTOS = false; // 8
+
+    $('.generalShowContent').each(function (index) {
+        // Match Navigation with Thread Contents
+        switch ($(this).val()) {
+            case '1': output += updateHeaderOutput();
+                break;
+            case '2': output += updateDescriptionOutput();
+                break;
+            case '3': output += updateFeaturesOutput();
+                break;
+            case '4': output += updateProductsOutput();
+                break;
+            case '5': output += updateContactOutput();
+                break;
+            case '6': output += updateFAQOutput();
+                break;
+            case '7': output += updateVouchesOutput();
+                break;
+            case '8': output += "";
+                break;
+        }
+        //output += "/n";
+    });
+
 
     return output;
 }
