@@ -859,23 +859,25 @@ function updateoutputOutput() {
 
     $('.generalShowContent').each(function (index) {
         // Match Navigation with Thread Contents
-        switch ($(this).val()) {
-            case '1': output += updateHeaderOutput();
-                break;
-            case '2': output += updateDescriptionOutput();
-                break;
-            case '3': output += updateFeaturesOutput();
-                break;
-            case '4': output += updateProductsOutput();
-                break;
-            case '5': output += updateContactOutput();
-                break;
-            case '6': output += updateFAQOutput();
-                break;
-            case '7': output += updateVouchesOutput();
-                break;
-            case '8': output += "";
-                break;
+        if ($(this).prop("checked")) {
+            switch ($(this).val()) {
+                case '1': output += updateHeaderOutput();
+                    break;
+                case '2': output += updateDescriptionOutput();
+                    break;
+                case '3': output += updateFeaturesOutput();
+                    break;
+                case '4': output += updateProductsOutput();
+                    break;
+                case '5': output += updateContactOutput();
+                    break;
+                case '6': output += updateFAQOutput();
+                    break;
+                case '7': output += updateVouchesOutput();
+                    break;
+                case '8': output += "";
+                    break;
+            }
         }
         //output += "/n";
     });
