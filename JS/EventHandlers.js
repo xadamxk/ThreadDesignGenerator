@@ -3,6 +3,7 @@ $(document).ready(function () {
     // Toggle User Mode
     $(".adv").hide();
     $("#generalShowFeatures").hide();
+    $("#contactEnableXMPPDiv").toggle(false);
     $('#toggleUserMode').change(function () {
         if ($('#toggleUserMode').prop('checked')) {
             // ON = Advanced Mode
@@ -326,12 +327,17 @@ $(document).ready(function () {
         $('body').on("click", "#contactUpdateOutput", function () {
             updateOutput("#contactPreview", "#contactOutput");
         });
-        // Contact Enable Skype MyCode
+        // Contact Enable Skype/XMPP MyCode
         $(".contactIMServices").change(function () {
             if ($("#contactIMServiceSkype").prop("checked")) {
                 $("#contactEnableSkypeDiv").toggle(true);
             } else {
                 $("#contactEnableSkypeDiv").toggle(false);
+            }
+            if ($("#contactIMServiceXMPP").prop("checked")) {
+                $("#contactEnableXMPPDiv").toggle(true);
+            } else {
+                $("#contactEnableXMPPDiv").toggle(false);
             }
         });
     // ---------------------------------------------------- FAQ Tab ----------------------------------------------------

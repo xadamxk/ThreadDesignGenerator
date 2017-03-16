@@ -593,7 +593,10 @@ function updateContactOutput() {
         if ($("#contactEnableSkypeMyCode").prop("checked") && $("#contactIMServiceSkype").prop("checked")) {
             // IM Handle - Skype MyCode
             output += "[skype]" + $("#contactIMHandle").val() + "[/skype]\n";
-        } else{
+        } else if ($("#contactEnableXMPPMyCode").prop("checked") && $("#contactIMServiceXMPP").prop("checked")) {
+            // IM Handle - XMPP MyCode
+            output += "[xmpp]" + $("#contactIMHandle").val() + "[/xmpp]\n";
+        } else {
             output += "[b]";
             if ($("#contactIMServiceSkype").prop("checked")) {
                 output += "Skype";
