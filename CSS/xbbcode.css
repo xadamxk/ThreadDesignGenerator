@@ -108,7 +108,7 @@
 .xbbcode-size-39 {font-size:39px;}
 .xbbcode-size-40 {font-size:40px;}
 
-.xbbcode-skype {
+.xbbcode-postbitBtn {
     color: white;
     font-size: 14pt;
     background-color: #072948;
@@ -124,7 +124,7 @@
     font-family: arial;
 }
 
-.xbbcode-skype img{
+.xbbcode-postbitBtn img{
     position: relative;
     bottom: 3px;
     margin-right: 3px;
