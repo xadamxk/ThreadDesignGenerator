@@ -35,13 +35,15 @@ THE SOFTWARE.
     - Update list (numbered & alphabetical)
     - Implement help tag
     - Implement /Slap feature
-    - Implement past tag
+    - Implement paste tag
     - Implement ig tag (instagram)
+    - Implement spoilers [S/spoiler] [sp]
+    - Implement nested lists
+
+    Completed:
     - Implement ltc tag (postbit LiteCoin)
     - Implement btc tag (postbit Bitcoin)
     - Update color to work with 'transparent'
-    - Implement spoilers [S/spoiler] [sp]
-    - Implement nested lists
     ----------------------------------------------------------------------------
     Modification Notes:
     - (02/26/2017) Modified 'size' to work with xx-small through xx-large
@@ -49,7 +51,8 @@ THE SOFTWARE.
     - (03/05/2017) Created 'pmme' tag
     - (03/06/2017) Created 'skype' tag
     - (03/16/2017) Created 'xmpp' tag
-    - (03/17/2017) Removed bbcode, center, face, li, noparse, ol, right, small, sub, sup, table. tbody, tfoot, thead, td, th, tr, ul, 
+    - (03/17/2017) Removed bbcode, center, face, li, noparse, ol, right, small, sub, sup, table. tbody, tfoot, thead, td, th, tr, ul tags
+    - (03/17/2017) Implemented BTC, LTC tags | Updated color tag to work with 'transparent'
 */
 
 var XBBCODE = (function() {
@@ -168,11 +171,15 @@ var XBBCODE = (function() {
                 params = params || '';
                 
                 var colorCode = (params.substr(1)).toLowerCase() || "black";
+                console.log(colorCode);
                 colorNamePattern.lastIndex = 0;
                 colorCodePattern.lastIndex = 0;
-                if ( !colorNamePattern.test( colorCode ) ) {
+                if (colorCode == "transparent") {
+                    colorCode = "#333333";
+                }
+                else if ( !colorNamePattern.test( colorCode ) ) {
                     if ( !colorCodePattern.test( colorCode ) ) {
-                        colorCode = "black";
+                        colorCode = "#cccccc";
                     } else {
                         if (colorCode.substr(0,1) !== "#") {
                             colorCode = "#" + colorCode;
@@ -263,7 +270,7 @@ var XBBCODE = (function() {
                 params = params || '';
                 //console.log(params.substr(1));
                 return '<span class="xbbcode-postbitBtn">' +
-                    '<img src="' + skypeIconURL + '" alt="Skype Icon">';
+                    '<img src="' + ltcIconUrl + '" alt="LTC Icon">LiteCoin: ';
             },
             closeTag: function (params, content) {
                 return '</span>';
