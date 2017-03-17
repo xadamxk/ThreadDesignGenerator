@@ -42,11 +42,14 @@ $(document).ready(function () {
         setPrimaryColorPickers();
     });
     // General Primary Listener
-    $("#generalCPPrimary").on("input", function () {
-        if (isHexaColor($("#generalCPPrimary").colorpicker('getValue').replace("#", ""))) {
-            primaryColor = $("#generalCPPrimary").colorpicker('getValue');
-            setPrimaryColorPickers();
-        }
+    $("#generalCPPrimary").on("input paste", function () {
+        setTimeout(function () {
+            console.log($("#generalCPPrimary").colorpicker('getValue'));
+            if (isHexaColor($("#generalCPPrimary").colorpicker('getValue').replace("#", ""))) {
+                primaryColor = $("#generalCPPrimary").colorpicker('getValue');
+                setPrimaryColorPickers();
+            }
+        }, 500);
     });
     // General Random Secondary Listener 
     $('body').on("click", "#generalSecondaryRandom", function () {

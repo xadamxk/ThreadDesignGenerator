@@ -378,7 +378,7 @@ function updateProductsOutput() {
 
     // Product List
     $(".repeatedProducts").each(function (index) {
-        console.log("num repeated products: " + (index+1));
+        //console.log("num repeated products: " + (index+1));
         // Product Link Start
         if ($(".repeatedProdLink:eq(" + index + ")").val().length > 0) {
             output += "[url=" + $(".repeatedProdLink:eq(" + index + ")").val() + "]";

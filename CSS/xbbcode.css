@@ -1,6 +1,8 @@
 /*
     Modification Notes:
-    - (2/26/2017) added class for align (left, center, right)
+    - (02/26/2017) added class for align (left, center, right)
+    - (03/16/2017) added class for bit-buttons (Skype, XMPP)
+    - (03/17/2017) Removed center class.
 */
 .xbbcode-align{
     width:100%;
@@ -22,13 +24,6 @@
 
 .xbbcode-blockquote {
 
-}
-
-.xbbcode-center {
-    margin-left:auto;
-	margin-right:auto;
-	display: block;
-	text-align: center;
 }
 
 .xbbcode-code {

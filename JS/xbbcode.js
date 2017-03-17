@@ -28,12 +28,28 @@ THE SOFTWARE.
     This module allows you to parse BBCode and to extend to the mark-up language
     to add in your own tags.
     ----------------------------------------------------------------------------
+    To-Do List for Future Tags:
+    - Fix Quote (Style)
+    - Fix Code (Style)
+    - Fix img (dimensions)
+    - Update list (numbered & alphabetical)
+    - Implement help tag
+    - Implement /Slap feature
+    - Implement past tag
+    - Implement ig tag (instagram)
+    - Implement ltc tag (postbit LiteCoin)
+    - Implement btc tag (postbit Bitcoin)
+    - Update color to work with 'transparent'
+    - Implement spoilers [S/spoiler] [sp]
+    - Implement nested lists
+    ----------------------------------------------------------------------------
     Modification Notes:
-    - (02/26/17) Modified 'size' to work with xx-small through xx-large
-    - (02/26/17) Created 'align' tag
-    - (03/05/17) Created 'pmme' tag
-    - (03/06/17) Created 'skype' tag
-    - (03/16/17) Created 'xmpp' tag
+    - (02/26/2017) Modified 'size' to work with xx-small through xx-large
+    - (02/26/2017) Created 'align' tag
+    - (03/05/2017) Created 'pmme' tag
+    - (03/06/2017) Created 'skype' tag
+    - (03/16/2017) Created 'xmpp' tag
+    - (03/17/2017) Removed bbcode, center, face, li, noparse, ol, right, small, sub, sup, table. tbody, tfoot, thead, td, th, tr, ul, 
 */
 
 var XBBCODE = (function() {
@@ -42,8 +58,11 @@ var XBBCODE = (function() {
     // -----------------------------------------------------------------------------
     // Set up private variables
     // -----------------------------------------------------------------------------
-    var skypeIconURL = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/skypeIcon.gif?raw=true";
-    var xmppIconURL = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/xmppIcon.gif?raw=true";
+    var skypeIconURL = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Icons/skypeIcon.gif?raw=true";
+    var xmppIconURL = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Icons/xmppIcon.gif?raw=true";
+    var btcIconUrl = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Icons/btcIcon.png?raw=true";
+    var ltcIconUrl = "https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Icons/ltcIcon.png?raw=true";
+
     var me = {},
         urlPattern = /^(?:https?|file|c):(?:\/{1,3}|\\{1})[-a-zA-Z0-9:;,@#%&()~_?\+=\/\\\.]*$/,
         colorNamePattern = /^(?:aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen)$/,
@@ -120,27 +139,21 @@ var XBBCODE = (function() {
                 return '</span>';
             }
         },
+        "btc": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                return '<span class="xbbcode-postbitBtn">' +
+                    '<img src="' + btcIconUrl + '" alt="BTC Icon">Bitcoin: ';
+            },
+            closeTag: function (params, content) {
+                return '</span>';
+            }
+        },
         /*
             This tag does nothing and is here mostly to be used as a classification for
             the bbcode input when evaluating parent-child tag relationships
         */
-        "bbcode": {
-            openTag: function(params,content) {
-                return '';
-            },
-            closeTag: function(params,content) {
-                return '';
-            }
-        },
-        "center": {
-            openTag: function(params,content) {
-                return '<span class="xbbcode-center">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-
         "code": {
             openTag: function(params,content) {
                 return '<span class="xbbcode-code">';
@@ -195,23 +208,6 @@ var XBBCODE = (function() {
                 return '</a>';
             }
         },
-        "face": {
-            openTag: function(params,content) {
-                params = params || '';
-
-                var faceCode = params.substr(1) || "inherit";
-                fontFacePattern.lastIndex = 0;
-                if ( !fontFacePattern.test( faceCode ) ) {
-                        faceCode = "inherit";
-                }
-                return '<span style="font-family:' + faceCode + '">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-
-
         "font": {
             openTag: function(params,content) {
                 params = params || '';
@@ -253,55 +249,6 @@ var XBBCODE = (function() {
             },
             displayContent: false
         },
-        "justify": {
-            openTag: function(params,content) {
-                return '<span class="xbbcode-justify">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-        "large": {
-            openTag: function(params,content) {
-                params = params || '';
-
-                var colorCode = params.substr(1) || "inherit";
-                colorNamePattern.lastIndex = 0;
-                colorCodePattern.lastIndex = 0;
-                if ( !colorNamePattern.test( colorCode ) ) {
-                    if ( !colorCodePattern.test( colorCode ) ) {
-                        colorCode = "inherit";
-                    } else {
-                        if (colorCode.substr(0,1) !== "#") {
-                            colorCode = "#" + colorCode;
-                        }
-                    }
-                }
-
-
-                return '<span class="xbbcode-size-36" style="color:' + colorCode + '">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-        "left": {
-            openTag: function(params,content) {
-                return '<span class="xbbcode-left">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-        "li": {
-            openTag: function(params,content) {
-                return "<li>";
-            },
-            closeTag: function(params,content) {
-                return "</li>";
-            },
-            restrictParentsTo: ["list","ul","ol"]
-        },
         "list": {
             openTag: function(params,content) {
                 return '<ul>';
@@ -311,23 +258,16 @@ var XBBCODE = (function() {
             },
             restrictChildrenTo: ["*", "li"]
         },
-        "noparse": {
-            openTag: function(params,content) {
-                return '';
+        "ltc": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                return '<span class="xbbcode-postbitBtn">' +
+                    '<img src="' + skypeIconURL + '" alt="Skype Icon">';
             },
-            closeTag: function(params,content) {
-                return '';
-            },
-            noParse: true
-        },
-        "ol": {
-            openTag: function(params,content) {
-                return '<ol>';
-            },
-            closeTag: function(params,content) {
-                return '</ol>';
-            },
-            restrictChildrenTo: ["*", "li"]
+            closeTag: function (params, content) {
+                return '</span>';
+            }
         },
         "php": {
             openTag: function(params,content) {
@@ -354,14 +294,6 @@ var XBBCODE = (function() {
             },
             closeTag: function(params,content) {
                 return '</blockquote>';
-            }
-        },
-        "right": {
-            openTag: function(params,content) {
-                return '<span class="xbbcode-right">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
             }
         },
         "s": {
@@ -415,114 +347,6 @@ var XBBCODE = (function() {
                 return '</span>';
             }
         },
-        "small": {
-            openTag: function(params,content) {
-                params = params || '';
-
-                var colorCode = params.substr(1) || "inherit";
-                colorNamePattern.lastIndex = 0;
-                colorCodePattern.lastIndex = 0;
-                if ( !colorNamePattern.test( colorCode ) ) {
-                    if ( !colorCodePattern.test( colorCode ) ) {
-                        colorCode = "inherit";
-                    } else {
-                        if (colorCode.substr(0,1) !== "#") {
-                            colorCode = "#" + colorCode;
-                        }
-                    }
-                }
-
-                return '<span class="xbbcode-size-10" style="color:' + colorCode + '">';
-            },
-            closeTag: function(params,content) {
-                return '</span>';
-            }
-        },
-
-        "sub": {
-            openTag: function(params,content) {
-                return '<sub>';
-            },
-            closeTag: function(params,content) {
-                return '</sub>';
-            }
-        },
-        "sup": {
-            openTag: function(params,content) {
-                return '<sup>';
-            },
-            closeTag: function(params,content) {
-                return '</sup>';
-            }
-        },
-
-        "table": {
-            openTag: function(params,content) {
-                return '<table class="xbbcode-table">';
-            },
-            closeTag: function(params,content) {
-                return '</table>';
-            },
-            restrictChildrenTo: ["tbody","thead", "tfoot", "tr"]
-        },
-        "tbody": {
-            openTag: function(params,content) {
-                return '<tbody>';
-            },
-            closeTag: function(params,content) {
-                return '</tbody>';
-            },
-            restrictChildrenTo: ["tr"],
-            restrictParentsTo: ["table"]
-        },
-        "tfoot": {
-            openTag: function(params,content) {
-                return '<tfoot>';
-            },
-            closeTag: function(params,content) {
-                return '</tfoot>';
-            },
-            restrictChildrenTo: ["tr"],
-            restrictParentsTo: ["table"]
-        },
-        "thead": {
-            openTag: function(params,content) {
-                return '<thead class="xbbcode-thead">';
-            },
-            closeTag: function(params,content) {
-                return '</thead>';
-            },
-            restrictChildrenTo: ["tr"],
-            restrictParentsTo: ["table"]
-        },
-        "td": {
-            openTag: function(params,content) {
-                return '<td class="xbbcode-td">';
-            },
-            closeTag: function(params,content) {
-                return '</td>';
-            },
-            restrictParentsTo: ["tr"]
-        },
-        "th": {
-            openTag: function(params,content) {
-                return '<th class="xbbcode-th">';
-            },
-            closeTag: function(params,content) {
-                return '</th>';
-            },
-            restrictParentsTo: ["tr"]
-        },
-        "tr": {
-            openTag: function(params,content) {
-                return '<tr class="xbbcode-tr">';
-            },
-            closeTag: function(params,content) {
-                return '</tr>';
-            },
-            restrictChildrenTo: ["td","th"],
-            restrictParentsTo: ["table","tbody","tfoot","thead"]
-        },
         "u": {
             openTag: function(params,content) {
                 return '<span class="xbbcode-u">';
@@ -530,15 +354,6 @@ var XBBCODE = (function() {
             closeTag: function(params,content) {
                 return '</span>';
             }
-        },
-        "ul": {
-            openTag: function(params,content) {
-                return '<ul>';
-            },
-            closeTag: function(params,content) {
-                return '</ul>';
-            },
-            restrictChildrenTo: ["*", "li"]
         },
         "url": {
             openTag: function(params,content) {

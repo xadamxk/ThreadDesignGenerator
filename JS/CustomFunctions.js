@@ -39,7 +39,7 @@ function updatePreview(output, outContainer) {
 }
 // Check if hex string is valid
 function isHexaColor(sNum) {
-    return (typeof sNum === "string") && sNum.length === 6
+    return (typeof sNum === "string") && (sNum.length === 6)
            && !isNaN(parseInt(sNum, 16));
 }
 // toggle Sub Header Inputs
