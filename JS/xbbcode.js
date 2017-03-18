@@ -38,7 +38,6 @@ THE SOFTWARE.
     - Implement paste tag
     - Implement ig tag (instagram)
     - Implement spoilers [S/spoiler] [sp]
-    - Implement nested lists
 
     Completed:
     - Implement ltc tag (postbit LiteCoin)
@@ -171,7 +170,6 @@ var XBBCODE = (function() {
                 params = params || '';
                 
                 var colorCode = (params.substr(1)).toLowerCase() || "black";
-                console.log(colorCode);
                 colorNamePattern.lastIndex = 0;
                 colorCodePattern.lastIndex = 0;
                 if (colorCode == "transparent") {
