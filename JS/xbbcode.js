@@ -37,12 +37,13 @@ THE SOFTWARE.
     - Implement /Slap feature
     - Implement paste tag
     - Implement ig tag (instagram)
-    - Implement spoilers [S/spoiler] [sp]
+    - Implement youtube tags (http://stackoverflow.com/a/18681824)
 
     Completed:
     - Implement ltc tag (postbit LiteCoin)
     - Implement btc tag (postbit Bitcoin)
     - Update color to work with 'transparent'
+    - Implement spoilers [S/spoiler] [sp]
     ----------------------------------------------------------------------------
     Modification Notes:
     - (02/26/2017) Modified 'size' to work with xx-small through xx-large
@@ -52,6 +53,7 @@ THE SOFTWARE.
     - (03/16/2017) Created 'xmpp' tag
     - (03/17/2017) Removed bbcode, center, face, li, noparse, ol, right, small, sub, sup, table. tbody, tfoot, thead, td, th, tr, ul tags
     - (03/17/2017) Implemented BTC, LTC tags | Updated color tag to work with 'transparent'
+    - (03/18/2017) Implemented [Spoiler] [sp] tags
 */
 
 var XBBCODE = (function() {
@@ -228,7 +230,6 @@ var XBBCODE = (function() {
                 return '</span>';
             }
         },
-
         "i": {
             openTag: function(params,content) {
                 return '<span class="xbbcode-i">';
@@ -352,6 +353,44 @@ var XBBCODE = (function() {
                 return '</span>';
             }
         },
+        "sp": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                if (params.length < 1 || params == "=")
+                    params = "Spoiler";
+                else
+                    params = params.substr(1);
+
+                return '<div class="spoiler_header">' + params + ' <a class="xbbcode-removeAnchorAttrs" href="javascript:void(0);" ' +
+                    ' onclick="javascript:if(parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display==\'block\')' +
+                    '{parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display=\'none\';this.innerHTML=\'(Click to View)\';}' +
+                    'else {parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display=\'block\';this.innerHTML=\'(Click to Hide)\';}">(Click to View)</a></div>' +
+                    '<div class="spoiler_body" style="display: none;">';
+            },
+            closeTag: function (params, content) {
+                return '</div>';
+            }
+        },
+        "spoiler": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                if (params.length < 1 || params == "=")
+                    params = "Spoiler";
+                else
+                    params = params.substr(1);
+
+                return '<div class="spoiler_header">' + params + ' <a class="xbbcode-removeAnchorAttrs" href="javascript:void(0);" ' +
+                    ' onclick="javascript:if(parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display==\'block\')' +
+                    '{parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display=\'none\';this.innerHTML=\'(Click to View)\';}' +
+                    'else {parentNode.parentNode.getElementsByTagName(\'div\')[1].style.display=\'block\';this.innerHTML=\'(Click to Hide)\';}">(Click to View)</a></div>' +
+                    '<div class="spoiler_body" style="display: none;">';
+            },
+            closeTag: function (params, content) {
+                return '</div>';
+            }
+        },
         "u": {
             openTag: function(params,content) {
                 return '<span class="xbbcode-u">';
@@ -382,6 +421,17 @@ var XBBCODE = (function() {
                 return '</a>';
             }
         },
+        "xmpp": {
+            openTag: function (params, content) {
+                params = params || '';
+                //console.log(params.substr(1));
+                return '<span class="xbbcode-postbitBtn">' +
+                    '<img src="' + xmppIconURL + '" alt="XMPP Icon">';
+            },
+            closeTag: function (params, content) {
+                return '</span>';
+            }
+        },
         /*
             The [*] tag is special since the user does not define a closing [/*] tag when writing their bbcode.
             Instead this module parses the code and adds the closing [/*] tag in for them. None of the tags you
@@ -395,17 +445,6 @@ var XBBCODE = (function() {
                 return "</li>";
             },
             restrictParentsTo: ["list","ul","ol"]
-        },
-        "xmpp": {
-            openTag: function (params, content) {
-                params = params || '';
-                //console.log(params.substr(1));
-                return '<span class="xbbcode-postbitBtn">' +
-                    '<img src="' + xmppIconURL + '" alt="XMPP Icon">';
-            },
-            closeTag: function (params, content) {
-                return '</span>';
-            }
         }
     };
 
