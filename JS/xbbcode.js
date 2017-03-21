@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011 Patrick Gillespie, http://patorjk.com/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +29,6 @@ THE SOFTWARE.
     to add in your own tags.
     ----------------------------------------------------------------------------
     To-Do List for Future Tags:
-    - Fix Quote (Style)
     - Fix Code (Style)
     - Fix img (dimensions)
     - Update list (numbered & alphabetical)
@@ -54,6 +53,7 @@ THE SOFTWARE.
     - (03/17/2017) Removed bbcode, center, face, li, noparse, ol, right, small, sub, sup, table. tbody, tfoot, thead, td, th, tr, ul tags
     - (03/17/2017) Implemented BTC, LTC tags | Updated color tag to work with 'transparent'
     - (03/18/2017) Implemented [Spoiler] [sp] tags
+    - (03/21/2017) Fixed [Quote] style
 */
 
 var XBBCODE = (function() {
@@ -295,8 +295,33 @@ var XBBCODE = (function() {
             }
         },
         "quote": {
-            openTag: function(params,content) {
-                return '<blockquote class="xbbcode-blockquote">';
+            openTag: function (params, content) {
+                var quoteName = "";
+                var quotePID = "";
+                var quoteTSP = "";
+                if (params.length > 0) {
+                    var quoteInfo = params.split("='");
+                    // Quote Attributes (Name, PID, Timestamp)
+                    for (var i = 0; i < quoteInfo.length; i++) {
+                        quoteInfo[i] = quoteInfo[i].substring(0, quoteInfo[i].indexOf("'"));
+                    }
+                    // Name
+                    if (params.includes("='") && quoteInfo[1].length > 0) {
+                        quoteName = quoteInfo[1] + " Wrote: ";
+                    } else {
+                        quoteName = " Quote:";
+                    }
+                    // PID
+                    if (params.includes("pid='") && quoteInfo[2].length > 0) {
+                        quotePID = "<a href=\"https://hackforums.net/showthread.php?pid=" + quoteInfo[2] + "#" + quoteInfo[2] + "\" class=\"xbbcode-quick_jump\">►</a>";
+                    }
+                    // Timestamp
+                    if (params.includes("dateline='") && quoteInfo[3].length > 0) {
+                        var myDate = new Date(parseInt(quoteInfo[3]) * 1000);
+                        quoteTSP = "<span>" + myDate.toLocaleString() + "</span>";
+                    }
+                }
+                return '<blockquote class="xbbcode-blockquote"><cite>' + quoteName + quotePID + quoteTSP + '</cite>';
             },
             closeTag: function(params,content) {
                 return '</blockquote>';

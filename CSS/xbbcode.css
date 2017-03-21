@@ -23,7 +23,24 @@
 }
 
 .xbbcode-blockquote {
+    border: 1px dashed #ccc;
+    color: #ccc;
+    margin: 0;
+    background: #777777;
+    padding: 4px;
+}
 
+.xbbcode-blockquote cite {
+    font-weight: bold;
+    border-bottom: 1px dashed #ccc;
+    font-style: normal;
+    display: block;
+    margin: 4px 0;
+}
+
+.xbbcode-blockquote cite span {
+    float: right;
+    font-weight: normal;
 }
 
 .xbbcode-code {
@@ -123,6 +140,17 @@
     position: relative;
     bottom: 3px;
     margin-right: 3px;
+}
+
+.xbbcode-quick_jump {
+    color: #0F5799;
+    text-decoration: none;
+    font-size: 18px;
+    width: 13px;
+    height: 13px;
+    padding-left: 3px;
+    vertical-align: middle;
+    border: none;
 }
 
 .xbbcode-u {
