@@ -30,19 +30,13 @@ THE SOFTWARE.
     ----------------------------------------------------------------------------
     To-Do List for Future Tags:
     - Fix Code (Style)
-    - Fix img (dimensions)
-    - Update list (numbered & alphabetical)
-    - Implement help tag
-    - Implement /Slap feature
     - Implement paste tag
     - Implement ig tag (instagram)
     - Implement youtube tags (http://stackoverflow.com/a/18681824)
-
-    Completed:
-    - Implement ltc tag (postbit LiteCoin)
-    - Implement btc tag (postbit Bitcoin)
-    - Update color to work with 'transparent'
-    - Implement spoilers [S/spoiler] [sp]
+    JS
+       - Implement help tag
+       - Implement hr tag
+       - Implement /Slap feature
     ----------------------------------------------------------------------------
     Modification Notes:
     - (02/26/2017) Modified 'size' to work with xx-small through xx-large
@@ -54,6 +48,7 @@ THE SOFTWARE.
     - (03/17/2017) Implemented BTC, LTC tags | Updated color tag to work with 'transparent'
     - (03/18/2017) Implemented [Spoiler] [sp] tags
     - (03/21/2017) Fixed [Quote] style
+    - (03/21/2017) Updated list (numbered & alphabetical), Updated img (works with dimensions (width x height - ex [img=50x50])
 */
 
 var XBBCODE = (function() {
@@ -239,16 +234,27 @@ var XBBCODE = (function() {
             }
         },
         "img": {
-            openTag: function(params,content) {
-
+            openTag: function (params, content) {
+                // Content
                 var myUrl = content;
-
                 urlPattern.lastIndex = 0;
-                if ( !urlPattern.test( myUrl ) ) {
+                if ( !urlPattern.test( myUrl ) )
                     myUrl = "";
+                // Parameters
+                var imgSize = "";
+                if (params != null) {
+                    // x for dimensions
+                    if (params.includes("x")) {
+                        var dimensions = params.match("([^x]*)x([^x]*)");
+                        if (dimensions[1].includes("="))
+                            dimensions[1] = dimensions[1].replace("=", "");
+                        // Img Width & Img Height
+                        if ((dimensions[1] != null && parseInt(dimensions[1])) && (dimensions[2] != null && parseInt(dimensions[2])))
+                            imgSize = 'width="' + dimensions[1] + '" height="' + dimensions[2] + '"';
+                    }
                 }
 
-                return '<img src="' + myUrl + '" />';
+                return '<img ' + imgSize + ' src="' + myUrl + '" />';
             },
             closeTag: function(params,content) {
                 return '';
@@ -256,13 +262,32 @@ var XBBCODE = (function() {
             displayContent: false
         },
         "list": {
-            openTag: function(params,content) {
-                return '<ul>';
+            openTag: function (params, content) {
+                var listType = "<ul>";
+                // Parameter
+                if (params != null) {
+                    // Numbered List
+                    if (params.includes("1"))
+                        listType = "<ol>";
+                        // Alphabetical list
+                    else if (params.includes("a")) {
+                        listType = "<ol type=\"a\">";
+                    }
+                }
+                return listType;
             },
             closeTag: function(params,content) {
-                return '</ul>';
+                var listType = "</ul>";
+                // Parameter
+                if (params != null) {
+                    // Numbered or Alphabetical List
+                    if (params.includes("1") || params.includes("a")) {
+                        listType = "</ol>";
+                    }
+                }
+                return listType;
             },
-            restrictChildrenTo: ["*", "li"]
+            restrictChildrenTo: ["*"]
         },
         "ltc": {
             openTag: function (params, content) {
