@@ -296,10 +296,10 @@ var XBBCODE = (function() {
         },
         "quote": {
             openTag: function (params, content) {
-                var quoteName = "";
+                var quoteName = "Quote: ";
                 var quotePID = "";
                 var quoteTSP = "";
-                if (params.length > 0) {
+                if (params != null) {
                     var quoteInfo = params.split("='");
                     // Quote Attributes (Name, PID, Timestamp)
                     for (var i = 0; i < quoteInfo.length; i++) {
@@ -308,8 +308,6 @@ var XBBCODE = (function() {
                     // Name
                     if (params.includes("='") && quoteInfo[1].length > 0) {
                         quoteName = quoteInfo[1] + " Wrote: ";
-                    } else {
-                        quoteName = " Quote:";
                     }
                     // PID
                     if (params.includes("pid='") && quoteInfo[2].length > 0) {
