@@ -1,4 +1,3 @@
-# ThreadDesignGenerator
 <p align="center">
   <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Logo/Black/3.png?raw=true" title="Logo"  />
   <br>
@@ -16,7 +15,7 @@
   <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Layout_3.png?raw=true" title="Screenshot 03"  />
 </details>
 
-<h3><b><big>About</big></b></h3>
+## About
 Years ago I created a C# program/ concept to generate marketplace thread designs fast and easily. 
 I realized no one wanted to download an executable file, so I've been working on an online version.
 This is the official beta release, but I still need some help:
@@ -24,7 +23,7 @@ This is the official beta release, but I still need some help:
 <ul><li><b>Layout Suggestions:</b> If you have a marketplace MyCode layout you would like implemented, I ask that you make a concept and send it to me.</li></ul>
 <ul><li><b>Feedback:</b> If you have feedback, please share it with me!</li></ul>
 
-<h3><b><big>Bugs</big></b></h3>
+## Bugs
 AHHH, BUGS! It's the first version so there WILL be bugs. I hope to get rid of them as much as I can, but I need help. 
 <details> 
   <summary>Known Bugs:</summary>
@@ -38,7 +37,7 @@ How to Replicate the Bug:
 Additional Notes:
 ```
 
-<h3><b><big>To-Do List</big></b></h3>
+## To-Do List
 <ul><li>Terms of Service Tab</li></ul>
 <ul><li>Font Settings</li></ul>
 <ul><li>Design-Wide Alignment Settings</li></ul>
