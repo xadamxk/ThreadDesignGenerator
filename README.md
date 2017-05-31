@@ -19,9 +19,9 @@
 Years ago I created a C# program/ concept to generate marketplace thread designs fast and easily. 
 I realized no one wanted to download an executable file, so I've been working on an online version.
 This is the official beta release, but I still need some help:
-<ul><li><b>Squashing Bugs:</b> If you find a bug, please use the form below to submit a ticket to get it fixed.</li></ul>
-<ul><li><b>Layout Suggestions:</b> If you have a marketplace MyCode layout you would like implemented, I ask that you make a concept and send it to me.</li></ul>
-<ul><li><b>Feedback:</b> If you have feedback, please share it with me!</li></ul>
+<ul><li><b>Squashing Bugs:</b> If you find a bug, please use the form below to submit a ticket to get it fixed.</li>
+<li><b>Layout Suggestions:</b> If you have a marketplace MyCode layout you would like implemented, I ask that you make a concept and send it to me.</li>
+<li><b>Feedback:</b> If you have feedback, please share it with me!</li></ul>
 
 ## Bugs
 AHHH, BUGS! It's the first version so there WILL be bugs. I hope to get rid of them as much as I can, but I need help. 
