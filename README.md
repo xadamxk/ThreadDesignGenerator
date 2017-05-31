@@ -1,5 +1,7 @@
 # ThreadDesignGenerator
 <p align="center">
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Logo/Black/3.png?raw=true" title="Logo"  />
+  <br>
   Thread designer for MyBB forums
   <br />
   <a align="center" href="https://xadamxk.github.io/ThreadDesignGenerator/">Click here to use the tool</a>
