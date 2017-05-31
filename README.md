@@ -8,18 +8,6 @@
 </p>
 
 <details> 
-  <summary>ThreadDesignGenerator - Screenshots:</summary>
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_General.png?raw=true" title="Screenshot 01"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Header.png?raw=true" title="Screenshot 02"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Description.png?raw=true" title="Screenshot 03"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Products.png?raw=true" title="Screenshot 04"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Contact.png?raw=true" title="Screenshot 05"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_FAQ.png" title="Screenshot 06"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Vouches.png?raw=true" title="Screenshot 07"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Output1.png?raw=true" title="Screenshot 08"  />
-  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Output2.png?raw=true" title="Screenshot 09"  />
-</details>
-<details> 
   <summary>Example Output - Screenshots:</summary>
   <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Layout_1.png?raw=true" title="Layout 01"  />
   <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Layout_2.png?raw=true" title="Layout 02"  />
@@ -33,6 +21,19 @@ This is the official beta release, but I still need some help:
 <ul><li><b>Squashing Bugs:</b> If you find a bug, please use the form below to submit a ticket to get it fixed.</li>
 <li><b>Layout Suggestions:</b> If you have a marketplace MyCode layout you would like implemented, I ask that you make a concept and send it to me.</li>
 <li><b>Feedback:</b> If you have feedback, please share it with me!</li></ul>
+
+<details> 
+  <summary>Screenshots:</summary>
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_General.png?raw=true" title="Screenshot 01"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Header.png?raw=true" title="Screenshot 02"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Description.png?raw=true" title="Screenshot 03"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Products.png?raw=true" title="Screenshot 04"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Contact.png?raw=true" title="Screenshot 05"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_FAQ.png" title="Screenshot 06"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Vouches.png?raw=true" title="Screenshot 07"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Output1.png?raw=true" title="Screenshot 08"  />
+  <img src="https://github.com/xadamxk/ThreadDesignGenerator/blob/master/img/Screenshots/Screenshot_Output2.png?raw=true" title="Screenshot 09"  />
+</details>
 
 ## Bugs
 AHHH, BUGS! It's the first version so there WILL be bugs. I hope to get rid of them as much as I can, but I need help. 
